@@ -1,0 +1,141 @@
+***UPDATED 2/4/2022 LATEST
+	- REMOVED LET IT GROW (implementation too many classes, need to swithc to intefrace style)
+	- REMOVED JUMP (CANT TUCH GAME ENGINE) 
+
+***UPDATED 3/4/2022 LATEST
+	- COMPLETED FOR ALL CLASSES (not confirmed)
+	- Discussed @ 9 - 11
+
+
+LET IT GROW
+- 1 CLASS tree, attribute age = 0 (defaULT) :
+	- As turns go on, tick (age++)
+	- main method that calls other methods based on age :
+		- if less than 10 : sprout methods
+		- if less than 20 and more than 10 : sapling methods
+		- if more than 20 : mature tree methods
+
+
+JUMP
+- ACTOR
+	- PLAYER
+		+ Check if player near any 'jumpable objects aka high ground (y coord larger than ori)' e.g. : walls, trees
+		+ If player decides to jump :
+			- Determine if success or fail (prob = 80%)
+			- If fail, player does not move onto the object
+
+	- GOOMBA
+	- KOOPA
+		+ Cant jump, cant move from high to low via walk
+- ITEM
+	- SUPER MUSHROOM
+		+ If active, always suceed in jump (prob = 100%)
+- WALL/TREES
+	-Check if player near any 'jumpable objects aka high ground
+- MENU
+	- If near high ground, give option to jump onto it
+
+
+ENEMIES
+- GOOMBA
+	+ implements ACTOR
+		+ Set the initial values
+		+ Implement randomized Utils method similar to flip() which randomly chooses between heads and tails for the 10%/50% prob.
+			- https://stackoverflow.com/questions/8183840/probability-in-java
+			- Check viability of Randomizer class from project RDX v1.11 to implement here
+		+ ATTACKACTION tp attack
+			- Randomizer to set attack value attribute in GOOMBA class and call attack action based on it
+- KOOPA
+	+ implements ACTOR
+	+ boolean attribute (dormant or not)
+		+ Set the initial values
+		+ When defeated, setDisplayChar = D
+		+ When dormant, option for player to attack Koopa should destroy its shell
+	- MENU
+		+ Change the options.
+		
+
+MAGICAL ITEMS
+- SUPER MUSHROOM
+      - Add to map using addItem method (similar to mars game items)
+	- PLAYER
+		+ Increase HP by 50 (increaseMaxHp method available in Actor)
+		+ Change displayChar from m to M (setDisplayChar method available in Actor)
+		+ Add status to 100% jump success rate (Add a new status which adds to capabilities list for 100% success rate)
+			+ Interacts with jump action to ensure the success
+		+ First instance of damage, 
+			+ remove the status (set to False?) and capabilities removed from list
+			+ Change displayChar from M to m (setDisplayChar method available in Actor)
+		
+- POWER STAR
+	- Add to map using addItem method (similar to mars game items)
+	- Creates new counter which starts at 10, every turn -1, until 0 where the buff is removed
+	- PLAYER
+		+ Heals 200 HP (heal method available in Actor)
+		+ Adds higher grounds buff (boolean status/capabilities list?)
+			- WALL implementation?
+		+ Immunity buff (boolean status/capabilities list?)
+			- ATTACKACTION implementation to change this
+		 	- Maybe change value of enemy attacks to 0 during this duration?
+		+ Insta kill buff (boolean status/capabilities list?)
+			- ATTACKACTION implementation to change this
+			- - Maybe change value of attacks to 999 during this duration to enssure kills?
+	- WALL
+		+ new method implement to destroy wall when status active?
+			-ITEM
+			 + create coins at the location on destroy (? implementation)
+	- MENU
+		+ Add message until buff is over
+
+
+TRADES
+- WALLET + INVENTORY CLASS
+	+ attributes : int money, arraylist of items
+	+ methods : addMoney, removeMoney, addItems, removeItems
+- ACTOR
+	- PLAYER -> TOAD
+		+ Constant checks for when near TOAD
+			+ when near toad, MENU change for buy options
+				+ if choose to buy : removeMoney, addItems
+					- If not enough money :
+						+ Print the message (MENU)
+
+MONOLOGUES
+-ACTOR
+	-PLAYER
+	-TOAD
+		+ Check position of player and toad :
+			- If Toad in range (?) maybe right beside, monologue occurs
+			- Monologue exactly 1 chosen randomly given conditions of 1 - 4
+
+-MENU
+	+ Prints the monologue line
+
+-INVENTORY 
+	-ITEMS
+		- WRENCH
+			+ ?
+		- POWER STAR
+			+ When active, cant print line 2
+
+RESET GAMES
++ Boolean attribute "called". Default = false, if true : cant reset anymore.
+-MENU
+	+ Always give the reset option until used
+		- When used, remove the option
+-TREES
+	+ Call the prob. method (50%), if true convert back to dirt : Calling Dirt constructor, else null
+-ACTORS
+	-ENEMIES
+		-GOOMBAS
+		-KOOPAS
+			+ Set all HP = 0
+			+? Change the display from enemy symbol to dirt (Create dirt in that location)
+	-PLAYER
+		+ Reset all status (if boolean implementation, set all back to default (false?))
+		+ Call resetMaxHp in Actor class (resets HP to max)
+-ITEMS/INVENTORY
+	-COINS
+		+ Convert all coins to dirt (Call dirt constructor for all coins with the location of coins)
+
+		
