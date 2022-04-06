@@ -1,0 +1,17 @@
+REQ1
+The tree class was extended from the abstract class Ground. The reason behind it was to achieve reusability as much as possible in our code. Since we have been provided with the abstract class Ground, we can reuse the methods like tick(), allowableActions() to build our tree class.
+
+We also created a Probability class to handle the probability of a certain action to occur. For example, sprout has a 10% chance to spawn Goomba, this class will have a method that returns a boolean value that determines whether it has passed the chance or not. If we did not create this class, we would need to edit every single code that has the probability feature if there is any bug, resulting in high maintenance cost.
+
+REQ2
+* unsure on how to check location
+
+The JumpAction class extends the Action class in the engine implementing methods execute and menuDescription. JumpAction has a dependency with the Probability class to get the result of probabilities on jump (if the player's jump is successful or not). JumpAction is only used by the player so it has an association (Only actors which can jump is the player).
+
+REQ5
+Instead of implementing the wallet inside the player’s inventory, we specifically created a wallet class because we wish to comply with the Single Responsibility Principle(SRP), such that we don't have to worry about handling other responsibilities such as adding or removing items from the inventory. It is also easier to maintain and extend if the class only focuses on one responsibility.
+
+REQ6
+We extends the Player class from the abstract Actor class because we wish to follow the Liskov substitution principle (LSP), as the player class will inherits all the methods from the actor class, making the subclass(player) is able to replace the superclass(actor) without breaking the program. This will only work for player class as it will utilize all the methods in the actor class unlike other subclasses such as toad and koopa. For example, player class uses heal() and increaseMaxHp(), where other subclasses of actor class don’t.
+
+The Actor implements Capable interface because the Actor class contains a method (hasCapability()) which can detect whether the power star is consumed. There is an association between the abstract Actor class and the Item class to detect if the player is currently holding the wrench because the actor class contains an instance variable of Item type (an array list of items representing the actor’s inventory).
