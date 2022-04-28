@@ -1,20 +1,34 @@
 package game.grounds.trees;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import game.actors.Status;
+import game.grounds.HighGround;
 import game.reset.Resettable;
 
-public class Tree extends Ground implements Resettable {
+public abstract class Tree extends HighGround implements Resettable {
+    private String name;
+    protected int age = 10;
 
     /**
      * Constructor.
      *
      */
-    public Tree() {
-        super('+');
-        registerInstance();
+    private final int growthCount = 10;
+
+
+    public Tree(char displayChar, int successRate, int damage, String name) {
+        super(displayChar, successRate, damage);
+        this.registerInstance();
+        this.name = name;
     }
 
+
+//    public abstract void spawn();
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return false;
+    }
 
     @Override
     public void resetInstance() {
