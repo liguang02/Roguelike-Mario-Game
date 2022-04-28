@@ -31,6 +31,11 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
+
+		if(this.hasCapability(Status.INVINCIBLE)){
+			display.println("Mario is INVINCIBLE!");
+		}
+
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
