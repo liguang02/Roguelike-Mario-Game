@@ -9,5 +9,6 @@ public enum Status {
     TALL, // use this status to tell that current instance has "grown".
     INVINCIBLE, //use this status to tell that current instance is invincible
     REMOVED, //use this status for reset, if an object has this status it should be removed from the map.
-    RESET //use this to check if player has done a reset, if reset occur add to capability set of player
+    RESET, //use this to check if player has done a reset, if reset occur add to capability set of player
+    FERTILE //use this to check whether if the ground is fertile(such as dirt)
 }

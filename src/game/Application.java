@@ -13,6 +13,9 @@ import game.actors.Player;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
+import game.grounds.trees.Mature;
+import game.grounds.trees.Sapling;
+import game.grounds.trees.Sprout;
 import game.grounds.trees.Tree;
 
 /**
@@ -25,7 +28,7 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
