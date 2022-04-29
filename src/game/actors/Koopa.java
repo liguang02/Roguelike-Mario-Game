@@ -9,7 +9,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
 import game.behaviours.Behaviour;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Koopa extends Enemy{
+    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+
     public Koopa() {
         super("Koopa", 'k', 50);
     }
@@ -35,7 +40,7 @@ public class Koopa extends Enemy{
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for(game.behaviours.Behaviour Behaviour : getBehaviours().values()) {
+        for(Behaviour Behaviour : behaviours.values()) {
             Action action = Behaviour.getAction(this, map);
             if (action != null)
                 return action;
