@@ -31,7 +31,7 @@ public class Coin extends Item implements Resettable {
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);
-        if(this.hasCapability(ItemCapabilities.REMOVED)){
+        if(this.hasCapability(Status.REMOVED)){
             currentLocation.removeItem(this);
         }
 
@@ -39,6 +39,6 @@ public class Coin extends Item implements Resettable {
 
     @Override
     public void resetInstance() {
-        this.addCapability(ItemCapabilities.REMOVED);
+        this.addCapability(Status.REMOVED);
     }
 }

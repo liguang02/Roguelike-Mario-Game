@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.SuicideBehaviour;
-import game.items.ItemCapabilities;
 import game.reset.Resettable;
 
 import java.util.HashMap;

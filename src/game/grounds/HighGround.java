@@ -5,8 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
+import game.actors.Status;
 import game.items.Coin;
-import game.items.ItemCapabilities;
 
 public abstract class HighGround extends Ground {
 
@@ -28,7 +28,7 @@ public abstract class HighGround extends Ground {
     public void tick(Location location) {
         super.tick(location);
         if (location.getActor() != null) {
-            if(location.getActor().hasCapability(ItemCapabilities.INVINCIBLE)){
+            if(location.getActor().hasCapability(Status.INVINCIBLE)){
                 location.setGround(new Dirt());
                 location.addItem(new Coin(5));
             }
@@ -37,13 +37,13 @@ public abstract class HighGround extends Ground {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return actor.hasCapability(ItemCapabilities.INVINCIBLE);
+        return actor.hasCapability(Status.INVINCIBLE);
     }
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actionList = new ActionList();
-        if(!actor.hasCapability(ItemCapabilities.INVINCIBLE)){
+        if(!actor.hasCapability(Status.INVINCIBLE)){
             actionList.add(new JumpAction(successRate,damage, direction, location));
         }
         return actionList;
