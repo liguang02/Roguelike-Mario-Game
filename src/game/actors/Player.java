@@ -3,6 +3,7 @@ package game.actors;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.capabilities.CapabilitySet;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
@@ -63,9 +64,9 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	public void resetInstance() {
-		this.capabilitiesList().clear();
+		this.capabilitiesList().forEach(this::removeCapability);
 		this.heal(getMaxHp());
-		this.capabilitiesList().add(Status.RESET);
+		this.addCapability(Status.RESET);
 	}
 
 	public void displayDetalis(Display display, GameMap map){
