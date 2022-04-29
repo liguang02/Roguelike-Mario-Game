@@ -2,7 +2,10 @@ package game.grounds.trees;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
+import edu.monash.fit2099.engine.positions.Location;
+import game.Probability;
 import game.actors.Status;
+import game.grounds.Dirt;
 import game.grounds.HighGround;
 import game.reset.Resettable;
 
@@ -33,5 +36,14 @@ public abstract class Tree extends HighGround implements Resettable {
     @Override
     public void resetInstance() {
         this.addCapability(Status.REMOVED);
+    }
+
+    @Override
+    public void tick(Location location) {
+        super.tick(location);
+            if(this.hasCapability(Status.REMOVED) && Probability.success(50)){
+                location.setGround(new Dirt());
+            }
+        this.removeCapability(Status.REMOVED);
     }
 }

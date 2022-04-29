@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.resetAction;
 import game.reset.Resettable;
 
 /**
@@ -14,6 +15,7 @@ import game.reset.Resettable;
 public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
+	private boolean resetAdded = false;
 
 	/**
 	 * Constructor.
@@ -31,6 +33,18 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
+
+		Action resetAction = new resetAction();
+
+		if(!this.hasCapability(Status.RESET) && !resetAdded){
+			actions.add(resetAction);
+			resetAdded = true;
+		}
+
+		if(this.hasCapability(Status.RESET)){
+			actions.remove(resetAction);
+			resetAdded = false;
+		}
 
 		if(this.hasCapability(Status.INVINCIBLE)){
 			display.println("Mario is INVINCIBLE!");

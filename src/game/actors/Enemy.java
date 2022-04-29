@@ -3,6 +3,7 @@ package game.actors;
 import edu.monash.fit2099.engine.actors.Actor;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
+import game.behaviours.SuicideBehaviour;
 import game.items.ItemCapabilities;
 import game.reset.Resettable;
 
@@ -28,13 +29,14 @@ public abstract class Enemy extends Actor implements Resettable {
         this.registerInstance();
 //        this.addCapability(Status.ENEMY);
         behaviours.put(11,new FollowBehaviour(actor));
-//        behaviours.put(10, new SuicideBehaviour());
+        behaviours.put(12, new SuicideBehaviour());
     }
 
 
     @Override
     public void resetInstance() {
-        this.addCapability(ItemCapabilities.REMOVED);
+        this.hurt(this.getMaxHp());
+        this.addCapability(Status.REMOVED);
     }
 
     public Map<Integer, Behaviour> getBehaviours() {
