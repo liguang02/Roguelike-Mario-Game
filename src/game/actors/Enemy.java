@@ -23,11 +23,12 @@ public abstract class Enemy extends Actor implements Resettable {
     // but im not sure.) -LG
     public Enemy(String name, char displayChar, int hitPoints){
         super(name, displayChar, hitPoints);
+        this.addCapability(Status.ENEMY);
     }
     public Enemy(String name, char displayChar, int hitPoints, Actor actor) {
         super(name, displayChar, hitPoints);
         this.registerInstance();
-//        this.addCapability(Status.ENEMY);
+        this.addCapability(Status.ENEMY);
         behaviours.put(11,new FollowBehaviour(actor));
         behaviours.put(12, new SuicideBehaviour());
     }
