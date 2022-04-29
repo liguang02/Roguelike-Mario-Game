@@ -55,7 +55,7 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
-			Actor mario = new Player("Player", 'm', 100);
+			Actor mario = new Player("mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
 
 			// FIXME: the Goomba should be generated from the Tree

@@ -1,6 +1,5 @@
 package game.items;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
@@ -26,7 +25,6 @@ public class Coin extends Item implements Resettable {
     public int getValue() {
         return value;
     }
-
 
     @Override
     public void tick(Location currentLocation) {

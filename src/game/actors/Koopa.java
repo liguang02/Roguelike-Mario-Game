@@ -34,17 +34,20 @@ public class Koopa extends Enemy{
             AttackAction koopaAttack = new AttackAction(otherActor, direction);
             koopaAttack.execute(this, map);
             System.out.println("Koopa attacks " + otherActor + " for 10 damage." );
+
         }
         return actions;
     }
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
         for(Behaviour Behaviour : behaviours.values()) {
             Action action = Behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
+
         return new DoNothingAction();
     }
 }

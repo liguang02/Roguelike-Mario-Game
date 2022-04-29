@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.resetAction;
+import game.items.WalletManager;
 import game.reset.Resettable;
 
 /**
@@ -46,9 +47,7 @@ public class Player extends Actor implements Resettable {
 			resetAdded = false;
 		}
 
-		if(this.hasCapability(Status.INVINCIBLE)){
-			display.println("Mario is INVINCIBLE!");
-		}
+		displayDetalis(display, map);
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -67,5 +66,19 @@ public class Player extends Actor implements Resettable {
 		this.capabilitiesList().clear();
 		this.heal(getMaxHp());
 		this.capabilitiesList().add(Status.RESET);
+	}
+
+	public void displayDetalis(Display display, GameMap map){
+
+		int x_coord = map.locationOf(this).x();
+		int y_coord = map.locationOf(this).y();
+		int wallet = WalletManager.getInstance().getBalance(this);
+		String formatted = this.name + this.printHp();
+		formatted = formatted + " at (" + x_coord + ", " + y_coord + ")" + "\n";
+		formatted = formatted + "wallet: $" + wallet;
+ 		if(this.hasCapability(Status.INVINCIBLE)){
+			formatted = formatted + "\n" + "Mario is INVINCIBLE!";
+		}
+		display.println(formatted);
 	}
 }
