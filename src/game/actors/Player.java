@@ -3,7 +3,6 @@ package game.actors;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.capabilities.CapabilitySet;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
@@ -48,7 +47,7 @@ public class Player extends Actor implements Resettable {
 			resetAdded = false;
 		}
 
-		displayDetalis(display, map);
+		displayDetails(display, map);
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -59,7 +58,14 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	public char getDisplayChar(){
-		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
+		char displayChar = super.getDisplayChar();
+		if (this.hasCapability(Status.INVINCIBLE)){
+			displayChar = 'i';
+		}
+		if(this.hasCapability(Status.TALL)){
+			displayChar = Character.toUpperCase(displayChar);
+		}
+		return displayChar;
 	}
 
 	@Override
@@ -69,17 +75,19 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.RESET);
 	}
 
-	public void displayDetalis(Display display, GameMap map){
+	public void displayDetails(Display display, GameMap map){
 
-		int x_coord = map.locationOf(this).x();
-		int y_coord = map.locationOf(this).y();
+		int x = map.locationOf(this).x();
+		int y = map.locationOf(this).y();
 		int wallet = WalletManager.getInstance().getBalance(this);
 		String formatted = this.name + this.printHp();
-		formatted = formatted + " at (" + x_coord + ", " + y_coord + ")" + "\n";
+		formatted = formatted + " at (" + x + ", " + y + ")" + "\n";
 		formatted = formatted + "wallet: $" + wallet;
- 		if(this.hasCapability(Status.INVINCIBLE)){
-			formatted = formatted + "\n" + "Mario is INVINCIBLE!";
+		if(this.hasCapability(Status.INVINCIBLE)){
+			formatted += "\n" + this + " is INVINCIBLE!";
 		}
+		display.println(this.getInventory().toString());
+		display.println(this.capabilitiesList().toString());
 		display.println(formatted);
 	}
 }

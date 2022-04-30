@@ -18,6 +18,8 @@ import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
 import game.grounds.trees.Tree;
+import game.items.PowerStar;
+import game.items.SuperMushroom;
 
 /**
  * The main class for the Mario World game.
@@ -62,6 +64,10 @@ public class Application {
 			gameMap.at(35, 10).addActor(new Goomba());
 
 			gameMap.at(37, 12).addActor(new Koopa());
+
+			gameMap.at(41, 10).addItem(new PowerStar());
+			gameMap.at(43, 10).addItem(new PowerStar());
+			gameMap.at(44, 10).addItem(new SuperMushroom());
 
 			world.run();
 
