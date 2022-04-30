@@ -1,9 +1,11 @@
 package game.items;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
+import game.actions.ConsumeShroomAction;
 import game.actions.PickUpShroomAction;
 
 /**
@@ -15,12 +17,17 @@ public class SuperMushroom extends Item implements  Purchasable{
      */
     private int price;
     /**
+     *
+     */
+    private final Action consumeAction = new ConsumeShroomAction(this);
+    /**
      * Constructor for the SuperMushroom class
      */
     public SuperMushroom() {
         super("Super Mushroom", 'p', true);
         this.price = 400;
         this.addToPurchasableManager();
+        this.addAction(consumeAction);
     }
 
     /**
@@ -48,5 +55,9 @@ public class SuperMushroom extends Item implements  Purchasable{
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
+    }
+
+    public void consumeShroom(){
+        this.removeAction(consumeAction);
     }
 }

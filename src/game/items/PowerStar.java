@@ -1,13 +1,18 @@
 package game.items;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.ConsumeShroomAction;
+import game.actions.ConsumeStarAction;
 import game.actions.PickUpStarAction;
 import game.actors.Status;
 import game.reset.Resettable;
+
+import java.util.List;
 
 /**
  * PowerStar class implementing the Power Star item from Req. 4
@@ -27,6 +32,10 @@ public class PowerStar extends Item implements Purchasable, Resettable {
      */
     private int price;
     /**
+     * The action used to give player option to consume the star, when item is consumed remove this action from allowable actions.
+     */
+    private final Action consumeAction = new ConsumeStarAction(this);
+    /**
      * Constructor for the PowerStar class
      * Setting the timeSpan to 10 (life span of item if left on ground)
      * Registering the item to be reset.
@@ -37,7 +46,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
         this.registerInstance();
         this.price = 600;
         this.addToPurchasableManager();
-
+        this.addAction(consumeAction);
     }
 
     /**
@@ -67,10 +76,10 @@ public class PowerStar extends Item implements Purchasable, Resettable {
                 //This line is needed for when power stars are picked up with overlapping time spans.
                 actor.addCapability(Status.INVINCIBLE);
                 timeSpan--;
-                return;
-            }
+            }else{
             actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);
+            }
         }
     }
     /**
@@ -114,10 +123,12 @@ public class PowerStar extends Item implements Purchasable, Resettable {
     /**
      * Method that resets the timeSpan to the number of turns that the item buffs lasts according to the specification
      * Sets consumed to true (Item has been consumed by the actor) to carry out the specific actions in the tick method.
+     * Removes the option to consume the item.
      */
     public void consumeStar(){
         timeSpan = 10;
         consumed = true;
+        this.removeAction(consumeAction);
     }
 
     /**

@@ -8,10 +8,13 @@ import game.actors.Player;
 import game.items.*;
 
 public class PurchaseAction extends Action {
+
     Item item;
+
     public PurchaseAction(Item item){
         this.item = item;
     }
+
     public String execute(Actor actor, GameMap map) {
         String execute = "";
         WalletManager wallet = WalletManager.getInstance();

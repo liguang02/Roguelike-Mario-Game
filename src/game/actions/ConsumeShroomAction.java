@@ -34,6 +34,7 @@ public class ConsumeShroomAction extends Action {
         actor.increaseMaxHp(50);
         actor.addCapability(Status.TALL);
         actor.removeItemFromInventory(superMushroom);
+        superMushroom.consumeShroom();
         return menuDescription(actor);
     }
 
