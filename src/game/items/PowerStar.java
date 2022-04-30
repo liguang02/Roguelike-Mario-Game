@@ -7,8 +7,9 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PickUpStarAction;
 import game.actors.Status;
+import game.reset.Resettable;
 
-public class PowerStar extends Item {
+public class PowerStar extends Item implements Resettable {
 
     private int timeSpan;
     private boolean consumed = false;
@@ -16,13 +17,14 @@ public class PowerStar extends Item {
     public PowerStar() {
         super("Power Star", '*', true);
         timeSpan = 10;
+        this.registerInstance();
     }
 
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);
 
-        if(timeSpan == 1){
+        if(timeSpan <= 1){
             currentLocation.removeItem(this);}
         timeSpan--;
     }
@@ -59,5 +61,12 @@ public class PowerStar extends Item {
     public void consumeStar(){
         timeSpan = 10;
         consumed = true;
+    }
+
+    @Override
+    public void resetInstance() {
+        if(consumed) {
+            timeSpan = -1;
+        }
     }
 }

@@ -16,7 +16,6 @@ import game.reset.Resettable;
 public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
-	private boolean resetAdded = false;
 
 	/**
 	 * Constructor.
@@ -37,14 +36,12 @@ public class Player extends Actor implements Resettable {
 
 		Action resetAction = new resetAction();
 
-		if(!this.hasCapability(Status.RESET) && !resetAdded){
+		if(!this.hasCapability(Status.RESET)){
 			actions.add(resetAction);
-			resetAdded = true;
 		}
 
 		if(this.hasCapability(Status.RESET)){
 			actions.remove(resetAction);
-			resetAdded = false;
 		}
 
 		displayDetails(display, map);

@@ -53,7 +53,7 @@ public class AttackAction extends Action {
 		int damage = weapon.damage();
 
 		if(actor.hasCapability(Status.INVINCIBLE)){
-			damage = 999;
+			damage = Integer.MAX_VALUE;
 		}
 
 		if(target.hasCapability(Status.INVINCIBLE)){
@@ -69,21 +69,27 @@ public class AttackAction extends Action {
 
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
+
 		if (!target.isConscious()) {
+
 			ActionList dropActions = new ActionList();
+
 			// drop all items
 			for (Item item : target.getInventory())
 				dropActions.add(item.getDropAction(actor));
 			for (Action drop : dropActions)
 				drop.execute(target, map);
-			// remove actor
+
+
 			if(target.getDisplayChar() == 'k') {
 				target.hasCapability(Status.DORMANT);
 				result += System.lineSeparator() + target + " is Dormant.";
 				return result;
-			} else {
+			}
+			else {
 				map.removeActor(target);
 			}
+
 			map.removeActor(target);
 			result += System.lineSeparator() + target + " is killed.";
 		}
