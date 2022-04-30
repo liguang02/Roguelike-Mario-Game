@@ -9,13 +9,18 @@ import game.actions.PickUpShroomAction;
 /**
  * SuperMushroom class implementing the Super Mushroom item from Req. 4
  */
-public class SuperMushroom extends Item {
-
+public class SuperMushroom extends Item implements  Purchasable{
+    /**
+     * To store the price of the supermushroom
+     */
+    private int price;
     /**
      * Constructor for the SuperMushroom class
      */
     public SuperMushroom() {
         super("Super Mushroom", 'p', true);
+        this.price = 400;
+        this.addToPurchasableManager();
     }
 
     /**
@@ -26,6 +31,13 @@ public class SuperMushroom extends Item {
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
         return new PickUpShroomAction(this);
+    }
+    /**
+     * price method (a getter method to get the price of this item object)
+     * Used in PurchaseAction where it needs to get the prices of the purchasableItem
+     */
+    public int price(){
+        return price;
     }
 
     /**

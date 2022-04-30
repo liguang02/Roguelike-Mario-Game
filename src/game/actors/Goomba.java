@@ -26,7 +26,6 @@ public class Goomba extends Actor {
 		super("Goomba", 'g', 50);
 		this.behaviours.put(10, new WanderBehaviour());
 	}
-
 	/**
 	 * At the moment, we only make it can be attacked by Player.
 	 * You can do something else with this method.

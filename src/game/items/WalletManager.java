@@ -42,6 +42,7 @@ public class WalletManager {
      */
     public void appendWalletActor(Actor actor, int value){
         addBalance(actor, value);
+
     }
 
     /**
@@ -69,6 +70,8 @@ public class WalletManager {
         }
     }
     public void minusBalance(Actor actor, int value){
-        walletActorHashMap.put(actor, walletActorHashMap.get(actor)-value);
+        if (!walletActorHashMap.isEmpty()) {
+            walletActorHashMap.put(actor, walletActorHashMap.get(actor) - value);
+        }
     }
 }

@@ -27,7 +27,7 @@ public class JumpAction extends Action {
         if(randomNum < successRate){
             map.moveActor(actor, moveToLocation);
             // need to think of a way to get the ground name (currently it just prints the ground object)
-            return "Player jumped to " + moveToLocation.getGround();
+            return "Player jumped to " + moveToLocation.getGround().toString();
         }else{
             actor.hurt(damage);
             return  "Player failed jump, damage taken : " + damage;

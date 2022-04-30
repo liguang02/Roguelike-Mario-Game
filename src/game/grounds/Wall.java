@@ -18,4 +18,6 @@ public class Wall extends HighGround{
 	public boolean blocksThrownObjects() {
 		return true;
 	}
+
+
 }

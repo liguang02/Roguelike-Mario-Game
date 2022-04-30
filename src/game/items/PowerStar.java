@@ -12,7 +12,7 @@ import game.reset.Resettable;
 /**
  * PowerStar class implementing the Power Star item from Req. 4
  */
-public class PowerStar extends Item implements Resettable {
+public class PowerStar extends Item implements Purchasable, Resettable {
     /**
      * The life span of the item on the ground/ time remaining of the players buff from this item
      */
@@ -22,7 +22,10 @@ public class PowerStar extends Item implements Resettable {
      * If not, could be either in the players inventory or left on the ground
      */
     private boolean consumed = false;
-
+    /**
+     * An instance variable that stores the price value for Power Star
+     */
+    private int price;
     /**
      * Constructor for the PowerStar class
      * Setting the timeSpan to 10 (life span of item if left on ground)
@@ -32,6 +35,9 @@ public class PowerStar extends Item implements Resettable {
         super("Power Star", '*', true);
         timeSpan = 10;
         this.registerInstance();
+        this.price = 600;
+        this.addToPurchasableManager();
+
     }
 
     /**
@@ -66,6 +72,13 @@ public class PowerStar extends Item implements Resettable {
             actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);
         }
+    }
+    /**
+     * price method (a getter method to get the price of this item object)
+     * Used in PurchaseAction where it needs to get the prices of the purchasableItem
+     */
+    public int price(){
+        return price;
     }
 
     /**

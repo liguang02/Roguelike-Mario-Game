@@ -66,7 +66,6 @@ public class AttackAction extends Action {
 				damage = 0;
 			}
 		}
-
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
 
@@ -93,7 +92,6 @@ public class AttackAction extends Action {
 			map.removeActor(target);
 			result += System.lineSeparator() + target + " is killed.";
 		}
-
 		return result;
 	}
 
