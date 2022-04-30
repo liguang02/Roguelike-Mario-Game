@@ -53,6 +53,13 @@ public class Player extends Actor implements Resettable {
 		return menu.showMenu(this, actions, display);
 	}
 
+	/**
+	 * Gets the Display Character for the player to be placed on map
+	 * Override to add characters for INVINCIBLE buff (Power Star) and TALL buff (Super Mushroom)
+	 * Character details :
+	 * 	Character 'i' : Player actor is INVINCIBLE (power star consumed)
+	 * 	Capital characters (e.g. : M, I) : Player actor is TALL (super mushroom consumed)
+	 */
 	@Override
 	public char getDisplayChar(){
 		char displayChar = super.getDisplayChar();
@@ -83,8 +90,11 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.INVINCIBLE)){
 			formatted += "\n" + this + " is INVINCIBLE!";
 		}
+		//Print inventory (not needed for final submission, just easier to see what we are doing)
 		display.println(this.getInventory().toString());
+		//Print buff list (not needed for final submission, just easier to see what we are doing)
 		display.println(this.capabilitiesList().toString());
+
 		display.println(formatted);
 	}
 }
