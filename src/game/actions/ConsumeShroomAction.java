@@ -33,6 +33,7 @@ public class ConsumeShroomAction extends Action {
     public String execute(Actor actor, GameMap map) {
         actor.increaseMaxHp(50);
         actor.addCapability(Status.TALL);
+        actor.removeItemFromInventory(superMushroom);
         return menuDescription(actor);
     }
 
