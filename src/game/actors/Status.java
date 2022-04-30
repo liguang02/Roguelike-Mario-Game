@@ -12,5 +12,6 @@ public enum Status {
     RESET, //use this to check if player has done a reset, if reset occur add to capability set of player
     ENEMY, //use this to check if the actor is an enemy or not
     FERTILE, //use this to check whether if the ground is fertile(such as dirt)
-    MONEY //use this to identify a valuable item (such as coin)
+    MONEY, //use this to identify a valuable item (such as coin)
+    DORMANT // if enemies like Koopa are dormant (unable to attack etc)
 }

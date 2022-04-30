@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actors.Koopa;
 import game.actors.Status;
 
 /**
@@ -76,6 +77,13 @@ public class AttackAction extends Action {
 			for (Action drop : dropActions)
 				drop.execute(target, map);
 			// remove actor
+			if(target.getDisplayChar() == 'k') {
+				target.hasCapability(Status.DORMANT);
+				result += System.lineSeparator() + target + " is Dormant.";
+				return result;
+			} else {
+				map.removeActor(target);
+			}
 			map.removeActor(target);
 			result += System.lineSeparator() + target + " is killed.";
 		}
