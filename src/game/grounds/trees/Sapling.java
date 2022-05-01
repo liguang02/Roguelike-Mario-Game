@@ -34,7 +34,7 @@ public class Sapling extends Tree{
             location.addItem(new Coin(20));
         }
         tickCounter++;
-        if (tickCounter % this.treeAge == 0){
+        if (tickCounter % this.getTreeAge() == 0){
             location.setGround(new Mature());
         }
 

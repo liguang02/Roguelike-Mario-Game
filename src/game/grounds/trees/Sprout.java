@@ -35,7 +35,7 @@ public class Sprout extends Tree{
             location.addActor(new Goomba());
         }
         tickCounter++;
-        if (tickCounter % 10 == 0) {
+        if (tickCounter % this.getTreeAge() == 0) {
             location.setGround(new Sapling());
         }
     }

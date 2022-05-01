@@ -13,6 +13,9 @@ public abstract class Tree extends HighGround implements Resettable {
      *Name of the tree
      */
     private String name;
+
+
+
     /**
      *A fixed int value for tree to grow into the next stage
      */
@@ -56,8 +59,13 @@ public abstract class Tree extends HighGround implements Resettable {
         }
     }
 
+
     public String toString(){
         return name;
+    }
+
+    public int getTreeAge() {
+        return treeAge;
     }
 
 
