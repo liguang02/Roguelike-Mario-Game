@@ -20,7 +20,7 @@ public class Sprout extends Tree{
     public void tick(Location location) {
         super.tick(location);
         int goombaSpawnChance = 10;
-        if (!this.hasCapability(Status.REMOVED) && Probability.success(goombaSpawnChance) && !location.containsAnActor()) {
+        if (Probability.success(goombaSpawnChance) && !location.containsAnActor()) {
             location.addActor(new Goomba());
         }
         tickCounter++;

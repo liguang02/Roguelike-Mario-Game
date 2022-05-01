@@ -20,7 +20,7 @@ public class Sapling extends Tree{
     public void tick(Location location) {
         super.tick(location);
         int coinSpawnChance = 10;
-        if (!this.hasCapability(Status.REMOVED) && Probability.success(coinSpawnChance)){
+        if (Probability.success(coinSpawnChance)){
             location.addItem(new Coin(20));
         }
         tickCounter++;

@@ -24,7 +24,7 @@ public class Mature extends Tree {
         super.tick(location);
         int koopaSpawnChance = 15;
         int witherChance = 20;
-        if (!this.hasCapability(Status.REMOVED) && Probability.success(koopaSpawnChance) && !location.containsAnActor()){
+        if (Probability.success(koopaSpawnChance) && !location.containsAnActor()){
             location.addActor(new Koopa());
         }
         tickCounter++;

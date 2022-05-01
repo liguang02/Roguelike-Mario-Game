@@ -39,10 +39,10 @@ public abstract class Tree extends HighGround implements Resettable {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if(location.getGround() != this){
+        if(location.getActor() != null && location.getActor().hasCapability(Status.INVINCIBLE)){
             ResetManager.getInstance().cleanUp(this);
         }
-        else if(this.hasCapability(Status.REMOVED) && Probability.success(50)){
+        if(this.hasCapability(Status.REMOVED) && Probability.success(50)){
             location.setGround(new Dirt());
         }
     }

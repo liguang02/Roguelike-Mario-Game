@@ -29,6 +29,11 @@ public abstract class HighGround extends Ground {
         super.tick(location);
         if (location.getActor() != null) {
             if(location.getActor().hasCapability(Status.INVINCIBLE)){
+
+                //Calling the tick method of the tree before it gets destroyed to clean Reset Manager.
+                location.getGround().addCapability(Status.REMOVED);
+
+                //Setting the dirt where the tree was.
                 location.setGround(new Dirt());
                 location.addItem(new Coin(5));
             }
