@@ -48,6 +48,11 @@ public class SuperMushroom extends Item implements  Purchasable{
         return price;
     }
 
+    /**
+     * Every turn that the item is in the actors inventory, gives menu prompt to allow actor to consume it. (new item count of this item in inventory for the menu)
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         super.tick(currentLocation, actor);

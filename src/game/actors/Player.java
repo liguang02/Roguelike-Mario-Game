@@ -14,11 +14,13 @@ import game.reset.Resettable;
  * Class representing the Player.
  */
 public class Player extends Actor implements Resettable {
-
+	/**
+	 * The menu to display for player.
+	 */
 	private final Menu menu = new Menu();
 
 	/**
-	 * Constructor.
+	 * Constructor for Player class.
 	 *
 	 * @param name        Name to call the player in the UI
 	 * @param displayChar Character to represent the player in the UI
@@ -30,29 +32,21 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 	}
 
+	/**
+	 * Occurs at the start of every turn, adds capabilities to the player, checks for all actions player could have and displays the details/menu
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return Displaying the menu for user to choose actions from.
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		// Handle multi-turn Actions
-
-		this.addCapability(Status.CONSUMER_STAR);
-		this.addCapability(Status.CONSUMER_SHROOM);
-
-		Action resetAction = new resetAction();
-
-		if(!this.hasCapability(Status.RESET)){
-			actions.add(resetAction);
-		}
-
-		if(this.hasCapability(Status.RESET)){
-			actions.remove(resetAction);
-		}
-
+		addCapabilities();
+		addResetAction(actions);
 		displayDetails(display, map);
-
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
-		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
 
@@ -75,6 +69,32 @@ public class Player extends Actor implements Resettable {
 		return displayChar;
 	}
 
+	/**
+	 * Adds the capability for the player to consume stars/shrooms
+	 * For future proofing : in a situation where actor cannot consume an item given condition we can just have an if statement here before add capability
+	 */
+	public void addCapabilities(){
+		this.addCapability(Status.CONSUMER_STAR);
+		this.addCapability(Status.CONSUMER_SHROOM);
+	}
+
+	/**
+	 * Provides player option to reset if it has not occurred, else removes that option.
+	 * For future proofing : in a situation where actor should not be allowed to reset even if they have not used it.
+	 * @param actions Actors action list giving them the options in menu.
+	 */
+	public void addResetAction(ActionList actions){
+		Action resetAction = new resetAction();
+		if(!this.hasCapability(Status.RESET)){
+			actions.add(resetAction);
+		}
+	}
+
+	/**
+	 * resetInstance for the player, removes all buffs/de-buffs from capabilities list
+	 * Heals the player to full
+	 * Gives player RESET Capability to tell that the player cannot reset again.
+	 */
 	@Override
 	public void resetInstance() {
 		this.capabilitiesList().forEach(this::removeCapability);
@@ -82,6 +102,11 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.RESET);
 	}
 
+	/**
+	 * Displays miscellanious details of the player such as current HP, coordinates, remaining money and statuses.
+	 * @param display the I/O object to which messages may be written
+	 * @param map the map containing the Actor
+	 */
 	public void displayDetails(Display display, GameMap map){
 
 		int x = map.locationOf(this).x();

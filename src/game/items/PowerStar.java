@@ -64,6 +64,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
     /**
      * Tick method (called every turn when item is in players inventory)
      * Used to reduce the timeSpan by 1 and remove all buffs from the player and the item from the inventory after 10 turns
+     * Every turn that the item is in inventory and actor has not consumed it provides the latest consume action (new item count of this item in inventory for the menu)
      * @param currentLocation The location of the actor carrying this Item.
      * @param actor The actor carrying this Item.
      */
@@ -72,7 +73,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
         super.tick(currentLocation, actor);
         if(consumed) {
             if (timeSpan >= 1) {
-                //This line is needed for when power stars are picked up with overlapping time spans.
+                //This line is needed for when power stars are consumed with overlapping time spans.
                 actor.addCapability(Status.INVINCIBLE);
                 timeSpan--;
             }else{
