@@ -33,7 +33,7 @@ public class PickUpCoinAction extends PickUpItemAction {
     @Override
     public String execute(Actor actor, GameMap map) {
         map.locationOf(actor).removeItem(coin);
-        WalletManager.getInstance().appendWalletActor(actor,coinValue);
+        WalletManager.getInstance().addBalance(actor,coinValue);
         return menuDescription(actor);
     }
 

@@ -10,14 +10,28 @@ import game.reset.ResetManager;
 import game.reset.Resettable;
 
 public class Coin extends Item implements Resettable {
+    /**
+     * A fixed int value as each coin object can only have 1 fixed value
+     */
 
     private final int value;
 
+    /**
+     * A constructor for coin class
+     * @param value the coin value
+     */
     public Coin(int value) {
         super("Coin", '$', true);
         this.value = value;
         registerInstance();
     }
+
+    /**
+     * Overrides the method in item class to return a PickUpCoinAction instead  of
+     * PickUpItemAction.
+     * @param actor the actor that will pickup the coin/item
+     * @return PickUpCoinAction, which is a subclass of PickUpItemAction
+     */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
         //Removing the reset from ResetManager if coin already in inventory.
@@ -25,6 +39,10 @@ public class Coin extends Item implements Resettable {
         return new PickUpCoinAction(this);
     }
 
+    /**
+     * A getter method to get the value of the coin
+     * @return value of the coin in integer
+     */
     public int getValue() {
         return value;
     }
@@ -39,7 +57,6 @@ public class Coin extends Item implements Resettable {
         if(this.hasCapability(Status.REMOVED)){
             currentLocation.removeItem(this);
         }
-
     }
 
     /**

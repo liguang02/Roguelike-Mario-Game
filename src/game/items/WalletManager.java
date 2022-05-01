@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class WalletManager {
     /**
-     * An array list of actors that has wallet
+     * An hashmap of actors(key) that has wallet and its wallet value(value)
      */
     private Map<Actor, Integer> walletActorHashMap;
 
@@ -17,7 +17,6 @@ public class WalletManager {
      */
     private static WalletManager instance;
 
-    //constructor
 
     /**
      * A constructor for WalletManager
@@ -38,21 +37,18 @@ public class WalletManager {
     }
 
     /**
-     * A method that append an item of type TaxableVehicle into the taxableVehicleList
-     */
-    public void appendWalletActor(Actor actor, int value){
-        addBalance(actor, value);
-
-    }
-
-    /**
-     * A getter for the taxableVehicleList
-     * @return a new arraylist of taxableVehicle, so that it can prevent any modification made by outside this class.
+     * A getter for the walletActorHashMap
+     * @return a new hash map, so that it can prevent any modification made by outside this class.
      */
     public HashMap<Actor, Integer> getWalletActor() {
         return new HashMap<>(this.walletActorHashMap);
     }
 
+    /**
+     * A method that will add the actor and wallet value into the hashmap
+     * @param actor the actor that has wallet
+     * @param value the value that is going to be added into the corresponding actor's wallet.
+     */
     public void addBalance(Actor actor, int value){
         if (walletActorHashMap.isEmpty()){
             walletActorHashMap.put(actor, value);
@@ -61,6 +57,12 @@ public class WalletManager {
             walletActorHashMap.put(actor, walletActorHashMap.get(actor) +value);
         }
     }
+
+    /**
+     * A method that will return the wallet balance of the input actor
+     * @param actor the actor that we will be its wallet balance
+     * @return wallet balance of the actor
+     */
     public int getBalance(Actor actor){
         if (walletActorHashMap.isEmpty()){
             return 0;
@@ -69,6 +71,12 @@ public class WalletManager {
             return walletActorHashMap.get(actor);
         }
     }
+
+    /**
+     * A method that will minus balance off from the actor's wallet balance. e.g (buying items)
+     * @param actor the actor that we wish to minus its wallet balance
+     * @param value the amount of value that is going to be deducted in the actor's wallet balance
+     */
     public void minusBalance(Actor actor, int value){
         if (!walletActorHashMap.isEmpty()) {
             walletActorHashMap.put(actor, walletActorHashMap.get(actor) - value);
