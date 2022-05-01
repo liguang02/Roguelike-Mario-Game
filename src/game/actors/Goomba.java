@@ -47,16 +47,18 @@ public class Goomba extends Enemy {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+		int randomNum = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+		//10% CHANCE OF SUICIDE
+		if(randomNum <= 10){
+			this.addCapability(Status.REMOVED);
+			this.getBehaviours().remove(11);
+		}
+
 		for(Behaviour Behaviour : getBehaviours().values()) {
 			Action action = Behaviour.getAction(this, map);
 			if (action != null)
 				return action;
-			int randomNum = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-			//10% CHANCE OF SUICIDE
-			if(randomNum <= 10){
-				this.addCapability(Status.REMOVED);
-			}
-
 		}
 		return new DoNothingAction();
 	}
