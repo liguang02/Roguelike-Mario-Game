@@ -13,5 +13,7 @@ public enum Status {
     ENEMY, //use this to check if the actor is an enemy or not
     FERTILE, //use this to check whether if the ground is fertile(such as dirt)
     MONEY, //use this to identify a valuable item (such as coin)
-    DORMANT // if enemies like Koopa are dormant (unable to attack etc)
+    DORMANT, // if enemies like Koopa are dormant (unable to attack etc)
+    CONSUMER_SHROOM, //To denote if the actor can consume mushrooms
+    CONSUMER_STAR //To denote if the actor can consume power stars
 }

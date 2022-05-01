@@ -2,6 +2,7 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Status;
 import game.items.PowerStar;
@@ -38,6 +39,16 @@ public class ConsumeStarAction extends Action {
         return menuDescription(actor);
     }
 
+    public int countStar(Actor actor){
+        int count = 0;
+        for(Item item : actor.getInventory()){
+            if(item.toString().equals(powerStar.toString()) && !item.hasCapability(Status.REMOVED)){
+                count++;
+            }
+        }
+        return count;
+    }
+
     /**
      * Describe the action in a format suitable for displaying in the menu.
      * @param actor The actor performing the action.
@@ -45,6 +56,6 @@ public class ConsumeStarAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-            return actor + " consumes " + powerStar;
+            return actor + " consumes " + powerStar + "(x" + countStar(actor) + ")";
         }
 }

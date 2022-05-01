@@ -30,22 +30,6 @@ public class PurchaseAction extends Action {
             }
 
         }
-
-//
-//        if (this.item == "mushroom") {
-//            execute = "Not implemented";
-//        }
-//
-//        if (this.item == "star") {
-//            if (((Player)actor).getWallet().getValue() > 600) {
-//                ((Player)actor).getWallet().minusValue(600);
-//                actor.addItemToInventory(new PowerStar("Power Star", '*', true));
-//                execute = "Power Star added to inventory.";
-//            } else {
-//                execute = "Not enough coins";
-//            }
-//        }
-
         return execute;
     }
 

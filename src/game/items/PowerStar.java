@@ -30,7 +30,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
     /**
      * An instance variable that stores the price value for Power Star
      */
-    private int price;
+    private final int price;
     /**
      * The action used to give player option to consume the star, when item is consumed remove this action from allowable actions.
      */
@@ -46,7 +46,6 @@ public class PowerStar extends Item implements Purchasable, Resettable {
         this.registerInstance();
         this.price = 600;
         this.addToPurchasableManager();
-        this.addAction(consumeAction);
     }
 
     /**
@@ -79,6 +78,13 @@ public class PowerStar extends Item implements Purchasable, Resettable {
             }else{
             actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);
+            }
+        }
+        else{
+            this.removeAction(consumeAction);
+            if(actor.hasCapability(Status.CONSUMER_STAR)){
+                this.addAction(consumeAction);
+                actor.removeCapability(Status.CONSUMER_STAR);
             }
         }
     }
@@ -124,10 +130,12 @@ public class PowerStar extends Item implements Purchasable, Resettable {
      * Method that resets the timeSpan to the number of turns that the item buffs lasts according to the specification
      * Sets consumed to true (Item has been consumed by the actor) to carry out the specific actions in the tick method.
      * Removes the option to consume the item.
+     * Adds status REMOVED where when the item buff is over, the item has to be removed from the players inventory.
      */
     public void consumeStar(){
         timeSpan = 10;
         consumed = true;
+        this.addCapability(Status.REMOVED);
         this.removeAction(consumeAction);
     }
 

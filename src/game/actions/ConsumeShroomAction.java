@@ -2,6 +2,7 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Status;
 import game.items.SuperMushroom;
@@ -35,7 +36,17 @@ public class ConsumeShroomAction extends Action {
         actor.addCapability(Status.TALL);
         actor.removeItemFromInventory(superMushroom);
         superMushroom.consumeShroom();
-        return menuDescription(actor);
+        return actor + " consumes " + superMushroom;
+    }
+
+    public int countShroom(Actor actor){
+        int count = 0;
+        for(Item item : actor.getInventory()){
+            if(item.toString().equals(superMushroom.toString())){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -45,6 +56,6 @@ public class ConsumeShroomAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + superMushroom;
+        return actor + " consumes " + superMushroom + "(x" + countShroom(actor) + ")" ;
     }
 }

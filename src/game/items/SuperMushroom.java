@@ -5,8 +5,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeShroomAction;
 import game.actions.PickUpShroomAction;
+import game.actors.Status;
 
 /**
  * SuperMushroom class implementing the Super Mushroom item from Req. 4
@@ -15,7 +17,7 @@ public class SuperMushroom extends Item implements  Purchasable{
     /**
      * To store the price of the supermushroom
      */
-    private int price;
+    private final int price;
     /**
      *
      */
@@ -27,7 +29,6 @@ public class SuperMushroom extends Item implements  Purchasable{
         super("Super Mushroom", 'p', true);
         this.price = 400;
         this.addToPurchasableManager();
-        this.addAction(consumeAction);
     }
 
     /**
@@ -45,6 +46,16 @@ public class SuperMushroom extends Item implements  Purchasable{
      */
     public int price(){
         return price;
+    }
+
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+        super.tick(currentLocation, actor);
+        this.removeAction(consumeAction);
+        if(actor.hasCapability(Status.CONSUMER_SHROOM)){
+            this.addAction(consumeAction);
+            actor.removeCapability(Status.CONSUMER_SHROOM);
+        }
     }
 
     /**

@@ -34,6 +34,9 @@ public class Player extends Actor implements Resettable {
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
 
+		this.addCapability(Status.CONSUMER_STAR);
+		this.addCapability(Status.CONSUMER_SHROOM);
+
 		Action resetAction = new resetAction();
 
 		if(!this.hasCapability(Status.RESET)){

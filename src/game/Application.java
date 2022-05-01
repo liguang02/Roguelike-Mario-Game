@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.Goomba;
 import game.actors.Koopa;
 import game.actors.Player;
+import game.actors.Toad;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
@@ -18,6 +19,7 @@ import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
 import game.grounds.trees.Tree;
+import game.items.Coin;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 
@@ -59,17 +61,17 @@ public class Application {
 
 			Actor mario = new Player("mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
-			mario.addItemToInventory(new PowerStar());
-			mario.addItemToInventory(new SuperMushroom());
 
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
 
 			gameMap.at(37, 12).addActor(new Koopa());
 
+			gameMap.at(42, 10).addItem(new Coin(100000));
 			gameMap.at(41, 10).addItem(new PowerStar());
 			gameMap.at(43, 10).addItem(new PowerStar());
 			gameMap.at(44, 10).addItem(new SuperMushroom());
+			gameMap.at(45, 10).addActor(new Toad());
 
 			world.run();
 
