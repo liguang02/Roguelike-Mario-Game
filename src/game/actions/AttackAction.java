@@ -92,7 +92,7 @@ public class AttackAction extends Action {
 
 			//If the target is Koopa, just make it dormant
 			if(target.getDisplayChar() == 'k') {
-				target.hasCapability(Status.DORMANT);
+				target.addCapability(Status.DORMANT);
 				result += System.lineSeparator() + target + " is Dormant.";
 				return result;
 			}

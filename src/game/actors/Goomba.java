@@ -6,9 +6,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Probability;
 import game.actions.AttackAction;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
+import game.behaviours.FollowBehaviour;
+import game.behaviours.SuicideBehaviour;
 
 
 /**
@@ -21,6 +25,7 @@ public class Goomba extends Enemy {
 	 */
 	public Goomba() {
 		super("Goomba", 'g', 50);
+		getBehaviours().put(2, new SuicideBehaviour());
 	}
 	/**
 	 * At the moment, we only make it can be attacked by Player.
@@ -37,6 +42,9 @@ public class Goomba extends Enemy {
 		// it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this,direction));
+			getBehaviours().put(9, new AttackBehaviour(direction, otherActor));
+			getBehaviours().put(12, new FollowBehaviour(otherActor));
+			getBehaviours().remove(11);
 		}
 		return actions;
 	}
@@ -62,4 +70,8 @@ public class Goomba extends Enemy {
 		return new DoNothingAction();
 	}
 
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(10, "kick");
+	}
 }

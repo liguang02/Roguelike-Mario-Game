@@ -116,7 +116,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
     @Override
     public DropItemAction getDropAction(Actor actor) {
         if(!actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            super.getDropAction(actor);
+            return super.getDropAction(actor);
         }
         return null;
     }

@@ -22,6 +22,7 @@ import game.grounds.trees.Tree;
 import game.items.Coin;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
+import game.items.Wrench;
 
 /**
  * The main class for the Mario World game.
@@ -60,10 +61,13 @@ public class Application {
 			world.addGameMap(gameMap);
 
 			Actor mario = new Player("mario", 'm', 100);
-			world.addPlayer(mario, gameMap.at(42, 10));
+			world.addPlayer(mario, gameMap.at(1, 1));
+			mario.addItemToInventory(new PowerStar());
+			mario.addItemToInventory(new Wrench());
 
 			// FIXME: the Goomba should be generated from the Tree
-			gameMap.at(37, 12).addActor(new Koopa());
+			gameMap.at(2, 1).addActor(new Koopa());
+			gameMap.at(1,2).addActor(new Goomba());
 
 			gameMap.at(42, 10).addItem(new Coin(100000));
 			gameMap.at(41, 10).addItem(new PowerStar());

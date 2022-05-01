@@ -18,15 +18,16 @@ public class Sprout extends Tree{
     @Override
     public void tick(Location location) {
         super.tick(location);
-        int goombaSpawnChance = 10;
-        if (Probability.success(goombaSpawnChance) && !location.containsAnActor()){
-            location.addActor(new Goomba());
+        if(location.getGround() == this) {
+            int goombaSpawnChance = 10;
+            if (Probability.success(goombaSpawnChance) && !location.containsAnActor()) {
+                location.addActor(new Goomba());
+            }
+            tickCounter++;
+            if (tickCounter % 10 == 0) {
+                location.setGround(new Sapling());
+            }
         }
-        tickCounter++;
-        if (tickCounter %10 == 0){
-            location.setGround(new Sapling());
-        }
-
     }
 
     @Override
