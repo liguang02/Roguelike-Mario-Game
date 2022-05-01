@@ -3,6 +3,9 @@ package game.grounds;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 
+/**
+ * Wall class is one of the sub class of HighGround that the player can jump onto
+ */
 public class Wall extends HighGround{
 	/**
 	 * Name of the highground, wall

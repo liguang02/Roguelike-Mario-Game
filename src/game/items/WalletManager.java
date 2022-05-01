@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * WalletManager
+ */
 public class WalletManager {
     /**
      * An hashmap of actors(key) that has wallet and its wallet value(value)
