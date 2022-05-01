@@ -9,6 +9,9 @@ import game.actors.Status;
  */
 public class Dirt extends Ground {
 
+	/**
+	 * A constructor for dirt class
+	 */
 	public Dirt() {
 		super('.');
 		this.addCapability(Status.FERTILE);

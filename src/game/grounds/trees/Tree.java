@@ -9,12 +9,21 @@ import game.reset.ResetManager;
 import game.reset.Resettable;
 
 public abstract class Tree extends HighGround implements Resettable {
-    private final String name;
-    protected int age = 10;
+    /**
+     *Name of the tree
+     */
+    private String name;
+    /**
+     *A fixed int value for tree to grow into the next stage
+     */
+    protected int treeAge = 10;
 
     /**
-     * Constructor.
-     *
+     * Constructor for Tree abstract class that extends from highground
+     * @param displayChar the character that will be displayed on the map
+     * @param successRate success rate of the actor jumping to a tree instance
+     * @param damage the amount of fall damage the actor will take if it fails the jump
+     * @param name name of the tree (Sprout, Sapling, Mature)
      */
     public Tree(char displayChar, int successRate, int damage, String name) {
         super(displayChar, successRate, damage);

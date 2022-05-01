@@ -9,16 +9,29 @@ import game.grounds.Dirt;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
-
+/**
+ * This Mature class is a subclass of Tree, which has its own spawning ability (spawns enemy Koopa) and in every 5 turns,
+ * it will spawns a sprout in a random fertile ground around it.
+ */
 public class Mature extends Tree {
+    /**
+     * A tick counter to track the number of turns the game is in
+     */
     private int tickCounter;
-//    private String name;
 
+    /**
+     * Constructor for Mature class
+     */
     public Mature() {
         super('T',70,30, "Mature");
         tickCounter = 0;
-//        this.name = "Mature";
     }
+
+    /**
+     * This method will be called in every turn, it handles all the necessary operations for this class,
+     * such as spawning koopas, wither at a specific chance and grows a sprout at a random surrounding fertile ground.
+     * @param location The location of the Mature object
+     */
     @Override
     public void tick(Location location) {
         super.tick(location);
@@ -50,8 +63,6 @@ public class Mature extends Tree {
             location.setGround(new Dirt());
         }
     }
-//    public String toString(){
-//        return name;
-//    }
+
 
 }
