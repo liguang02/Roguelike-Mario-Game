@@ -1,5 +1,6 @@
 package game.grounds;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import game.actors.Status;
 
@@ -12,5 +13,4 @@ public class Dirt extends Ground {
 		super('.');
 		this.addCapability(Status.FERTILE);
 	}
-
 }

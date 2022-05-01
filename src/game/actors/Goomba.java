@@ -1,6 +1,5 @@
 package game.actors;
 
-
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -9,22 +8,19 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
 import game.behaviours.Behaviour;
-import game.behaviours.WanderBehaviour;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * A little fungus guy.
  */
-public class Goomba extends Actor {
-	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+public class Goomba extends Enemy {
 
 	/**
 	 * Constructor.
 	 */
 	public Goomba() {
 		super("Goomba", 'g', 50);
-		this.behaviours.put(10, new WanderBehaviour());
 	}
 	/**
 	 * At the moment, we only make it can be attacked by Player.
@@ -51,10 +47,16 @@ public class Goomba extends Actor {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		for(Behaviour Behaviour : behaviours.values()) {
+		for(Behaviour Behaviour : getBehaviours().values()) {
 			Action action = Behaviour.getAction(this, map);
 			if (action != null)
 				return action;
+			int randomNum = ThreadLocalRandom.current().nextInt(0, 100 + 1);
+			//10% CHANCE OF SUICIDE
+			if(randomNum <= 10){
+				this.addCapability(Status.REMOVED);
+			}
+
 		}
 		return new DoNothingAction();
 	}

@@ -1,5 +1,6 @@
 package game.grounds.trees;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Probability;
 import game.actors.Goomba;
@@ -28,4 +29,8 @@ public class Sprout extends Tree{
 
     }
 
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return super.canActorEnter(actor);
+    }
 }

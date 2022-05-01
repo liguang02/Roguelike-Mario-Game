@@ -43,7 +43,7 @@ public abstract class HighGround extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actionList = new ActionList();
-        if(!actor.hasCapability(Status.INVINCIBLE)){
+        if(!actor.hasCapability(Status.INVINCIBLE) && location.getActor() != actor){
             actionList.add(new JumpAction(successRate,damage, direction, location));
         }
         return actionList;

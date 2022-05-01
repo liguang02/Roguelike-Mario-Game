@@ -15,7 +15,6 @@ import game.actors.Status;
  * Special Action for attacking other Actors.
  */
 public class AttackAction extends Action {
-
 	/**
 	 * The Actor that is to be attacked
 	 */
@@ -32,7 +31,7 @@ public class AttackAction extends Action {
 	protected Random rand = new Random();
 
 	/**
-	 * Constructor.
+	 * Constructor for AttackAction class
 	 * 
 	 * @param target the Actor to attack
 	 */
@@ -41,56 +40,71 @@ public class AttackAction extends Action {
 		this.direction = direction;
 	}
 
+	/**
+	 * Executes attack between the actor and target based on their weapons, capabilities and HP.
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return String of the result from the attack.
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 
+		//Getting the attackers weapon
 		Weapon weapon = actor.getWeapon();
 
+		//If the attacker misses the target return string misses
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
 
+		//Getting the weapon damage
 		int damage = weapon.damage();
 
+		//Default string for any normal attacks
+		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+
+		//If the attacker has consumed a power star, instant kill (max damage)
 		if(actor.hasCapability(Status.INVINCIBLE)){
 			damage = Integer.MAX_VALUE;
+			result = actor + " " + weapon.verb() + " " + target + " and instantly kills it as " + actor + " is INVINCIBLE!";
 		}
 
+		//If the target has consumed a power star, nullifies all attacks. (0 damage)
 		if(target.hasCapability(Status.INVINCIBLE)){
-			damage = 0;
+			damage = -1;
+			return actor + " " + weapon.verb() + " " + target + " but " + target + "is INVINCIBLE!";
 		}
 
+		//If the target has consumed a mushroom, on hit removes the TALL capability (mushroom buff removed)
 		if(target.hasCapability(Status.TALL)){
-			if(damage != 0){
+			//If the target has not consumed a power star
+			if(damage != -1){
 				target.removeCapability(Status.TALL);
-				damage = 0;
+				return actor + " " + weapon.verb() + " " + target + ", " + target + "is not TALL anymore.";
 			}
 		}
-		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+
+		//Hurting the target based on the damage value set from conditions above.
 		target.hurt(damage);
 
+		//If the target of attack is dead after the attack (<= 0 HP)
 		if (!target.isConscious()) {
 
-			ActionList dropActions = new ActionList();
-
-			// drop all items
-			for (Item item : target.getInventory())
-				dropActions.add(item.getDropAction(actor));
-			for (Action drop : dropActions)
-				drop.execute(target, map);
-
-
+			//If the target is Koopa, just make it dormant
 			if(target.getDisplayChar() == 'k') {
 				target.hasCapability(Status.DORMANT);
 				result += System.lineSeparator() + target + " is Dormant.";
 				return result;
 			}
 			else {
+				ActionList dropActions = new ActionList();
+				for (Item item : target.getInventory())
+					dropActions.add(item.getDropAction(actor));
+				for (Action drop : dropActions)
+					drop.execute(target, map);
 				map.removeActor(target);
+				result += System.lineSeparator() + target + " is killed.";
 			}
-
-			map.removeActor(target);
-			result += System.lineSeparator() + target + " is killed.";
 		}
 		return result;
 	}

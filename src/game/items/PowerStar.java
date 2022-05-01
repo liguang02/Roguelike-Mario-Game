@@ -109,11 +109,15 @@ public class PowerStar extends Item implements Purchasable, Resettable {
 
     /**
      * Overriding the default drop action as a power star cannot be dropped according to Assignment Supplementary Videos, Episode 3.
+     * Drop only allowed for non-player actors.
      * @param actor The actor performing the action.
      * @return null
      */
     @Override
     public DropItemAction getDropAction(Actor actor) {
+        if(!actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            super.getDropAction(actor);
+        }
         return null;
     }
 

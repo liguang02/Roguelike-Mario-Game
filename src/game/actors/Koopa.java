@@ -14,16 +14,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Koopa extends Enemy{
-    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
     public Koopa() {
         super("Koopa", 'k', 50);
-        this.behaviours.put(10, new WanderBehaviour());
 
-    }
-
-    public Koopa(Actor actor) {
-        super("Koopa", 'k', 50, actor);
     }
 
     @Override
@@ -48,7 +42,7 @@ public class Koopa extends Enemy{
             this.setDisplayChar('D');
             return new DoNothingAction();
         }
-        for(Behaviour Behaviour : behaviours.values()) {
+        for(Behaviour Behaviour : getBehaviours().values()) {
             Action action = Behaviour.getAction(this, map);
             if (action != null)
                 return action;

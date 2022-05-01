@@ -27,12 +27,6 @@ public abstract class Tree extends HighGround implements Resettable {
     }
 
 
-//    public abstract void spawn();
-    @Override
-    public boolean canActorEnter(Actor actor) {
-        return false;
-    }
-
     @Override
     public void resetInstance() {
         this.addCapability(Status.REMOVED);
