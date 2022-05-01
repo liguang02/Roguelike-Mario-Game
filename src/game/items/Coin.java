@@ -6,11 +6,12 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PickUpCoinAction;
 import game.actors.Status;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 
 public class Coin extends Item implements Resettable {
 
-    private int value;
+    private final int value;
 
     public Coin(int value) {
         super("Coin", '$', true);
@@ -19,6 +20,8 @@ public class Coin extends Item implements Resettable {
     }
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
+        //Removing the reset from ResetManager if coin already in inventory.
+        ResetManager.getInstance().cleanUp(this);
         return new PickUpCoinAction(this);
     }
 
@@ -26,6 +29,10 @@ public class Coin extends Item implements Resettable {
         return value;
     }
 
+    /**
+     * Removing the coin from the location if reset occurs (REMOVED status in capability set)
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);
@@ -35,6 +42,9 @@ public class Coin extends Item implements Resettable {
 
     }
 
+    /**
+     * Adds capability REMOVED when called, reset occurs.
+     */
     @Override
     public void resetInstance() {
         this.addCapability(Status.REMOVED);

@@ -40,6 +40,7 @@ public class SuperMushroom extends Item implements  Purchasable{
     public PickUpItemAction getPickUpAction(Actor actor) {
         return new PickUpShroomAction(this);
     }
+
     /**
      * price method (a getter method to get the price of this item object)
      * Used in PurchaseAction where it needs to get the prices of the purchasableItem
@@ -77,6 +78,9 @@ public class SuperMushroom extends Item implements  Purchasable{
         return null;
     }
 
+    /**
+     * When mushroom consumed, removing consumeAction from action list.
+     */
     public void consumeShroom(){
         this.removeAction(consumeAction);
     }

@@ -39,6 +39,11 @@ public class ConsumeStarAction extends Action {
         return menuDescription(actor);
     }
 
+    /**
+     * Method to count the number of power star in an actors inventory
+     * @param actor The actor performing the action.
+     * @return int, count of number of power stars in the actors inventory
+     */
     public int countStar(Actor actor){
         int count = 0;
         for(Item item : actor.getInventory()){
@@ -56,6 +61,6 @@ public class ConsumeStarAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-            return actor + " consumes " + powerStar + "(x" + countStar(actor) + ")";
+            return actor + " consumes " + powerStar + "(x" + countStar(actor) + ")" + " (Remaining life span: " + powerStar.getTimeSpan() + ")";
         }
 }

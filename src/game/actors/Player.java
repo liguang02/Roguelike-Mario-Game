@@ -103,7 +103,7 @@ public class Player extends Actor implements Resettable {
 	}
 
 	/**
-	 * Displays miscellanious details of the player such as current HP, coordinates, remaining money and statuses.
+	 * Displays miscellaneous details of the player such as current HP, coordinates, remaining money and statuses.
 	 * @param display the I/O object to which messages may be written
 	 * @param map the map containing the Actor
 	 */
@@ -118,11 +118,10 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.INVINCIBLE)){
 			formatted += "\n" + this + " is INVINCIBLE!";
 		}
-		//Print inventory (not needed for final submission, just easier to see what we are doing)
-		display.println(this.getInventory().toString());
-		//Print buff list (not needed for final submission, just easier to see what we are doing)
-		display.println(this.capabilitiesList().toString());
-
+		// Print inventory (not needed for final submission, just easier to see what we are doing)
+		// display.println(this.getInventory().toString());
+		// Print buff list (not needed for final submission, just easier to see what we are doing)
+		// display.println(this.capabilitiesList().toString());
 		display.println(formatted);
 	}
 }

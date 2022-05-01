@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Mature extends Tree {
-    private int tickCounter = 0;
+    private int tickCounter;
 //    private String name;
 
     public Mature() {
@@ -24,12 +24,12 @@ public class Mature extends Tree {
         super.tick(location);
         int koopaSpawnChance = 15;
         int witherChance = 20;
-        if (Probability.success(koopaSpawnChance) && !location.containsAnActor()){
+        if (!this.hasCapability(Status.REMOVED) && Probability.success(koopaSpawnChance) && !location.containsAnActor()){
             location.addActor(new Koopa());
         }
         tickCounter++;
         if (tickCounter %5 == 0){
-            ArrayList<Location> fertileGrounds = new ArrayList<Location>();
+            ArrayList<Location> fertileGrounds = new ArrayList<>();
             //get the exit object from the current location of the mature tree
             for(Exit exit : location.getExits()){
                 // get the location of the surrounding exit

@@ -4,9 +4,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Probability;
 import game.actors.Goomba;
+import game.actors.Status;
 
 public class Sprout extends Tree{
-    private int tickCounter = 0;
+    private int tickCounter;
 
     public Sprout(){
         super('+', 90,10, "Sprout");
@@ -18,15 +19,13 @@ public class Sprout extends Tree{
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if(location.getGround() == this) {
-            int goombaSpawnChance = 10;
-            if (Probability.success(goombaSpawnChance) && !location.containsAnActor()) {
-                location.addActor(new Goomba());
-            }
-            tickCounter++;
-            if (tickCounter % 10 == 0) {
-                location.setGround(new Sapling());
-            }
+        int goombaSpawnChance = 10;
+        if (!this.hasCapability(Status.REMOVED) && Probability.success(goombaSpawnChance) && !location.containsAnActor()) {
+            location.addActor(new Goomba());
+        }
+        tickCounter++;
+        if (tickCounter % 10 == 0) {
+            location.setGround(new Sapling());
         }
     }
 

@@ -1,10 +1,15 @@
 package game.actors;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.SuicideBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 
 import java.util.HashMap;
@@ -26,6 +31,10 @@ public abstract class Enemy extends Actor implements Resettable {
         behaviours.put(1, new WanderBehaviour());
     }
 
+    /**
+     * resetInstance for all enemies, adds status removed then killed by suicideBehaviour()
+     * Clears all behaviours except for SuicideBehaviour
+     */
     @Override
     public void resetInstance() {
         this.addCapability(Status.REMOVED);
@@ -33,7 +42,17 @@ public abstract class Enemy extends Actor implements Resettable {
         behaviours.put(1, new SuicideBehaviour());
     }
 
+    /**
+     * Removed the reset instance from the manager if killed naturally.
+     */
+    public void cleanReset(){
+        if(this.hasCapability(Status.REMOVED)) {
+            ResetManager.getInstance().cleanUp(this);
+        }
+    }
+
     public Map<Integer, Behaviour> getBehaviours() {
         return behaviours;
     }
+
 }

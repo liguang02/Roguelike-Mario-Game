@@ -1,9 +1,6 @@
 package game.actions;
 
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actors.Koopa;
@@ -15,7 +12,7 @@ public class DormantAttackAction extends AttackAction {
      * Constructor for AttackAction class
      *
      * @param target    the Actor to attack
-     * @param direction
+     * @param direction The string of direction of attack (North, South ...)
      */
     public DormantAttackAction(Koopa target, String direction) {
         super(target, direction);

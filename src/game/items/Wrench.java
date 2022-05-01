@@ -1,24 +1,17 @@
 package game.items;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.Status;
 
 public class Wrench extends WeaponItem implements Purchasable{
-    private int price;
 
-//    /**
-//     * Constructor.
-//     *
-//     * @param name        name of the item
-//     * @param displayChar character to use for display when item is on the ground
-//     * @param damage      amount of damage this weapon does
-//     * @param verb        verb to use for this weapon, e.g. "hits", "zaps"
-//     * @param hitRate     the probability/chance to hit the target.
-//     */
+    private final int price;
+
     public Wrench() {
         super("Wrench", 'w', 50, "hits", 80);
         this.price = 200;
         this.addToPurchasableManager();
+        this.addCapability(Status.WRENCH);
     }
     public int price(){
         return price;

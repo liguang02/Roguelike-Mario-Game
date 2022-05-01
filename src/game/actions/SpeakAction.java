@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SpeakAction extends Action {
-    private Monologues monologues;
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        monologues = new Monologues();
+        Monologues monologues = new Monologues();
         ArrayList<String> monologueList = monologues.getAllMonologues();
         for (Item item : actor.getInventory()) {
-            if (item.getClass() == Wrench.class) {
+            //Added WRENCH capability to avoid the getClass() we lose marks for that - Shantanu
+            if (item.hasCapability(Status.WRENCH)) {
                 for (int i = 0; i < monologueList.size(); i++){
                     if(monologueList.get(i).equals("You might need a wrench to smash Koopa's hard shells.")){
                         monologueList.remove(i);
@@ -29,13 +29,7 @@ public class SpeakAction extends Action {
             }
         }
 
-        if (actor.hasCapability(Status.CONSUMER_STAR)) {
-            for (int i = 0; i < monologueList.size(); i++){
-                if(monologueList.get(i).equals("You better get back to finding the Power Stars.")){
-                    monologueList.remove(i);
-                }
-            }
-        }
+        //Removed the unnecessary if check of consume star enum - Shantanu
 
         if (actor.hasCapability(Status.INVINCIBLE)) {
             for (int i = 0; i < monologueList.size(); i++){
@@ -46,8 +40,7 @@ public class SpeakAction extends Action {
         }
 
         int randomNum = ThreadLocalRandom.current().nextInt(0, monologueList.size());
-        String item = monologueList.get(randomNum);
-        return item;
+        return monologueList.get(randomNum);
     }
 
     @Override

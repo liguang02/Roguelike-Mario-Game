@@ -20,9 +20,9 @@ public class Koopa extends Enemy{
 
     public Koopa() {
         super("Koopa", 'k', 50);
+        this.addCapability(Status.SHELL);
         this.addItemToInventory(new SuperMushroom());
         getBehaviours().put(2, new SuicideBehaviour());
-
     }
 
     @Override
@@ -44,19 +44,17 @@ public class Koopa extends Enemy{
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
+        super.cleanReset();
         if(this.hasCapability(Status.DORMANT)) {
             this.setDisplayChar('D');
             getBehaviours().clear();
             getBehaviours().put(1, new SuicideBehaviour());
         }
-
         for(Behaviour Behaviour : getBehaviours().values()) {
             Action action = Behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
-
     return new DoNothingAction();
 }
 

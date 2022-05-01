@@ -39,6 +39,11 @@ public class ConsumeShroomAction extends Action {
         return actor + " consumes " + superMushroom;
     }
 
+    /**
+     * Counts the number of super mushroom in players inventory to use for menu display
+     * @param actor The actor performing the action.
+     * @return int, count of number of mushrooms in actors inventory.
+     */
     public int countShroom(Actor actor){
         int count = 0;
         for(Item item : actor.getInventory()){
