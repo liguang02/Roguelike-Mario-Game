@@ -46,6 +46,6 @@ public class PickUpCoinAction extends PickUpItemAction {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " picks up $" + coinValue + '\n' + "Wallet balance: $" + WalletManager.getInstance().getBalance(actor);
+        return actor + " picks up $" + coinValue;
     }
 }

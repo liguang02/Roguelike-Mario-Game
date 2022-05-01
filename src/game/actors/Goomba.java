@@ -6,10 +6,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Probability;
 import game.actions.AttackAction;
 import game.behaviours.Behaviour;
 
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A little fungus guy.
@@ -48,9 +48,8 @@ public class Goomba extends Enemy {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
-		int randomNum = ThreadLocalRandom.current().nextInt(0, 100 + 1);
 		//10% CHANCE OF SUICIDE
-		if(randomNum <= 10){
+		if(Probability.success(10)){
 			this.addCapability(Status.REMOVED);
 			this.getBehaviours().remove(11);
 		}

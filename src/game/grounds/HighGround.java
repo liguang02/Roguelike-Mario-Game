@@ -48,4 +48,5 @@ public abstract class HighGround extends Ground {
         }
         return actionList;
     }
+    public abstract String toString();
 }

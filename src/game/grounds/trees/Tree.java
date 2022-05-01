@@ -40,4 +40,9 @@ public abstract class Tree extends HighGround implements Resettable {
             }
         this.removeCapability(Status.REMOVED);
     }
+    public String toString(){
+        return name;
+    };
+
+
 }

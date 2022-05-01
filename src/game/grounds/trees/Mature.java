@@ -6,17 +6,18 @@ import game.Probability;
 import game.actors.Koopa;
 import game.actors.Status;
 import game.grounds.Dirt;
-import game.items.Coin;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Mature extends Tree {
     private int tickCounter = 0;
+//    private String name;
 
     public Mature() {
         super('T',70,30, "Mature");
         tickCounter = 0;
+//        this.name = "Mature";
     }
     @Override
     public void tick(Location location) {
@@ -48,7 +49,9 @@ public class Mature extends Tree {
         if (Probability.success(witherChance)){
             location.setGround(new Dirt());
         }
-
-
     }
+//    public String toString(){
+//        return name;
+//    }
+
 }

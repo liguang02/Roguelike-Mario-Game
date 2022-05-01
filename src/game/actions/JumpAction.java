@@ -4,8 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Probability;
 
-import java.util.concurrent.ThreadLocalRandom;
 
 public class JumpAction extends Action {
 
@@ -23,8 +23,7 @@ public class JumpAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-        if(randomNum < successRate){
+        if(Probability.success(successRate)){
             map.moveActor(actor, moveToLocation);
             // need to think of a way to get the ground name (currently it just prints the ground object)
             return "Player jumped to " + moveToLocation.getGround().toString();

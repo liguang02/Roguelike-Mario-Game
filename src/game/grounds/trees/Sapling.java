@@ -7,10 +7,12 @@ import game.items.Coin;
 
 public class Sapling extends Tree{
     private int tickCounter = 0;
+//    private String name;
 
     public Sapling(){
         super('t', 80, 20, "Sapling");
         tickCounter = 0;
+//        this.name = "Sapling"
     }
 
     @Override
