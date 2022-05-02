@@ -17,17 +17,17 @@ public class AttackAction extends Action {
 	/**
 	 * The Actor that is to be attacked
 	 */
-	protected Actor target;
+	private final Actor target;
 
 	/**
 	 * The direction of incoming attack.
 	 */
-	protected String direction;
+	private final String direction;
 
 	/**
 	 * Random number generator
 	 */
-	protected Random rand = new Random();
+	private final Random rand = new Random();
 
 	/**
 	 * Constructor for AttackAction class
