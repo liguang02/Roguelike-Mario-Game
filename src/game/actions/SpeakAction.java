@@ -2,35 +2,33 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.Monologues;
+import game.Monologue;
 import game.actors.Status;
-import game.items.Wrench;
 
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SpeakAction extends Action {
-    private Monologues monologues;
+
+    private final Monologue monologues;
+    private final Actor speaker;
+
+    public SpeakAction(Monologue monologues, Actor speaker) {
+        this.monologues = monologues;
+        this.speaker = speaker;
+    }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        monologues = new Monologues();
-        HashMap<Integer, String> monologueList = monologues.getAllMonologues();
-        if (actor.hasCapability(Status.WRENCH)){
-                monologueList.remove(0);
+        if(speaker.toString().equals("Toad")){
+            int randomNum = ThreadLocalRandom.current().nextInt(0, monologues.getToadMonologues(actor).size());
+            return monologues.getToadMonologues(actor).get(randomNum);
         }
 
-        if (actor.hasCapability(Status.INVINCIBLE)) {
-            for (int i = 0; i < monologueList.size(); i++){
-                monologueList.remove(1);
-            }
-        }
-
-        Object randomNum = monologueList.keySet().toArray()[new Random().nextInt(monologueList.keySet().toArray().length)];
-        String item = monologueList.get(randomNum);
-        return item;
+        int randomNum = ThreadLocalRandom.current().nextInt(0, monologues.getAllMonologues().size());
+        return monologues.getAllMonologues().get(randomNum);
     }
 
     @Override

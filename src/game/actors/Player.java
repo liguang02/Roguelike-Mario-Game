@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import game.actions.resetAction;
+import game.actions.ResetAction;
 import game.items.WalletManager;
 import game.reset.Resettable;
 
@@ -84,7 +84,7 @@ public class Player extends Actor implements Resettable {
 	 * @param actions Actors action list giving them the options in menu.
 	 */
 	public void addResetAction(ActionList actions){
-		Action resetAction = new resetAction();
+		Action resetAction = new ResetAction();
 		if(!this.hasCapability(Status.RESET)){
 			actions.add(resetAction);
 		}

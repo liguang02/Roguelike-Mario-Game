@@ -9,7 +9,7 @@ import game.actors.Status;
 /**
  * resetAction class extending Action to give player option to reset.
  */
-public class resetAction extends Action {
+public class ResetAction extends Action {
 
     /**
      * Execute method, running the resetInstance, the resetManager runs

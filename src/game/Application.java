@@ -61,7 +61,7 @@ public class Application {
 			world.addGameMap(gameMap);
 
 			Actor mario = new Player("mario", 'm', 100);
-			world.addPlayer(mario, gameMap.at(1, 1));
+			world.addPlayer(mario, gameMap.at(44, 10));
 			mario.addItemToInventory(new PowerStar());
 			mario.addItemToInventory(new Wrench());
 			mario.addItemToInventory(new SuperMushroom());

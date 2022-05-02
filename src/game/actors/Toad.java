@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.Monologue;
 import game.actions.PurchaseAction;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
@@ -16,11 +17,15 @@ import game.actions.SpeakAction;
  * Toad is a NPC that extends from the actor. Its sole purpose is to trade and speak with the player actor.
  */
 public class Toad extends Actor {
-    /**
-     * Constructor for Toad class
-     */
+
+    private final Monologue monologues = new Monologue();
+
     public Toad(){
         super("Toad", 'o',50);
+        monologues.addMonologues(Status.WRENCH, "You might need a wrench to smash Koopa's hard shells.");
+        monologues.addMonologues(Status.INVINCIBLE, "You better get back to finding the Power Stars.");
+        monologues.addMonologues(Status.GENERIC, "The Princess is depending on you! You are our only hope.");
+        monologues.addMonologues(Status.GENERIC, "Being imprisoned in these walls can drive a fungus crazy :(");
     }
 
     /**
@@ -48,7 +53,7 @@ public class Toad extends Actor {
         actions.add(new PurchaseAction(new Wrench()));
         actions.add(new PurchaseAction(new SuperMushroom()));
         actions.add(new PurchaseAction(new PowerStar()));
-        actions.add(new SpeakAction());
+        actions.add(new SpeakAction(monologues, this));
         return actions;
     }
 }

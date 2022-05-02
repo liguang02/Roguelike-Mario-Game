@@ -20,7 +20,7 @@ public abstract class Tree extends HighGround implements Resettable {
     protected int treeAge = 10;
 
     /**
-     * Constructor for Tree abstract class that extends from highground
+     * Constructor for Tree abstract class that extends from high ground
      * @param displayChar the character that will be displayed on the map
      * @param successRate success rate of the actor jumping to a tree instance
      * @param damage the amount of fall damage the actor will take if it fails the jump
