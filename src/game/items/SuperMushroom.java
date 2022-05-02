@@ -28,7 +28,7 @@ public class SuperMushroom extends Item implements  Purchasable{
      * Constructor for the SuperMushroom class
      */
     public SuperMushroom() {
-        super("Super Mushroom", 'p', true);
+        super("Super Mushroom", '^', true);
         this.price = 400;
         this.addToPurchasableManager();
     }

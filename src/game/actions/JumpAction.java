@@ -51,7 +51,10 @@ public class JumpAction extends Action {
      * @return  String to show the player can jump in the menu.
      */
     @Override
-    public String execute(Actor actor, GameMap map) {
+    public String execute(Actor actor, GameMap map){
+        if (actor.hasCapability(Status.TALL)){
+            successRate = 100;
+        }
         if(Probability.success(successRate)){
             map.moveActor(actor, moveToLocation);
             // need to think of a way to get the ground name (currently it just prints the ground object)
