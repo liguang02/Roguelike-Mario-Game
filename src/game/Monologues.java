@@ -1,13 +1,13 @@
 package game;
-
-import game.actors.Toad;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
-public class Monologues extends Toad {
+public class Monologues {
 
+    /**
+     * Stores all the possible Monologues of the game - regardless of Mario having any special
+     * effects that
+     * @return
+     */
     public HashMap AllMonologues(){
         HashMap<Integer, String> allMonologues = new HashMap<>();
         allMonologues.put(0, "You might need a wrench to smash Koopa's hard shells.");

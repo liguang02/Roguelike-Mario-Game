@@ -8,25 +8,19 @@ import game.Monologues;
 import game.actors.Status;
 import game.items.Wrench;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class SpeakAction extends Action {
     private Monologues monologues;
-    private int lower;
 
     @Override
     public String execute(Actor actor, GameMap map) {
         monologues = new Monologues();
         HashMap<Integer, String> monologueList = monologues.getAllMonologues();
-        for (Item item : actor.getInventory()) {
-            if (item.getClass() == Wrench.class) {
+        if (actor.hasCapability(Status.WRENCH)){
                 monologueList.remove(0);
-                }
-            }
+        }
 
         if (actor.hasCapability(Status.INVINCIBLE)) {
             for (int i = 0; i < monologueList.size(); i++){
