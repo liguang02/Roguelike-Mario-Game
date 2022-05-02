@@ -60,6 +60,9 @@ public abstract class Tree extends HighGround implements Resettable {
         if(this.hasCapability(Status.REMOVED) && Probability.success(50)){
             location.setGround(new Dirt());
         }
+        else{
+            this.removeCapability(Status.REMOVED);
+        }
     }
 
     /**
