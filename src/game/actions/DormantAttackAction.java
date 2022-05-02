@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actors.Koopa;
 import game.actors.Status;
 
 public class DormantAttackAction extends AttackAction {
@@ -15,9 +14,9 @@ public class DormantAttackAction extends AttackAction {
      * Constructor for AttackAction class
      *
      * @param target    the Actor to attack
-     * @param direction
+     * @param direction The string of direction of attack (North, South ...)
      */
-    public DormantAttackAction(Koopa target, String direction) {
+    public DormantAttackAction(Actor target, String direction) {
         super(target, direction);
     }
 
@@ -28,10 +27,10 @@ public class DormantAttackAction extends AttackAction {
 
         //If the attacker misses the target return string misses
         if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
-            return actor + " misses " + target + ".";
+            return actor + " misses " + target + " shell.";
         }
 
-        target.addCapability(Status.REMOVED);
+        target.addCapability(Status.DEAD);
 
         return actor + " destroys " + target + " shell using " + weapon;
     }

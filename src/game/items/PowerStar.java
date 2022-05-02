@@ -6,13 +6,11 @@ import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.ConsumeShroomAction;
 import game.actions.ConsumeStarAction;
 import game.actions.PickUpStarAction;
 import game.actors.Status;
 import game.reset.Resettable;
 
-import java.util.List;
 
 /**
  * PowerStar class implementing the Power Star item from Req. 4
@@ -75,19 +73,26 @@ public class PowerStar extends Item implements Purchasable, Resettable {
             if (timeSpan >= 1) {
                 //This line is needed for when power stars are consumed with overlapping time spans.
                 actor.addCapability(Status.INVINCIBLE);
-                timeSpan--;
             }else{
             actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);
             }
         }
+        //Life Span of the star sitting in inventory
         else{
+            if(timeSpan <= 1){
+                actor.removeItemFromInventory(this);
+                return;
+            }
+            //To show the latest consume star action (Updated count of power stars in inventory)
             this.removeAction(consumeAction);
             if(actor.hasCapability(Status.CONSUMER_STAR)){
                 this.addAction(consumeAction);
                 actor.removeCapability(Status.CONSUMER_STAR);
             }
         }
+        //Reducing the time of buff/lifespan in inventory
+        timeSpan--;
     }
     /**
      * price method (a getter method to get the price of this item object)

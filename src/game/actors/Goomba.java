@@ -14,7 +14,6 @@ import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.SuicideBehaviour;
 
-
 /**
  * A little fungus guy.
  */
@@ -27,6 +26,7 @@ public class Goomba extends Enemy {
 		super("Goomba", 'g', 50);
 		getBehaviours().put(2, new SuicideBehaviour());
 	}
+
 	/**
 	 * At the moment, we only make it can be attacked by Player.
 	 * You can do something else with this method.
@@ -42,9 +42,9 @@ public class Goomba extends Enemy {
 		// it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this,direction));
-			getBehaviours().put(9, new AttackBehaviour(direction, otherActor));
-			getBehaviours().put(12, new FollowBehaviour(otherActor));
-			getBehaviours().remove(11);
+			getBehaviours().remove(1);
+			getBehaviours().put(3, new AttackBehaviour(direction, otherActor));
+			getBehaviours().put(4, new FollowBehaviour(otherActor));
 		}
 		return actions;
 	}
@@ -56,10 +56,15 @@ public class Goomba extends Enemy {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
-		//10% CHANCE OF SUICIDE
+		Action deathAction = super.onDeath();
+		if(deathAction != null){
+			return deathAction;
+		}
+
 		if(Probability.success(10)){
 			this.addCapability(Status.REMOVED);
-			this.getBehaviours().remove(11);
+			this.getBehaviours().clear();
+			this.getBehaviours().put(1, new SuicideBehaviour());
 		}
 
 		for(Behaviour Behaviour : getBehaviours().values()) {

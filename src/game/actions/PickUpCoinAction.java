@@ -8,11 +8,22 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.Coin;
 import game.items.WalletManager;
 
+/**
+ * PickUpCoinActions is a subclass of PickUpItemAction, this class will handle the operation of adding the value
+ * correctly into the actor's wallet inside WalletManager class after picking up the coin.
+ */
 public class PickUpCoinAction extends PickUpItemAction {
+    /**
+     * the value of the coin
+     */
+
     private int coinValue;
+    /**
+     * A coin object
+     */
     private final Coin coin;
     /**
-     * Constructor.
+     * Constructor for PickUpCoinAction
      *
      * @param coin the item to pick up
      */
@@ -23,7 +34,7 @@ public class PickUpCoinAction extends PickUpItemAction {
     }
 
     /**
-     * Add the item to the actor's inventory.
+     * Add the coin to the actor's wallet in WalletManager class
      *
      * @see Action#execute(Actor, GameMap)
      * @param actor The actor performing the action.
@@ -33,7 +44,7 @@ public class PickUpCoinAction extends PickUpItemAction {
     @Override
     public String execute(Actor actor, GameMap map) {
         map.locationOf(actor).removeItem(coin);
-        WalletManager.getInstance().appendWalletActor(actor,coinValue);
+        WalletManager.getInstance().addBalance(actor,coinValue);
         return menuDescription(actor);
     }
 
@@ -42,7 +53,7 @@ public class PickUpCoinAction extends PickUpItemAction {
      *
      * @see Action#menuDescription(Actor)
      * @param actor The actor performing the action.
-     * @return a string, e.g. "Player picks up the rock"
+     * @return a string, e.g. "Player picks up the coin"
      */
     @Override
     public String menuDescription(Actor actor) {

@@ -12,14 +12,37 @@ import game.items.SuperMushroom;
 import game.items.Wrench;
 import game.actions.SpeakAction;
 
+/**
+ * Toad is a NPC that extends from the actor. Its sole purpose is to trade and speak with the player actor.
+ */
 public class Toad extends Actor {
+    /**
+     * Constructor for Toad class
+     */
     public Toad(){
         super("Toad", 'o',50);
     }
+
+    /**
+     * Occurs at the start of every turn, this method will add a DoNothingAction for toad as it will never move or attack
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return a DoNothingAction
+     */
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         return new DoNothingAction();
     }
 
+    /**
+     * This method will add all the necessary actions that toad are responsible of, such as PurchaseAction
+     * and SpeakAction.
+     * @param otherActor the Actor that might be performing speak or buy action
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return a list of actions, ActionList
+     */
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         actions.add(new PurchaseAction(new Wrench()));

@@ -15,5 +15,8 @@ public enum Status {
     MONEY, //use this to identify a valuable item (such as coin)
     DORMANT, // if enemies like Koopa are dormant (unable to attack etc)
     CONSUMER_SHROOM, //To denote if the actor can consume mushrooms
-    CONSUMER_STAR //To denote if the actor can consume power stars
+    CONSUMER_STAR, //To denote if the actor can consume power stars
+    WRENCH, //To denote the item is a wrench
+    SHELL, //To denote the actor becomes a shell on death
+    DEAD //Status to denote the actor has been killed
 }

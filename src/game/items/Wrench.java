@@ -1,25 +1,32 @@
 package game.items;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.Status;
 
+/**
+ * Wrench class is a subclass of WeaponItem which is a subclass of Item
+ */
 public class Wrench extends WeaponItem implements Purchasable{
-    private int price;
+    /**
+     * An instance variable that stores the price value for Wrench
+     */
+    private final int price;
 
-//    /**
-//     * Constructor.
-//     *
-//     * @param name        name of the item
-//     * @param displayChar character to use for display when item is on the ground
-//     * @param damage      amount of damage this weapon does
-//     * @param verb        verb to use for this weapon, e.g. "hits", "zaps"
-//     * @param hitRate     the probability/chance to hit the target.
-//     */
+    /**
+     * Constructor for Wrench class
+     */
     public Wrench() {
         super("Wrench", 'w', 50, "hits", 80);
         this.price = 200;
         this.addToPurchasableManager();
+        this.addCapability(Status.WRENCH);
     }
+
+    /**
+     * price method (a getter method to get the price of this item object)
+     * Used in PurchaseAction where it needs to get the prices of the purchasableItem
+     * @return an integer value representing the price of the item
+     */
     public int price(){
         return price;
     }

@@ -6,8 +6,17 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.reset.ResetManager;
 import game.actors.Status;
 
+/**
+ * resetAction class extending Action to give player option to reset.
+ */
 public class resetAction extends Action {
 
+    /**
+     * Execute method, running the resetInstance, the resetManager runs
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return String to denote that a reset has occured.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         ResetManager resetInstance = ResetManager.getInstance();
@@ -16,11 +25,20 @@ public class resetAction extends Action {
         return "Reset Occurred";
     }
 
+    /**
+     * Returns menu description to allow player to choose the reset.
+     * @param actor The actor performing the action.
+     * @return String for the menu
+     */
     @Override
     public String menuDescription(Actor actor) {
-        return "RESET";
+        return "Reset the game.";
     }
 
+    /**
+     * Set the hotkey for this action always to r.
+     * @return Hotkey character for reset
+     */
     @Override
     public String hotkey() {
         return "r";
