@@ -44,7 +44,7 @@ public class PickUpStarAction extends PickUpItemAction {
      */
     @Override
     public String menuDescription(Actor actor) {
-        String menuOutput = actor + " consumes " + powerStar;
+        String menuOutput = actor + " picks up and consumes " + powerStar;
         menuOutput += " (" + powerStar. getTimeSpan() + " turns left)";
         return menuOutput;
     }

@@ -44,6 +44,6 @@ public class PickUpShroomAction extends PickUpItemAction {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + superMushroom;
+        return actor + " picks up and consumes " + superMushroom;
     }
 }
