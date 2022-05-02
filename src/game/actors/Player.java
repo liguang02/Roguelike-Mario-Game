@@ -10,6 +10,7 @@ import game.actions.DeathAction;
 import game.actions.ResetAction;
 import game.items.WalletManager;
 import game.reset.Resettable;
+import game.utilities.Status;
 
 /**
  * Class representing the Player.

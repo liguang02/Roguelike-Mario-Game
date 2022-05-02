@@ -4,7 +4,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actors.Status;
+import game.utilities.Status;
 
 /**
  * DormantAttackAction class for attacking the Koopa Shell.

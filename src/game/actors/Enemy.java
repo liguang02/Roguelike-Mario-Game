@@ -8,6 +8,7 @@ import game.behaviours.SuicideBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.reset.ResetManager;
 import game.reset.Resettable;
+import game.utilities.Status;
 
 import java.util.HashMap;
 import java.util.Map;

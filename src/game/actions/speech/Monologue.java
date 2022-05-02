@@ -1,6 +1,6 @@
 package game.actions.speech;
 import edu.monash.fit2099.engine.actors.Actor;
-import game.actors.Status;
+import game.utilities.Status;
 
 import java.util.ArrayList;
 

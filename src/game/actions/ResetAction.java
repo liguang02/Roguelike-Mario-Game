@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.reset.ResetManager;
-import game.actors.Status;
+import game.utilities.Status;
 
 /**
  * resetAction class extending Action to give player option to reset.

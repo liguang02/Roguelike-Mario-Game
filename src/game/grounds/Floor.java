@@ -2,7 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
-import game.actors.Status;
+import game.utilities.Status;
 
 /**
  * @version 1.0.0

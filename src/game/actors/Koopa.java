@@ -15,6 +15,8 @@ import game.behaviours.FollowBehaviour;
 import game.behaviours.SuicideBehaviour;
 import game.items.SuperMushroom;
 import game.items.Wrench;
+import game.utilities.Status;
+
 /**
  * The Koopa enemy.
  * @version 1.1.2

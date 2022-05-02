@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PickUpCoinAction;
-import game.actors.Status;
+import game.utilities.Status;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 

@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actors.Status;
+import game.utilities.Status;
 
 /**
  * Special Action for attacking other Actors.

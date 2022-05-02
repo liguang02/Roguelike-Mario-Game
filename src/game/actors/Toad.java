@@ -12,6 +12,7 @@ import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.items.Wrench;
 import game.actions.speech.SpeakAction;
+import game.utilities.Status;
 
 /**
  * Toad is a NPC that extends from the actor. Its sole purpose is to trade and speak with the player actor.

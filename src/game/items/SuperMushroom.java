@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeShroomAction;
 import game.actions.PickUpShroomAction;
-import game.actors.Status;
+import game.utilities.Status;
 
 /**
  * @version 1.1.2

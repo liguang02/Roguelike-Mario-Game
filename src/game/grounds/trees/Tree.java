@@ -2,7 +2,7 @@ package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.utilities.Probability;
-import game.actors.Status;
+import game.utilities.Status;
 import game.grounds.Dirt;
 import game.grounds.HighGround;
 import game.reset.ResetManager;

@@ -1,7 +1,7 @@
 package game.items;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.actors.Status;
+import game.utilities.Status;
 
 /**
  * @version 1.1.2

@@ -13,6 +13,7 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.SuicideBehaviour;
+import game.utilities.Status;
 
 /**
  * A little fungus guy.

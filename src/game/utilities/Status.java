@@ -1,4 +1,4 @@
-package game.actors;
+package game.utilities;
 
 /**
  * General enum class to add capabilities for the instances.

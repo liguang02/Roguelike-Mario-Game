@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeStarAction;
 import game.actions.PickUpStarAction;
-import game.actors.Status;
+import game.utilities.Status;
 import game.reset.Resettable;
 
 
