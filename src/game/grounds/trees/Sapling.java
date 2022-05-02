@@ -5,6 +5,8 @@ import game.utilities.Probability;
 import game.items.Coin;
 
 /**
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  * This Sapling class is a subclass of Tree, which has its own spawning ability (spawns coin) and it grows into Mature Tree
  */
 public class Sapling extends Tree{

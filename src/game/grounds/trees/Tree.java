@@ -8,6 +8,11 @@ import game.grounds.HighGround;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
+/**
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ * Tree is an abstract class that extends Highground abstract class.
+ */
 public abstract class Tree extends HighGround implements Resettable {
     /**
      *Name of the tree
@@ -57,11 +62,18 @@ public abstract class Tree extends HighGround implements Resettable {
         }
     }
 
-
+    /**
+     * A method that return the name of the tree. E.g. Mature, Sprout, Sapling
+     * @return a string representing the name of the tree object
+     */
     public String toString(){
         return name;
     }
 
+    /**
+     * a getter method for treeAge
+     * @return an integer representing the age of the tree that grows into the next stage
+     */
     public int getTreeAge() {
         return treeAge;
     }

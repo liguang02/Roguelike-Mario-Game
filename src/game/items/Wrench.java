@@ -4,9 +4,9 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Status;
 
 /**
- * Wrench class is a subclass of WeaponItem which is a subclass of Item
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
+ *  * Wrench class is a subclass of WeaponItem which is a subclass of Item
  */
 public class Wrench extends WeaponItem implements Purchasable{
     /**

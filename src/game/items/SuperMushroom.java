@@ -11,6 +11,8 @@ import game.actions.PickUpShroomAction;
 import game.actors.Status;
 
 /**
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  * SuperMushroom class implementing the Super Mushroom item from Req. 4
  */
 public class SuperMushroom extends Item implements  Purchasable{

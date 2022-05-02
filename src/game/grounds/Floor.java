@@ -5,6 +5,8 @@ import edu.monash.fit2099.engine.positions.Ground;
 import game.actors.Status;
 
 /**
+ * @version 1.0.0
+ * @author sthi0011, lcha0068, esea0003
  * A class that represents the floor inside a building.
  */
 public class Floor extends Ground {

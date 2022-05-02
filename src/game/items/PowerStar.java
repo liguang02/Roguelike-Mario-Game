@@ -13,9 +13,9 @@ import game.reset.Resettable;
 
 
 /**
- * PowerStar class implementing the Power Star item from Req. 4
- * @author sthi0011
  * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ * PowerStar class implementing the Power Star item from Req. 4
  */
 public class PowerStar extends Item implements Purchasable, Resettable {
     /**

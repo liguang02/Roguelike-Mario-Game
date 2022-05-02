@@ -10,12 +10,17 @@ import game.reset.ResetManager;
 import game.reset.Resettable;
 
 /**
- * Coin class to represent the coin item.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ * Coin class is a subclass of item class. Coin can be picked up by the player actor and add the coin value
+ * into the player's wallet balance.
  */
+
 public class Coin extends Item implements Resettable {
     /**
      * A fixed int value as each coin object can only have 1 fixed value
      */
+
     private final int value;
 
     /**

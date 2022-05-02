@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * WalletManager class to manage the players funds
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
+ * WalletManager class to manage the players funds
  */
 public class WalletManager {
     /**

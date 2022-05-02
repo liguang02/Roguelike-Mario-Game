@@ -1,6 +1,8 @@
 package game.items;
 
 /**
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  * Interface for items that are purchasable
  * It provides methods needed by the purchasable items, combining this interface class with
  * PurchasableManager, we can clearly know if an item is purchasable or not.

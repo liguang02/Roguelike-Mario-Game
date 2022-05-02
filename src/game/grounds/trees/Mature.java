@@ -10,6 +10,8 @@ import game.grounds.Dirt;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 /**
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  * This Mature class is a subclass of Tree, which has its own spawning ability (spawns enemy Koopa) and in every 5 turns,
  * it will spawns a sprout in a random fertile ground around it.
  */
