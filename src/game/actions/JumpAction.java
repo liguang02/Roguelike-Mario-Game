@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Status;
 import game.utilities.Probability;
 
 /**
@@ -47,7 +48,7 @@ public class JumpAction extends Action {
      *
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
-     * @return
+     * @return  String to show the player can jump in the menu.
      */
     @Override
     public String execute(Actor actor, GameMap map) {
@@ -57,6 +58,9 @@ public class JumpAction extends Action {
             return "Player jumped to " + moveToLocation.getGround().toString();
         }else{
             actor.hurt(damage);
+            if(!actor.isConscious()){
+                actor.addCapability(Status.DEAD);
+            }
             return  "Player failed jump, damage taken : " + damage;
         }
     }
@@ -64,7 +68,7 @@ public class JumpAction extends Action {
     /**
      *
      * @param actor The actor performing the action.
-     * @return
+     * @return The menu desciprtion of this jump action.
      */
     @Override
     public String menuDescription(Actor actor) {

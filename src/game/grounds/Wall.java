@@ -10,9 +10,9 @@ import edu.monash.fit2099.engine.positions.Ground;
  */
 public class Wall extends HighGround{
 	/**
-	 * Name of the highground, wall
+	 * Name of the high ground, wall
 	 */
-	private String name;
+	private final String name;
 
 	/**
 	 * Constructor for wall class

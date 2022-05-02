@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.DeathAction;
 import game.actions.ResetAction;
 import game.items.WalletManager;
 import game.reset.Resettable;
@@ -44,6 +45,11 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+		//If player is dead, new Death Action (remove from map and drop items from inventory)
+		if(this.hasCapability(Status.DEAD)){
+			return new DeathAction();
+		}
 		addCapabilities();
 		addResetAction(actions);
 		displayDetails(display, map);
@@ -92,6 +98,10 @@ public class Player extends Actor implements Resettable {
 		}
 	}
 
+	public void deathA(){
+
+	}
+
 	/**
 	 * resetInstance for the player, removes all buffs/de-buffs from capabilities list
 	 * Heals the player to full
@@ -120,10 +130,9 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.INVINCIBLE)){
 			formatted += "\n" + this + " is INVINCIBLE!";
 		}
-		// Print inventory (not needed for final submission, just easier to see what we are doing)
-		// display.println(this.getInventory().toString());
-		// Print buff list (not needed for final submission, just easier to see what we are doing)
-		// display.println(this.capabilitiesList().toString());
+
+		display.println(this.getInventory().toString());
+		display.println(this.capabilitiesList().toString());
 		display.println(formatted);
 	}
 }

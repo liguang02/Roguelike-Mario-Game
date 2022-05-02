@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.Koopa;
 import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.Dirt;
@@ -27,7 +28,7 @@ public class Application {
 	 * The driver class of the game. It will create game map and add it into the world.
 	 * Where player can be added into the world and other npcs such as toad can be added into the game map.
 	 * It will run the game by calling world.run()
-	 * @param args
+	 * @param args main arguments, no need to fill just run.
 	 */
 	public static void main(String[] args) {
 
@@ -61,6 +62,8 @@ public class Application {
 
 			Actor mario = new Player("mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
+			gameMap.at(2,1).addActor(new Koopa());
+			gameMap.at(1,2).addActor(new Koopa());
 			gameMap.at(45,10).addActor(new Toad());
 
 
