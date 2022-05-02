@@ -12,6 +12,11 @@ import game.reset.Resettable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Enemy class which is used to set up the actors
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public abstract class Enemy extends Actor implements Resettable {
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
     /**

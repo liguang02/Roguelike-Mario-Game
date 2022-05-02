@@ -4,6 +4,11 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+/**
+ * Class used to create behavioral actions usually performed by NPCs.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public interface Behaviour {
 	
 	/**

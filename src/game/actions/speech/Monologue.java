@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class Monologue {
     /**
      * List of all monologues
+     * @version 1.1.2
+     * @author sthi0011, lcha0068, esea0003
      */
     private final ArrayList<String> allMonologues;
     /**

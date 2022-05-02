@@ -7,6 +7,8 @@ import game.items.SuperMushroom;
 
 /**
  * PickUpShroomAction class to pick up and consume super mushrooms from the ground.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class PickUpShroomAction extends PickUpItemAction {
     /**

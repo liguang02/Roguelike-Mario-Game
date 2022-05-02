@@ -9,6 +9,8 @@ import game.items.PowerStar;
 
 /**
  * ConsumeStarAction to consume a Power Star in inventory and  provide corresponding buffs according to req.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class ConsumeStarAction extends Action {
     /**

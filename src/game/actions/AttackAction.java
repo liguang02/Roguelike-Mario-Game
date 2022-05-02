@@ -10,6 +10,8 @@ import game.actors.Status;
 
 /**
  * Special Action for attacking other Actors.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class AttackAction extends Action {
 	/**

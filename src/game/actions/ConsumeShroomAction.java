@@ -9,6 +9,8 @@ import game.items.SuperMushroom;
 
 /**
  * ConsumeShroomAction to consume a Super Mushroom in inventory and  provide corresponding buffs according to req.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class ConsumeShroomAction extends Action {
     /**

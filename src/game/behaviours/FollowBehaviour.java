@@ -11,13 +11,15 @@ import edu.monash.fit2099.engine.actions.MoveActorAction;
  * A class that figures out a MoveAction that will move the actor one step 
  * closer to a target Actor.
  * @see edu.monash.fit2099.demo.mars.Application
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class FollowBehaviour implements Behaviour {
 
 	private final Actor target;
 
 	/**
-	 * Constructor.
+	 * Constructor for FollowBehaviour
 	 * 
 	 * @param subject the Actor to follow
 	 */
@@ -25,6 +27,13 @@ public class FollowBehaviour implements Behaviour {
 		this.target = subject;
 	}
 
+	/**
+	 * To check if exits of the actor contains another actor.
+	 *
+	 * @param actor the Actor acting
+	 * @param map the GameMap containing the Actor
+	 * @return
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		if(!map.contains(target) || !map.contains(actor))

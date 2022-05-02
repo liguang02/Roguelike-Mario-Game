@@ -8,6 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * SpeakAction class for the actor to monologue
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class SpeakAction extends Action {
     /**

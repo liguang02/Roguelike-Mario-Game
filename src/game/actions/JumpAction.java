@@ -8,6 +8,8 @@ import game.utilities.Probability;
 
 /**
  * JumpAction class to do the jump actions
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class JumpAction extends Action {
     /**

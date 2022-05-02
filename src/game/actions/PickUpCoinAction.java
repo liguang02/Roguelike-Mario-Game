@@ -10,6 +10,8 @@ import game.items.WalletManager;
 /**
  * PickUpCoinActions is a subclass of PickUpItemAction, this class will handle the operation of adding the value
  * correctly into the actor's wallet inside WalletManager class after picking up the coin.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class PickUpCoinAction extends PickUpItemAction {
     /**

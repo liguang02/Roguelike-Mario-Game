@@ -9,6 +9,11 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * WanderBehaviour is used  by the enemies to wander around the map.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class WanderBehaviour extends Action implements Behaviour {
 	
 	private final Random random = new Random();
@@ -41,11 +46,22 @@ public class WanderBehaviour extends Action implements Behaviour {
 
 	}
 
+	/**
+	 * Displays the menuDescription
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		return menuDescription(actor);
 	}
 
+	/**
+	 * Prints display of the actor
+	 * @param actor The actor performing the action.
+	 * @return
+	 */
 	@Override
 	public String menuDescription(Actor actor) {
 		return "Raagrh...";

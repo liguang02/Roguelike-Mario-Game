@@ -12,6 +12,8 @@ import game.reset.Resettable;
 
 /**
  * Class representing the Player.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class Player extends Actor implements Resettable {
 	/**

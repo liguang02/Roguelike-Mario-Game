@@ -14,9 +14,9 @@ import game.items.Wrench;
 import game.actions.speech.SpeakAction;
 
 /**
+ * Toad is a NPC that extends from the actor. Its sole purpose is to trade and speak with the player actor.
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
- * Toad is a NPC that extends from the actor. Its sole purpose is to trade and speak with the player actor.
  */
 public class Toad extends Actor {
 

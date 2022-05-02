@@ -15,15 +15,32 @@ import game.behaviours.FollowBehaviour;
 import game.behaviours.SuicideBehaviour;
 import game.items.SuperMushroom;
 import game.items.Wrench;
-
+/**
+ * The Koopa enemy.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class Koopa extends Enemy{
 
+    /**
+     * A constructor to generate an instance of a Koopa which has a SuperMushroom in its inventory
+     * to be dropped when the Koopa is destroyed.
+     */
     public Koopa() {
+
         super("Koopa", 'k', 50);
         this.addCapability(Status.SHELL);
         this.addItemToInventory(new SuperMushroom());
     }
 
+    /**
+     * To check for any actions that can be performed by the Koopa when it encounters another actor which
+     * has HOSTILE_TO_ENEMY.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
@@ -44,6 +61,14 @@ public class Koopa extends Enemy{
         return actions;
     }
 
+    /**
+     * playturn is used after the player performs its action
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
@@ -66,6 +91,10 @@ public class Koopa extends Enemy{
     return new DoNothingAction();
 }
 
+    /**
+     * Enemy's default Attack action which returns the damage and verb of the attack
+     * @return
+     */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(30, "punch");

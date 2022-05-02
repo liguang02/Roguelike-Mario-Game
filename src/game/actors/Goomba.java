@@ -16,11 +16,13 @@ import game.behaviours.SuicideBehaviour;
 
 /**
  * A little fungus guy.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class Goomba extends Enemy {
 
 	/**
-	 * Constructor.
+	 * A constructor to generate an instance of a Goomba which will have the Suicide behaviour
 	 */
 	public Goomba() {
 		super("Goomba", 'g', 50);
@@ -28,8 +30,9 @@ public class Goomba extends Enemy {
 	}
 
 	/**
-	 * At the moment, we only make it can be attacked by Player.
-	 * You can do something else with this method.
+	 * When the Goomba is near another actor which has the enum status HOSTILE_TO_ENEMY
+	 * then it will have certain behaviours.
+	 *
 	 * @param otherActor the Actor that might perform an action.
 	 * @param direction  String representing the direction of the other Actor
 	 * @param map        current GameMap
@@ -50,7 +53,7 @@ public class Goomba extends Enemy {
 	}
 
 	/**
-	 * Figure out what to do next.
+	 * playturn is used after the player performs its action
 	 * @see Actor#playTurn(ActionList, Action, GameMap, Display)
 	 */
 	@Override
@@ -76,6 +79,9 @@ public class Goomba extends Enemy {
 	}
 
 	@Override
+	/**
+	 * Enemy's default Attack action which returns the damage and verb of the attack
+	 */
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(10, "kick");
 	}

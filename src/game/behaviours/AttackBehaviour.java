@@ -5,18 +5,34 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.AttackAction;
 
+/**
+ * AttackBehaviour is used by enemies, to attack any actor which is directly next to the
+ * target (typically the player)
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class AttackBehaviour implements Behaviour {
 
     private final String direction;
 
     private final Actor target;
 
+    /**
+     * To store the direction and the target
+     * @param direction
+     * @param target
+     */
     public AttackBehaviour(String direction, Actor target) {
         this.direction = direction;
         this.target = target;
     }
 
-    // TODO: develop and use it to attack the player automatically.
+    /**
+     * To attack the actor automatically
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         return new AttackAction(target, direction);

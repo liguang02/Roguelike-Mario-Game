@@ -7,6 +7,8 @@ import game.items.PowerStar;
 
 /**
  * PickUpStarAction class to pick up and consume power stars from the ground.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class PickUpStarAction extends PickUpItemAction {
     /**

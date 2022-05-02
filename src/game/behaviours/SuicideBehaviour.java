@@ -9,6 +9,8 @@ import game.actors.Status;
 
 /**
  * Class to do the removal of enemies (dead or reset) and drop items in their inventory.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class SuicideBehaviour implements Behaviour{
 

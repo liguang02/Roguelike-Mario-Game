@@ -8,6 +8,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * DeathAction class to drop items and remove a dead actor from the map
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class DeathAction extends Action {
 
