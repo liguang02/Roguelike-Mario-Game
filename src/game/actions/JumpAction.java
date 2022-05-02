@@ -16,19 +16,19 @@ public class JumpAction extends Action {
     /**
      * The success rate of the jump (0 - 100)
      */
-    protected int successRate;
+    private int successRate;
     /**
      * The damage taken if jump fails
      */
-    protected int damage;
+    private int damage;
     /**
      * The direction of the jump
      */
-    protected String direction;
+    private String direction;
     /**
      * The location of the jump destination
      */
-    protected Location moveToLocation;
+    private Location moveToLocation;
 
     /**
      * Constructor for the JumpAction

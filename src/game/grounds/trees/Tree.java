@@ -20,11 +20,6 @@ public abstract class Tree extends HighGround implements Resettable {
     private final String name;
 
     /**
-     *A fixed int value for tree to grow into the next stage
-     */
-    protected int treeAge = 10;
-
-    /**
      * Constructor for Tree abstract class that extends from high ground
      * @param displayChar the character that will be displayed on the map
      * @param successRate success rate of the actor jumping to a tree instance
@@ -78,7 +73,7 @@ public abstract class Tree extends HighGround implements Resettable {
      * @return an integer representing the age of the tree that grows into the next stage
      */
     public int getTreeAge() {
-        return treeAge;
+        return 10;
     }
 
 
