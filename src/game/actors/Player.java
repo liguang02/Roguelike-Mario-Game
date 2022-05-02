@@ -98,7 +98,7 @@ public class Player extends Actor implements Resettable {
 		}
 	}
 
-	
+
 
 	/**
 	 * resetInstance for the player, removes all buffs/de-buffs from capabilities list
@@ -128,9 +128,6 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.INVINCIBLE)){
 			formatted += "\n" + this + " is INVINCIBLE!";
 		}
-
-		display.println(this.getInventory().toString());
-		display.println(this.capabilitiesList().toString());
 		display.println(formatted);
 	}
 }

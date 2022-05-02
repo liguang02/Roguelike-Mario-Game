@@ -48,7 +48,7 @@ public class PurchaseAction extends Action {
                     actor.addItemToInventory(item);
                     execute = item + " added to inventory.";
                 } else {
-                    execute = "Not enough coins";
+                    execute = "You don't have enough coins!";
                 }
             }
 

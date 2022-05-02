@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.Koopa;
 import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.Dirt;
@@ -17,9 +16,7 @@ import game.grounds.Wall;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
-import game.items.Coin;
-import game.items.PowerStar;
-import game.items.SuperMushroom;
+
 
 /**
  * The main class for the Mario World game.
@@ -63,22 +60,12 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
-			Actor mario = new Player("mario", 'm', 100);
+			Actor mario = new Player("Mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
-			gameMap.at(43,10).addItem(new Coin(10000));
-			gameMap.at(2,1).addActor(new Koopa());
-			gameMap.at(1,3).addActor(new Koopa());
+
 			gameMap.at(45,10).addActor(new Toad());
 
-
-//			gameMap.at(43,11).addItem(new SuperMushroom());
-
-			gameMap.at(43,11).addItem(new PowerStar());
-
-
-
-
-		world.run();
+			world.run();
 
 	}
 }
