@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.Koopa;
 import game.actors.Player;
 import game.actors.Toad;
 import game.grounds.Dirt;
@@ -16,6 +17,11 @@ import game.grounds.Wall;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
+import game.items.PowerStar;
+import game.items.SuperMushroom;
+import game.items.Wrench;
+
+import javax.annotation.processing.SupportedOptions;
 
 
 /**
@@ -61,7 +67,12 @@ public class Application {
 			world.addGameMap(gameMap);
 
 			Actor mario = new Player("Mario", 'm', 100);
-			world.addPlayer(mario, gameMap.at(42, 10));
+
+			world.addPlayer(mario, gameMap.at(1, 1));
+			gameMap.at(1,2).addActor(new Koopa());
+
+			gameMap.at(1,1).addItem(new SuperMushroom());
+			gameMap.at(1,1).addItem(new Wrench());
 
 			gameMap.at(45,10).addActor(new Toad());
 
