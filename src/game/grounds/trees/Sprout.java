@@ -1,8 +1,7 @@
 package game.grounds.trees;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
-import game.Probability;
+import game.utilities.Probability;
 import game.actors.Goomba;
 /**
  * This Sprout class is a subclass of Tree, which has its own spawning ability (spawns enemy goomba) and it grows into Sapling Tree

@@ -1,9 +1,9 @@
-package game.actions;
+package game.actions.speech;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.Monologue;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 /**

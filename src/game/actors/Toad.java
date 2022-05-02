@@ -6,12 +6,12 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.Monologue;
+import game.actions.speech.Monologue;
 import game.actions.PurchaseAction;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.items.Wrench;
-import game.actions.SpeakAction;
+import game.actions.speech.SpeakAction;
 
 /**
  * Toad is a NPC that extends from the actor. Its sole purpose is to trade and speak with the player actor.

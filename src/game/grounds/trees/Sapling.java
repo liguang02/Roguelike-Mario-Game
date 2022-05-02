@@ -1,8 +1,7 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.Probability;
-import game.actors.Goomba;
+import game.utilities.Probability;
 import game.items.Coin;
 
 /**
