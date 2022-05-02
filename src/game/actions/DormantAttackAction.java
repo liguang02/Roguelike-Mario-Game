@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actors.Status;
 
+/**
+ * DormantAttackAction class for attacking the Koopa Shell.
+ */
 public class DormantAttackAction extends AttackAction {
 
     /**

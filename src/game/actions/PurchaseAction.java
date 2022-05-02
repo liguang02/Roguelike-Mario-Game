@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actors.Player;
 import game.items.*;
 
 /**
@@ -14,7 +13,7 @@ public class PurchaseAction extends Action {
     /**
      * An instance variable of type Item
      */
-    private Item item;
+    private final Item item;
 
     /**
      * Constructor for PurchaseAction class
@@ -41,7 +40,7 @@ public class PurchaseAction extends Action {
                 if (wallet.getBalance(actor) >= purchasableItem.price()) {
                     wallet.minusBalance(actor, purchasableItem.price());
                     actor.addItemToInventory(item);
-                    execute = item.toString() + " added to inventory.";
+                    execute = item + " added to inventory.";
                 } else {
                     execute = "Not enough coins";
                 }

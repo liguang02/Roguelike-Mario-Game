@@ -9,11 +9,13 @@ import game.actors.Status;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
+/**
+ * Coin class to represent the coin item.
+ */
 public class Coin extends Item implements Resettable {
     /**
      * A fixed int value as each coin object can only have 1 fixed value
      */
-
     private final int value;
 
     /**

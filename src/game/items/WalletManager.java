@@ -7,13 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * WalletManager
+ * WalletManager class to manage the players funds
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class WalletManager {
     /**
      * An hashmap of actors(key) that has wallet and its wallet value(value)
      */
-    private Map<Actor, Integer> walletActorHashMap;
+    private final Map<Actor, Integer> walletActorHashMap;
 
     /**
      * A walletManager instance

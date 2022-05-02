@@ -2,7 +2,6 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.Coin;
@@ -17,7 +16,7 @@ public class PickUpCoinAction extends PickUpItemAction {
      * the value of the coin
      */
 
-    private int coinValue;
+    private final int coinValue;
     /**
      * A coin object
      */

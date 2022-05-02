@@ -6,14 +6,34 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Probability;
 
-
+/**
+ * JumpAction class to do the jump actions
+ */
 public class JumpAction extends Action {
-
+    /**
+     * The success rate of the jump (0 - 100)
+     */
     protected int successRate;
+    /**
+     * The damage taken if jump fails
+     */
     protected int damage;
+    /**
+     * The direction of the jump
+     */
     protected String direction;
+    /**
+     * The location of the jump destination
+     */
     protected Location moveToLocation;
 
+    /**
+     * Constructor for the JumpAction
+     * @param successRate The success rate of the jump (0 - 100)
+     * @param damage The damage taken if jump fails
+     * @param direction The direction of the jump
+     * @param moveToLocation The location of the jump destination
+     */
     public JumpAction(int successRate, int damage, String direction, Location moveToLocation) {
         this.moveToLocation = moveToLocation;
         this.successRate = successRate;
@@ -21,6 +41,12 @@ public class JumpAction extends Action {
         this.direction = direction;
     }
 
+    /**
+     *
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         if(Probability.success(successRate)){
@@ -33,6 +59,11 @@ public class JumpAction extends Action {
         }
     }
 
+    /**
+     *
+     * @param actor The actor performing the action.
+     * @return
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor.toString() + " jumps " + direction;

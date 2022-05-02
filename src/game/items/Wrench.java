@@ -5,6 +5,8 @@ import game.actors.Status;
 
 /**
  * Wrench class is a subclass of WeaponItem which is a subclass of Item
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
  */
 public class Wrench extends WeaponItem implements Purchasable{
     /**
