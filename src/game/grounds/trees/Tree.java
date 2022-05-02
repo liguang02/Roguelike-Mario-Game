@@ -12,9 +12,7 @@ public abstract class Tree extends HighGround implements Resettable {
     /**
      *Name of the tree
      */
-    private String name;
-
-
+    private final String name;
 
     /**
      *A fixed int value for tree to grow into the next stage
@@ -45,7 +43,7 @@ public abstract class Tree extends HighGround implements Resettable {
 
     /**
      * If the tree has been removed before (Power Star buffed actor moves and destroys it), clears this instance from ResetManager
-     * Checks if a reset occured, REMOVED in capability set and if probability returns true (50% chance) remove the tree and make it dirt
+     * Checks if a reset occurred, REMOVED in capability set and if probability returns true (50% chance) remove the tree and make it dirt
      * @param location the location of the tree
      */
     @Override

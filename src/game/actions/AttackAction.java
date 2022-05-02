@@ -3,9 +3,12 @@ package game.actions;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actors.Enemy;
 import game.actors.Status;
 
 /**
@@ -59,25 +62,26 @@ public class AttackAction extends Action {
 		}
 
 		if(target.hasCapability(Status.INVINCIBLE)){
-			return actor + " " + weapon.verb() + " " + target + " but " + target + "is INVINCIBLE!";
+			return actor + " " + weapon.verb() + " " + target + " but " + target + " is INVINCIBLE!";
 		}
 
 		if(target.hasCapability(Status.TALL)){
 				target.removeCapability(Status.TALL);
-				return actor + " " + weapon.verb() + " " + target + ", " + target + "is not TALL anymore.";
+				return actor + " " + weapon.verb() + " " + target + ", " + target + " is not TALL anymore.";
 		}
 
 		target.hurt(damage);
 
 		if (!target.isConscious()) {
-			if(target.hasCapability(Status.SHELL)) {
+			//If Koopa killed by normal player, shell activated.
+			if(target.hasCapability(Status.SHELL) && !actor.hasCapability(Status.INVINCIBLE)) {
 				target.addCapability(Status.DORMANT);
 				result += System.lineSeparator() + target + " is Dormant.";
 				return result;
 			}
+			//For all other situations, death = removed from map and items dropped
 			else {
-				target.addCapability(Status.REMOVED);
-				result += System.lineSeparator() + target + " is killed.";
+				target.addCapability(Status.DEAD);
 			}
 		}
 		return result;

@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.DeathAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.SuicideBehaviour;
@@ -46,9 +47,19 @@ public abstract class Enemy extends Actor implements Resettable {
      * Removed the reset instance from the manager if killed naturally.
      */
     public void cleanReset(){
-        if(this.hasCapability(Status.REMOVED)) {
-            ResetManager.getInstance().cleanUp(this);
+        ResetManager.getInstance().cleanUp(this);
+    }
+
+    /**
+     * If the enemy is killed normally.
+     * Clean up reset manager, don't want it to do useless actions (does not crash game even without this)
+     */
+    public Action onDeath() {
+        if (this.hasCapability(Status.DEAD)) {
+            cleanReset();
+            return new DeathAction();
         }
+        return null;
     }
 
     public Map<Integer, Behaviour> getBehaviours() {

@@ -17,5 +17,6 @@ public enum Status {
     CONSUMER_SHROOM, //To denote if the actor can consume mushrooms
     CONSUMER_STAR, //To denote if the actor can consume power stars
     WRENCH, //To denote the item is a wrench
-    SHELL //To denote the actor becomes a shell on death
+    SHELL, //To denote the actor becomes a shell on death
+    DEAD //Status to denote the actor has been killed
 }

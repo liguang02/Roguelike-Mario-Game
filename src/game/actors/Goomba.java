@@ -13,8 +13,6 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.SuicideBehaviour;
-import game.items.Wrench;
-
 
 /**
  * A little fungus guy.
@@ -57,7 +55,12 @@ public class Goomba extends Enemy {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		super.cleanReset();
+
+		Action deathAction = super.onDeath();
+		if(deathAction != null){
+			return deathAction;
+		}
+
 		if(Probability.success(10)){
 			this.addCapability(Status.REMOVED);
 			this.getBehaviours().clear();
