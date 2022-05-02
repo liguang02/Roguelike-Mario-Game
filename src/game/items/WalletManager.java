@@ -2,7 +2,6 @@ package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

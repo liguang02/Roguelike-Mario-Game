@@ -19,8 +19,8 @@ public class AttackBehaviour implements Behaviour {
 
     /**
      * To store the direction and the target
-     * @param direction
-     * @param target
+     * @param direction the direction of the target
+     * @param target the target actor
      */
     public AttackBehaviour(String direction, Actor target) {
         this.direction = direction;
@@ -31,7 +31,7 @@ public class AttackBehaviour implements Behaviour {
      * To attack the actor automatically
      * @param actor the Actor acting
      * @param map the GameMap containing the Actor
-     * @return
+     * @return An attackAction
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {

@@ -78,10 +78,11 @@ public class Goomba extends Enemy {
 		return new DoNothingAction();
 	}
 
-	@Override
+
 	/**
 	 * Enemy's default Attack action which returns the damage and verb of the attack
 	 */
+	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		return new IntrinsicWeapon(10, "kick");
 	}

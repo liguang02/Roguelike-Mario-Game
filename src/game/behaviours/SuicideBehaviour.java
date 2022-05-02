@@ -18,7 +18,7 @@ public class SuicideBehaviour implements Behaviour{
      * Used to remove the actor from the map and drop items from their inventory if they are killed (status REMOVED)
      * @param actor the Actor acting
      * @param map the GameMap containing the Actor
-     * @return null
+     * @return DeathAction if the actor has the REMOVED status; return null otherwise
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {

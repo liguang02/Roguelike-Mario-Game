@@ -32,7 +32,7 @@ public class FollowBehaviour implements Behaviour {
 	 *
 	 * @param actor the Actor acting
 	 * @param map the GameMap containing the Actor
-	 * @return
+	 * @return a MoveActorAction if the actor is able to move to that particular location; else return null
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {

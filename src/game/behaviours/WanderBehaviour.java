@@ -28,7 +28,7 @@ public class WanderBehaviour extends Action implements Behaviour {
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
-		ArrayList<Action> actions = new ArrayList<Action>();
+		ArrayList<Action> actions = new ArrayList<>();
 		
 		for (Exit exit : map.locationOf(actor).getExits()) {
             Location destination = exit.getDestination();
@@ -50,7 +50,7 @@ public class WanderBehaviour extends Action implements Behaviour {
 	 * Displays the menuDescription
 	 * @param actor The actor performing the action.
 	 * @param map The map the actor is on.
-	 * @return
+	 * @return a String containing the menu description
 	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
@@ -60,7 +60,7 @@ public class WanderBehaviour extends Action implements Behaviour {
 	/**
 	 * Prints display of the actor
 	 * @param actor The actor performing the action.
-	 * @return
+	 * @return a string that represents the enemies noises
 	 */
 	@Override
 	public String menuDescription(Actor actor) {

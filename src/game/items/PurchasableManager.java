@@ -11,7 +11,7 @@ public class PurchasableManager {
     /**
      * An array list of purchasable items
      */
-    private ArrayList<Purchasable> purchasableItemList;
+    private final ArrayList<Purchasable> purchasableItemList;
 
     /**
      * A PurchasableManager instance
@@ -38,7 +38,7 @@ public class PurchasableManager {
 
     /**
      * A method that append an item of type PurchasableItem into the purchasableItemList
-     * @param item
+     * @param item an item that is purchasable
      */
     public void appendPurchasableItem(Purchasable item){
         this.purchasableItemList.add(item);
@@ -49,6 +49,6 @@ public class PurchasableManager {
      * @return a new arraylist of purchasableItem, so that it can prevent any modification made by outside this class
      */
     public ArrayList<Purchasable> getPurchasableItemList(){
-        return new ArrayList<Purchasable>(this.purchasableItemList);
+        return new ArrayList<>(this.purchasableItemList);
     }
 }

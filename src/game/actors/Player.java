@@ -98,9 +98,7 @@ public class Player extends Actor implements Resettable {
 		}
 	}
 
-	public void deathA(){
-
-	}
+	
 
 	/**
 	 * resetInstance for the player, removes all buffs/de-buffs from capabilities list
