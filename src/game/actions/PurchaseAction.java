@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.*;
+import game.items.WalletManager;
 
 /**
  * PurchaseAction class is a subclass of the engine class Action
@@ -69,7 +70,6 @@ public class PurchaseAction extends Action {
             if (item.equals(purchasableItem)) {
                 price = purchasableItem.price();
             }
-
         }
         return actor + " buys " + item + " ($" + price + ")";
 
