@@ -17,7 +17,7 @@ public class ResetAction extends Action {
      * Execute method, running the resetInstance, the resetManager runs
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
-     * @return String to denote that a reset has occured.
+     * @return String to denote that a reset has occurred.
      */
     @Override
     public String execute(Actor actor, GameMap map) {
