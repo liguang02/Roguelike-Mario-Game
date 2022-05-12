@@ -79,7 +79,6 @@ public class Monologue {
 
         return returnArray;
     }
-
     public ArrayList<String> getPrincessMonologues(Actor player) {
 
         ArrayList<String> tempArray = new ArrayList<>();
@@ -90,15 +89,21 @@ public class Monologue {
             tempArray.add(allMonologues.get(i));
 
             if (player.hasCapability(Status.KEY)) {
+                System.out.println("hi");
                 if (keyMonologues.get(i) == Status.GENERIC) {
                     tempArray.set(i, "Removed");
                 }
-            }
-            tempArray.forEach(x -> {
-                if (!x.equals("Removed")) {
-                    returnArray.add(x);
+            }else{
+                System.out.println("hi2");
+                if (keyMonologues.get(i) == Status.KEY) {
+                    tempArray.set(i, "Removed");
                 }
-            });
-        } return returnArray;
-    }
-}
+            }
+        }
+        tempArray.forEach(x -> {
+            if(!x.equals("Removed")){
+                returnArray.add(x);
+            }
+        });
+        return returnArray;
+    }}

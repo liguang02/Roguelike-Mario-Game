@@ -5,6 +5,8 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.Key;
 
+import static game.utilities.Status.KEY;
+
 public class PickUpKeyAction extends PickUpItemAction {
     /**
      * PowerStar type object that the entire action will work off.
@@ -21,9 +23,9 @@ public class PickUpKeyAction extends PickUpItemAction {
     @Override
     public String execute(Actor actor, GameMap map) {
         super.execute(actor, map);
-        return null;
+        actor.addCapability(KEY);
+        return menuDescription(actor);
     }
-
     @Override
     public String menuDescription(Actor actor) {
         String menuOutput = actor + " picks up " + key;
