@@ -79,4 +79,26 @@ public class Monologue {
 
         return returnArray;
     }
+
+    public ArrayList<String> getPrincessMonologues(Actor player) {
+
+        ArrayList<String> tempArray = new ArrayList<>();
+        ArrayList<String> returnArray = new ArrayList<>();
+
+        for (int i = 0; i < keyMonologues.size(); i++) {
+
+            tempArray.add(allMonologues.get(i));
+
+            if (player.hasCapability(Status.KEY)) {
+                if (keyMonologues.get(i) == Status.GENERIC) {
+                    tempArray.set(i, "Removed");
+                }
+            }
+            tempArray.forEach(x -> {
+                if (!x.equals("Removed")) {
+                    returnArray.add(x);
+                }
+            });
+        } return returnArray;
+    }
 }
