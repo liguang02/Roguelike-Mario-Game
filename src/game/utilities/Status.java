@@ -19,5 +19,6 @@ public enum Status {
     WRENCH, //To denote the item is a wrench
     SHELL, //To denote the actor becomes a shell on death
     DEAD, //Status to denote the actor has been killed
-    GENERIC //Status for monologues with no specific conditions.
+    GENERIC, //Status for monologues with no specific conditions.
+    KEY //To denote if the item is a key (After defeating Bowser)
 }
