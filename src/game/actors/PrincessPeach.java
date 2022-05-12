@@ -16,7 +16,7 @@ public class PrincessPeach extends Allies{
      */
     private final Monologue monologues = new Monologue();
     public PrincessPeach() {
-        super("Princess Peach", '♕',50);
+        super("Princess Peach", 'P',50);
         monologues.addMonologues(Status.KEY, "Thank you for saving me!");
         monologues.addMonologues(Status.GENERIC, "Dear Mario, I'll be waiting for you...");
         monologues.addMonologues(Status.GENERIC, "Never gonna give you up!");
