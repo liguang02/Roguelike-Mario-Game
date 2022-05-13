@@ -13,6 +13,7 @@ import game.actors.Toad;
 import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Wall;
+import game.grounds.WarpPipe;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
@@ -35,7 +36,7 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature(), new WarpPipe());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
