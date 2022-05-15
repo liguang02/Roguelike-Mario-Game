@@ -19,16 +19,17 @@ import game.utilities.Status;
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
  */
-public class Koopa extends KoopaTroop{
+public class FlyingKoopa extends KoopaTroop{
 
     /**
      * A constructor to generate an instance of a Koopa which has a SuperMushroom in its inventory
      * to be dropped when the Koopa is destroyed.
      */
-    public Koopa() {
+    public FlyingKoopa() {
 
-        super("Koopa", 'k', 50);
+        super("FlyingKoopa", 'F', 150);
         this.addCapability(Status.SHELL);
+        this.addCapability(Status.FLYING);
         this.addItemToInventory(new SuperMushroom());
     }
 
