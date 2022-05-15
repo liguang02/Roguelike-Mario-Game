@@ -21,5 +21,7 @@ public enum Status {
     DEAD, //Status to denote the actor has been killed
     GENERIC, //Status for monologues with no specific conditions.
     KEY, //To denote if the item is a key (After defeating Bowser)
-    FIRE // to denote the ground is a lava that will inflict damage to player
+    FIRE, // to denote the ground is a lava that will inflict damage to player
+    BURN, // For the fire ground class to cause harm to any player
+    FLYING // If the Koopa is a flying Koopa
 }

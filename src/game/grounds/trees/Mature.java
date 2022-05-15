@@ -2,6 +2,7 @@ package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.FlyingKoopa;
 import game.utilities.Probability;
 import game.actors.Koopa;
 import game.utilities.Status;
@@ -33,15 +34,23 @@ public class Mature extends Tree {
      * This method will be called in every turn, it handles all the necessary operations for this class,
      * such as spawning koopas, wither at a specific chance and grows a sprout at a random surrounding fertile ground.
      * @param location The location of the Mature object
+     *
+     * Asgn3: 50% chance of spawning Koopa and 50% chance of spawning Flying Koopa.
      */
     @Override
     public void tick(Location location) {
         super.tick(location);
         int koopaSpawnChance = 15;
+        int whichkoopaSpawnChance = 50;
         int witherChance = 20;
         if (Probability.success(koopaSpawnChance) && !location.containsAnActor()){
-            location.addActor(new Koopa());
+            if (Probability.success(whichkoopaSpawnChance)){
+                location.addActor(new Koopa());
+            } else {
+                location.addActor(new FlyingKoopa());
+            }
         }
+
         tickCounter++;
         if (tickCounter %5 == 0){
             ArrayList<Location> fertileGrounds = new ArrayList<>();
