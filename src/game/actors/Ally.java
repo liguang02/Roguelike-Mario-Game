@@ -2,7 +2,7 @@ package game.actors;
 
 import edu.monash.fit2099.engine.actors.Actor;
 
-public abstract class Allies extends Actor {
+public abstract class Ally extends Actor {
     /**
      * Constructor.
      *
@@ -10,7 +10,7 @@ public abstract class Allies extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Allies(String name, char displayChar, int hitPoints) {
+    public Ally(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
     }
 }

@@ -10,7 +10,7 @@ import game.actions.speech.Monologue;
 import game.actions.speech.SpeakAction;
 import game.utilities.Status;
 
-public class PrincessPeach extends Allies{
+public class PrincessPeach extends Ally {
     /**
      * constructor
      */

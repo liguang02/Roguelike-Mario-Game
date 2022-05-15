@@ -19,7 +19,7 @@ import game.utilities.Status;
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
  */
-public class Toad extends Allies {
+public class Toad extends Ally {
 
     private final Monologue monologues = new Monologue();
 
