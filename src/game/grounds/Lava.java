@@ -17,7 +17,7 @@ public class Lava extends Ground {
      */
     public Lava() {
         super('L');
-        this.addCapability(Status.FIRE);
+        this.addCapability(Status.LAVA);
         name =  "Lava";
         damage = 15;
     }

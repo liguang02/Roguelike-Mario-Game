@@ -13,7 +13,7 @@ import game.utilities.Status;
 
 public class PiranhaPlant extends Enemy {
     public PiranhaPlant(){
-        super("Piranha Plant", 'P', 90);
+        super("Piranha Plant", 'P', 5);
     }
 
     @Override
@@ -50,6 +50,6 @@ public class PiranhaPlant extends Enemy {
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         // drop fire (not implemented yet)
-        return new IntrinsicWeapon(90, "chomp");
+        return new IntrinsicWeapon(5, "chomp");
     }
 }

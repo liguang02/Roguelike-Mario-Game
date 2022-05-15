@@ -11,6 +11,6 @@ public class Fire extends Ground {
      */
     public Fire(char displayChar) {
         super('₳');
-        this.addCapability(Status.BURN);
+        this.addCapability(Status.FIRE);
     }
 }
