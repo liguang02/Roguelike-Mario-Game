@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
+import game.utilities.Status;
 
 /**
  * A class that figures out a MoveAction that will move the actor one step 
@@ -33,6 +34,8 @@ public class FollowBehaviour implements Behaviour {
 	 * @param actor the Actor acting
 	 * @param map the GameMap containing the Actor
 	 * @return a MoveActorAction if the actor is able to move to that particular location; else return null
+	 *
+	 * Asgn3: Added FLYING- if the actor is able to fly, it will follow the target above any item
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
@@ -45,14 +48,20 @@ public class FollowBehaviour implements Behaviour {
 		int currentDistance = distance(here, there);
 		for (Exit exit : here.getExits()) {
 			Location destination = exit.getDestination();
-			if (destination.canActorEnter(actor)) {
-				int newDistance = distance(destination, there);
-				if (newDistance < currentDistance) {
-					return new MoveActorAction(destination, exit.getName());
-				}
+			if(!(actor.hasCapability(Status.FLYING))){
+				if (destination.canActorEnter(actor)) {
+					int newDistance = distance(destination, there);
+					if (newDistance < currentDistance) {
+						return new MoveActorAction(destination, exit.getName());
+					}
+			} else {
+					int newDistance = distance(destination, there);
+					if (newDistance < currentDistance) {
+						return new MoveActorAction(destination, exit.getName());
+			}
 			}
 		}
-
+		}
 		return null;
 	}
 

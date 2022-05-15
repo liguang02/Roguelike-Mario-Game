@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.utilities.Status;
 
 /**
  * WanderBehaviour is used  by the enemies to wander around the map.
@@ -25,17 +26,23 @@ public class WanderBehaviour extends Action implements Behaviour {
 	 * @param actor the Actor enacting the behaviours
 	 * @param map the map that actor is currently on
 	 * @return an Action, or null if no MoveAction is possible
+	 *
+	 * Asgn3: Added FLYING- if the actor is able to fly, it will wander above any item
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		ArrayList<Action> actions = new ArrayList<>();
 		
 		for (Exit exit : map.locationOf(actor).getExits()) {
-            Location destination = exit.getDestination();
-            if (destination.canActorEnter(actor)) {
-            	actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
-            }
-        }
+			Location destination = exit.getDestination();
+			if (!(actor.hasCapability(Status.FLYING))) {
+				if (destination.canActorEnter(actor)) {
+					actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
+				}
+			} else {
+				actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
+			}
+		}
 		
 		if (!actions.isEmpty()) {
 			return actions.get(random.nextInt(actions.size()));
