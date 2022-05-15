@@ -14,13 +14,11 @@ public class TeleportAction extends Action {
         this.actor = actor;
         this.location = location;
         this.map = map;
-        location.
 
     }
     @Override
     public String execute(Actor actor, GameMap map) {
         Location source = map.locationOf(actor);
-        source.getGround().
 
 
         if (map.contains(actor)){

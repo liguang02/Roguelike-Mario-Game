@@ -25,5 +25,6 @@ public enum Status {
     FIRE, // For the fire ground class to cause harm to any player
     FLYING, // If the Koopa is a flying Koopa
     A_PERMANENT, //Status for permanent buff (fountain)
-    CAN_FILL //Items that can store water from fountains
+    CAN_FILL, //Items that can store water from fountains
+    BOWSER // For Bowser enemy
 }

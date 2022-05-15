@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.grounds.Fire;
 import game.utilities.Status;
 
 /**
@@ -67,6 +68,11 @@ public class AttackAction extends Action {
 		if(target.hasCapability(Status.TALL)){
 				target.removeCapability(Status.TALL);
 				return actor + " " + weapon.verb() + " " + target + ", " + target + " is not TALL anymore.";
+		}
+
+		if(actor.hasCapability(Status.BOWSER)){
+			map.locationOf(target).setGround(new Fire());
+			return actor + " dropped a fire on the ground where Mario is standing.";
 		}
 
 		target.hurt(damage);

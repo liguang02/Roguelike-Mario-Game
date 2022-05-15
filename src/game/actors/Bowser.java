@@ -19,6 +19,7 @@ import game.utilities.Status;
 public class Bowser extends Enemy{
     public Bowser() {
         super("Bowser", 'B', 500);
+        this.addCapability(Status.BOWSER);
     }
 
     @Override
@@ -34,6 +35,10 @@ public class Bowser extends Enemy{
             getBehaviours().put(3, new FollowBehaviour(otherActor));
         }
         return actions;
+    }
+    @Override
+    public void resetInstance() {
+        this.addCapability(Status.REMOVED);
     }
 
     @Override
