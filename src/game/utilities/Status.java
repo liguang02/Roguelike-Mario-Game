@@ -20,5 +20,6 @@ public enum Status {
     SHELL, //To denote the actor becomes a shell on death
     DEAD, //Status to denote the actor has been killed
     GENERIC, //Status for monologues with no specific conditions.
-    KEY //To denote if the item is a key (After defeating Bowser)
+    KEY, //To denote if the item is a key (After defeating Bowser)
+    FIRE // to denote the ground is a lava that will inflict damage to player
 }

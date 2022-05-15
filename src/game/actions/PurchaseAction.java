@@ -52,7 +52,6 @@ public class PurchaseAction extends Action {
                     execute = "You don't have enough coins!";
                 }
             }
-
         }
         return execute;
     }
