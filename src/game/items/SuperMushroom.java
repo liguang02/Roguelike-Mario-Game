@@ -17,7 +17,7 @@ import game.utilities.Status;
  */
 public class SuperMushroom extends Item implements  Purchasable{
     /**
-     * To store the price of the supermushroom
+     * To store the price of the super mushroom
      */
     private final int price;
     /**

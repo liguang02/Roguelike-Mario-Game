@@ -6,12 +6,14 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.DeathAction;
 import game.actions.ResetAction;
+import game.items.Bottle;
+import game.items.BottleManager;
 import game.items.WalletManager;
 import game.reset.Resettable;
 import game.utilities.Status;
-
 /**
  * Class representing the Player.
  * @version 1.1.2
@@ -22,18 +24,28 @@ public class Player extends Actor implements Resettable {
 	 * The menu to display for player.
 	 */
 	private final Menu menu = new Menu();
-
+	/**
+	 * Attack value of player without any weapons
+	 */
+	private int intrinsicAttackValue;
+	/**
+	 * Attack verb of player without any weapons
+	 */
+	private final String intrinsicAttackVerb;
 	/**
 	 * Constructor for Player class.
 	 *
 	 * @param name        Name to call the player in the UI
 	 * @param displayChar Character to represent the player in the UI
-	 * @param hitPoints   Player's starting number of hitpoints
+	 * @param hitPoints   Player's starting number of hit points
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		addBottle();
 		this.registerInstance();
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.intrinsicAttackValue = super.getIntrinsicWeapon().damage();
+		this.intrinsicAttackVerb = super.getIntrinsicWeapon().verb();
 	}
 
 	/**
@@ -78,8 +90,17 @@ public class Player extends Actor implements Resettable {
 		return displayChar;
 	}
 
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		if(this.hasCapability(Status.A_PERMANENT)){
+			intrinsicAttackValue += 15;
+			this.removeCapability(Status.A_PERMANENT);
+		}
+		return new IntrinsicWeapon(intrinsicAttackValue, intrinsicAttackVerb);
+	}
+
 	/**
-	 * Adds the capability for the player to consume stars/shrooms
+	 * Adds the capability for the player to consume stars/mushrooms
 	 * For future proofing : in a situation where actor cannot consume an item given condition we can just have an if statement here before add capability
 	 */
 	public void addCapabilities(){
@@ -99,18 +120,25 @@ public class Player extends Actor implements Resettable {
 		}
 	}
 
-
-
 	/**
 	 * resetInstance for the player, removes all buffs/de-buffs from capabilities list
 	 * Heals the player to full
-	 * Gives player RESET Capability to tell that the player cannot reset again.
+	 * Gives' player RESET Capability to tell that the player cannot reset again.
 	 */
 	@Override
 	public void resetInstance() {
 		this.capabilitiesList().forEach(this::removeCapability);
 		this.heal(getMaxHp());
 		this.addCapability(Status.RESET);
+	}
+
+	/**
+	 * Adds a bottle for this actor
+	 */
+	public void addBottle(){
+		Bottle bottle = new Bottle();
+		this.addItemToInventory(bottle);
+		BottleManager.getInstance().addBottle(this, bottle);
 	}
 
 	/**

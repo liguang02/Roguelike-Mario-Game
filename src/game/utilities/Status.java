@@ -23,5 +23,7 @@ public enum Status {
     KEY, //To denote if the item is a key (After defeating Bowser)
     FIRE, // to denote the ground is a lava that will inflict damage to player
     BURN, // For the fire ground class to cause harm to any player
-    FLYING // If the Koopa is a flying Koopa
+    FLYING, // If the Koopa is a flying Koopa
+    A_PERMANENT, //Status for permanent buff (fountain)
+    CAN_FILL //Items that can store water from fountains
 }
