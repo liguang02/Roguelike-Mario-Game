@@ -9,6 +9,7 @@ import game.utilities.Status;
  * A class that represents bare dirt.
  */
 public class Dirt extends Ground {
+	private String name;
 
 	/**
 	 * A constructor for dirt class
@@ -16,5 +17,11 @@ public class Dirt extends Ground {
 	public Dirt() {
 		super('.');
 		this.addCapability(Status.FERTILE);
+		name = "Dirt";
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }
