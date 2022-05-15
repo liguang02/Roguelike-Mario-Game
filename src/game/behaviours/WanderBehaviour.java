@@ -32,18 +32,14 @@ public class WanderBehaviour extends Action implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		ArrayList<Action> actions = new ArrayList<>();
-		
+
 		for (Exit exit : map.locationOf(actor).getExits()) {
 			Location destination = exit.getDestination();
-			if (!(actor.hasCapability(Status.FLYING))) {
-				if (destination.canActorEnter(actor)) {
-					actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
-				}
-			} else {
+			if (destination.canActorEnter(actor)) {
 				actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
 			}
 		}
-		
+
 		if (!actions.isEmpty()) {
 			return actions.get(random.nextInt(actions.size()));
 		}
@@ -52,6 +48,7 @@ public class WanderBehaviour extends Action implements Behaviour {
 		}
 
 	}
+
 
 	/**
 	 * Displays the menuDescription
