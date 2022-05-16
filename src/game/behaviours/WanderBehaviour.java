@@ -35,7 +35,12 @@ public class WanderBehaviour extends Action implements Behaviour {
 
 		for (Exit exit : map.locationOf(actor).getExits()) {
 			Location destination = exit.getDestination();
+			if(!(actor.hasCapability(Status.FLYING))){
 			if (destination.canActorEnter(actor)) {
+				actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
+			}
+
+		} else{
 				actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
 			}
 		}

@@ -29,9 +29,9 @@ public class FlyingKoopa extends KoopaTroop {
     public FlyingKoopa() {
 
         super("FlyingKoopa", 'F', 150);
-        this.addCapability(Status.SHELL);
         this.addCapability(Status.FLYING);
         this.addItemToInventory(new SuperMushroom());
+        getBehaviours().put(1, new WanderBehaviour());
     }
 
     /**
@@ -45,7 +45,6 @@ public class FlyingKoopa extends KoopaTroop {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        getBehaviours().put(1, new WanderBehaviour());
 
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !this.hasCapability(Status.DORMANT)) {

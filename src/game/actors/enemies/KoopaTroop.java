@@ -1,6 +1,7 @@
 package game.actors.enemies;
 
 import game.actors.enemies.Enemy;
+import game.utilities.Status;
 
 abstract class KoopaTroop extends Enemy {
     /**
@@ -12,5 +13,6 @@ abstract class KoopaTroop extends Enemy {
      */
     public KoopaTroop(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.addCapability(Status.SHELL);
     }
 }

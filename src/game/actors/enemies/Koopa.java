@@ -28,7 +28,6 @@ public class Koopa extends KoopaTroop{
     public Koopa() {
 
         super("Koopa", 'k', 50);
-        this.addCapability(Status.SHELL);
         this.addItemToInventory(new SuperMushroom());
         getBehaviours().put(1, new WanderBehaviour());
     }

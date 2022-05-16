@@ -20,6 +20,8 @@ public class Fire extends Ground {
     public Fire() {
         super('₳');
         this.addCapability(Status.FIRE);
+        name = "Fire";
+        damage = 20;
         tickCounter = 0;
     }
 
