@@ -4,7 +4,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.utilities.Status;
 
 /**
- *
+ * PowerWater object to fill the Healing Fountain.
+ * @version 1.1.2
+ * @author sthi0011
  */
 public class PowerWater extends Water {
     /**

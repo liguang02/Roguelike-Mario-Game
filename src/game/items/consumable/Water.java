@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 
 /**
  * Abstract class Water to be extended by any consumable liquids (such as the one in the fountain)
+ * @version 1.1.2
+ * @author sthi0011
  */
 public abstract class Water {
     /**

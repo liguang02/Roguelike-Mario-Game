@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 
 /**
  * HealingWater object to fill the Healing Fountain.
+ * @version 1.1.2
+ * @author sthi0011
  */
 public class HealingWater extends Water {
     /**
