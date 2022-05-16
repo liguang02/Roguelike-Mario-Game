@@ -3,6 +3,7 @@ package game.actors.enemies;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -14,7 +15,7 @@ import game.utilities.Status;
 
 public class PiranhaPlant extends Enemy {
     public PiranhaPlant(){
-        super("Piranha Plant", 'P', 5);
+        super("Piranha Plant", 'P', 150);
     }
 
     @Override
@@ -45,12 +46,18 @@ public class PiranhaPlant extends Enemy {
     }
 
     @Override
+    public void resetInstance() {
+        this.increaseMaxHp(50);
+        this.heal(getMaxHp());
+    }
+
+
+    @Override
     public void registerInstance() {
         super.registerInstance();
     }
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        // drop fire (not implemented yet)
-        return new IntrinsicWeapon(5, "chomp");
+        return new IntrinsicWeapon(90, "chomp");
     }
 }

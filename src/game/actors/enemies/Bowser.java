@@ -72,7 +72,6 @@ public class Bowser extends Enemy {
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        // drop fire (not implemented yet)
         return new IntrinsicWeapon(80, "punch");
     }
 
