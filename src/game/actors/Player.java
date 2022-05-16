@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.DeathAction;
 import game.actions.ResetAction;
+import game.items.consumable.PowerStar;
 import game.items.permanent.Bottle;
 import game.items.BottleManager;
 import game.items.WalletManager;
@@ -46,6 +47,7 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.intrinsicAttackValue = super.getIntrinsicWeapon().damage();
 		this.intrinsicAttackVerb = super.getIntrinsicWeapon().verb();
+		this.addItemToInventory(new PowerStar());
 	}
 
 	/**

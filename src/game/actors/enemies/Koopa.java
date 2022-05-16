@@ -29,7 +29,7 @@ public class Koopa extends KoopaTroop{
 
         super("Koopa", 'k', 50);
         this.addItemToInventory(new SuperMushroom());
-        getBehaviours().put(1, new WanderBehaviour());
+        getBehaviours().put(10, new WanderBehaviour());
     }
 
     /**
@@ -47,7 +47,6 @@ public class Koopa extends KoopaTroop{
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !this.hasCapability(Status.DORMANT)) {
             actions.add(new AttackAction(this, direction));
-            getBehaviours().remove(1);
             getBehaviours().put(2, new AttackBehaviour(direction, otherActor));
             getBehaviours().put(3, new FollowBehaviour(otherActor));
         }

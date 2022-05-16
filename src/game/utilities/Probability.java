@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Probability {
     /**
-     * This method will use the nextDouble() from Random module to obtain a randomized value between 0 and 1
+     * This method will use the nextDouble() from Random module to obtain a randomized value between 0 and 1,
      * and we will use it to compare with the input value/100.
      * @param chance the probability chance
      * @return True if it successfully passes the random check; False otherwise

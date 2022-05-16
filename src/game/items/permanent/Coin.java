@@ -36,7 +36,7 @@ public class Coin extends Item implements Resettable {
     /**
      * Overrides the method in item class to return a PickUpCoinAction instead  of
      * PickUpItemAction.
-     * @param actor the actor that will pickup the coin/item
+     * @param actor the actor that will pick up the coin/item
      * @return PickUpCoinAction, which is a subclass of PickUpItemAction
      */
     @Override

@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class WalletManager {
     /**
-     * An hashmap of actors(key) that has wallet and its wallet value(value)
+     * A hashmap of actors(key) that has wallet and its wallet value(value)
      */
     private final Map<Actor, Integer> walletActorHashMap;
 
@@ -38,14 +38,6 @@ public class WalletManager {
             instance = new WalletManager();
         }
         return instance;
-    }
-
-    /**
-     * A getter for the walletActorHashMap
-     * @return a new hash map, so that it can prevent any modification made by outside this class.
-     */
-    public HashMap<Actor, Integer> getWalletActor() {
-        return new HashMap<>(this.walletActorHashMap);
     }
 
     /**

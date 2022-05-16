@@ -3,20 +3,27 @@ package game.actors.enemies;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.items.permanent.Key;
+import game.items.permanent.Wrench;
 import game.utilities.Status;
 
 public class Bowser extends Enemy {
+
+    private Location defaultLocation;
+
     public Bowser() {
         super("Bowser", 'B', 500);
         this.addCapability(Status.BOWSER);
+        this.addCapability(Status.FIRST_TURN);
     }
 
     @Override
@@ -35,11 +42,17 @@ public class Bowser extends Enemy {
     }
     @Override
     public void resetInstance() {
-        this.addCapability(Status.REMOVED);
+        this.heal(getMaxHp());
+        new MoveActorAction(defaultLocation, "").execute(this,defaultLocation.map());
     }
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if(this.hasCapability(Status.FIRST_TURN)){
+            this.defaultLocation = map.locationOf(this);
+            this.removeCapability(Status.FIRST_TURN);
+        }
+
 
         Action deathAction = super.onDeath();
         if(deathAction != null){
@@ -62,4 +75,7 @@ public class Bowser extends Enemy {
         // drop fire (not implemented yet)
         return new IntrinsicWeapon(80, "punch");
     }
+
+
+
 }

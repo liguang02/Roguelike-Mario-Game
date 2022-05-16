@@ -131,7 +131,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
     /**
      * Returns the current timeSpan of the Power Star item.
      * (If the item is on the ground, it is the remaining life span of the item before it disappears)
-     * (If the item is in the actors inventory, it is the remaining time span of the buff before it dissapears)
+     * (If the item is in the actors inventory, it is the remaining time span of the buff before it disappears)
      * @return the current timeSpan of the Power Star item.
      */
     public int getTimeSpan() {

@@ -25,5 +25,6 @@ public enum Status {
     FIRE, // For the fire ground class to cause harm to any player
     FLYING, // If the Koopa is a flying Koopa
     INTRINSIC_BUFF, //Status for permanent buff (fountain)
-    BOWSER // For Bowser enemy
+    BOWSER, // For Bowser enemy
+    FIRST_TURN
 }
