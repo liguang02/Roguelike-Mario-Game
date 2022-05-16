@@ -48,18 +48,17 @@ public class FollowBehaviour implements Behaviour {
 		int currentDistance = distance(here, there);
 		for (Exit exit : here.getExits()) {
 			Location destination = exit.getDestination();
-			if (!(target.hasCapability(Status.FLYING))) {
+			if (!(actor.hasCapability(Status.FLYING))) {
 				if (destination.canActorEnter(actor)) {
 					int newDistance = distance(destination, there);
 					if (newDistance < currentDistance) {
 						return new MoveActorAction(destination, exit.getName());
 					}
 				}
-				else {
-					int newDistance = distance(destination, there);
-					if (newDistance < currentDistance) {
-						return new MoveActorAction(destination, exit.getName());
-					}
+			}else {
+				int newDistance = distance(destination, there);
+				if (newDistance < currentDistance) {
+					return new MoveActorAction(destination, exit.getName());
 				}
 			}
 		}
