@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
 import game.utilities.Status;
-import game.items.Coin;
+import game.items.permanent.Coin;
 
 /**
  * @version 1.1.2
@@ -65,12 +65,12 @@ public abstract class HighGround extends Ground {
     }
 
     /**
-     * This method will add the JumpAction into the actionlist if the actor does not have any
+     * This method will add the JumpAction into the action list if the actor does not have any
      * power star buff active and no other actor is currently standing on the current location
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return an actionlist containing JumpAction if it passes the check
+     * @return an action list containing JumpAction if it passes the check
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
@@ -82,7 +82,7 @@ public abstract class HighGround extends Ground {
     }
 
     /**
-     * a method that will return the name of the highground. e.g Wall, Mature, Sprout etc.
+     * a method that will return the name of the high ground. e.g. Wall, Mature, Sprout etc.
      * @return String representing the name of the high ground object.
      */
     public abstract String toString();

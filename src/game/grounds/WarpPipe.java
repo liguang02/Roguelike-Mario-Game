@@ -1,18 +1,17 @@
 package game.grounds;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.TeleportAction;
-import game.actors.PiranhaPlant;
+import game.actors.enemies.PiranhaPlant;
 
 public class WarpPipe extends HighGround {
     /**
      * Name of the high ground, Warp pipe
      */
     private final String name;
+
     private int tickCounter;
 
     /**

@@ -2,7 +2,7 @@ package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.utilities.Probability;
-import game.items.Coin;
+import game.items.permanent.Coin;
 
 /**
  * @version 1.1.2

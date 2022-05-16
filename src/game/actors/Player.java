@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.DeathAction;
 import game.actions.ResetAction;
-import game.items.Bottle;
+import game.items.permanent.Bottle;
 import game.items.BottleManager;
 import game.items.WalletManager;
 import game.reset.Resettable;
@@ -92,9 +92,9 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
-		if(this.hasCapability(Status.A_PERMANENT)){
+		if(this.hasCapability(Status.INTRINSIC_BUFF)){
 			intrinsicAttackValue += 15;
-			this.removeCapability(Status.A_PERMANENT);
+			this.removeCapability(Status.INTRINSIC_BUFF);
 		}
 		return new IntrinsicWeapon(intrinsicAttackValue, intrinsicAttackVerb);
 	}

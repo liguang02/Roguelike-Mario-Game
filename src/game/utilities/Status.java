@@ -24,7 +24,6 @@ public enum Status {
     LAVA, // to denote the ground is a lava that will inflict damage to player
     FIRE, // For the fire ground class to cause harm to any player
     FLYING, // If the Koopa is a flying Koopa
-    A_PERMANENT, //Status for permanent buff (fountain)
-    CAN_FILL, //Items that can store water from fountains
+    INTRINSIC_BUFF, //Status for permanent buff (fountain)
     BOWSER // For Bowser enemy
 }

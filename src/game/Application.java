@@ -9,11 +9,10 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
-import game.actors.Toad;
-import game.grounds.Dirt;
-import game.grounds.Floor;
-import game.grounds.Wall;
-import game.grounds.WarpPipe;
+import game.actors.allies.Toad;
+import game.grounds.*;
+import game.grounds.fountains.HealthFountain;
+import game.grounds.fountains.PowerFountain;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
@@ -36,7 +35,7 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature(), new WarpPipe());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature(), new WarpPipe(), new PowerFountain(), new HealthFountain());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
@@ -49,8 +48,8 @@ public class Application {
 				".................................................##.............................",
 				"................................................##..............................",
 				".........+..............................+#____####.................+............",
-				".......................................+#_____###++.............................",
-				".......................................+#______###..............................",
+				".......................................+#_A___###++.............................",
+				".......................................+#__H___###..............................",
 				"........................................+#_____###..............................",
 				"........................+........................##.............+...............",
 				"...................................................#............................",
@@ -81,8 +80,8 @@ public class Application {
 			world.addGameMap(gameMap);
 
 //			second game map
-			GameMap bossMap = new GameMap(groundFactory, lavaZone);
-			world.addGameMap(bossMap);
+//			GameMap bossMap = new GameMap(groundFactory, lavaZone);
+//			world.addGameMap(bossMap);
 
 			Actor mario = new Player("Mario", 'm', 100);
 //need to do the addPlayer for the new lava zone map but only do it with some condition (player jumps into the warp pipe)

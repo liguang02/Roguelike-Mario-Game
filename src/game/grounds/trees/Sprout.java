@@ -2,7 +2,7 @@ package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.utilities.Probability;
-import game.actors.Goomba;
+import game.actors.enemies.Goomba;
 /**
  * @version 1.1.3
  * @author sthi0011, lcha0068, esea0003

@@ -2,9 +2,9 @@ package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.FlyingKoopa;
+import game.actors.enemies.FlyingKoopa;
 import game.utilities.Probability;
-import game.actors.Koopa;
+import game.actors.enemies.Koopa;
 import game.utilities.Status;
 import game.grounds.Dirt;
 
