@@ -90,6 +90,12 @@ public class Player extends Actor implements Resettable {
 		return displayChar;
 	}
 
+	/**
+	 * Method that returns the intrinsic weapon of the actor.
+	 * Override to allow for buff in damage when consuming the Power Water.
+	 * Avoids directly affecting the original getIntrinsicWeapon to allow for reset (removing all the buff damage)
+	 * @return a freshly-instantiated IntrinsicWeapon
+	 */
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
 		if(this.hasCapability(Status.INTRINSIC_BUFF)){
@@ -130,6 +136,7 @@ public class Player extends Actor implements Resettable {
 		this.capabilitiesList().forEach(this::removeCapability);
 		this.heal(getMaxHp());
 		this.addCapability(Status.RESET);
+		this.intrinsicAttackValue = super.getIntrinsicWeapon().damage();
 	}
 
 	/**

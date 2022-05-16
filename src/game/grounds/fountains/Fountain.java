@@ -8,12 +8,16 @@ import game.actions.pickups.FillAction;
 import game.items.permanent.Bottle;
 import game.items.BottleManager;
 import game.items.consumable.Water;
-
 import java.util.Stack;
 
+/**
+ * @version 1.0.0
+ * @author sthi0011
+ * A fountain abstract class to be extended by any fountain.
+ */
 public abstract class Fountain extends Ground {
     /**
-     *Name of the tree
+     *Name of the fountain
      */
     private final String name;
 
@@ -41,10 +45,21 @@ public abstract class Fountain extends Ground {
         return name;
     }
 
+    /**
+     * Method to check what water the fountain is holding
+     * @return String, name of the water
+     */
     public String fountainLiquid(){
         return fountain.peek().toString();
     }
 
+    /**
+     * Method to provide allowable actions for the actor on location.
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return action list, list of allowable actions
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actionList = super.allowableActions(actor, location, direction);
@@ -57,18 +72,21 @@ public abstract class Fountain extends Ground {
         return actionList;
     }
 
+    /**
+     * Pops a water object from the stack
+     * @return the water object popped
+     */
     public Water removeWater(){
         return fountain.size() > 0 ? fountain.pop() : null;
     }
 
+    /**
+     * Refilling the fountain to have 10 water objects.
+     * @param water The type of water we want to fill the fountain with
+     */
     public void fillFountain(Water water){
         while (fountain.size() < 10){
             fountain.push(water);
         }
-    }
-
-    @Override
-    public void tick(Location location) {
-        super.tick(location);
     }
 }
