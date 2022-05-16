@@ -30,6 +30,7 @@ public class Koopa extends KoopaTroop{
         super("Koopa", 'k', 50);
         this.addCapability(Status.SHELL);
         this.addItemToInventory(new SuperMushroom());
+        getBehaviours().put(1, new WanderBehaviour());
     }
 
     /**
@@ -43,7 +44,6 @@ public class Koopa extends KoopaTroop{
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        getBehaviours().put(1, new WanderBehaviour());
 
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) && !this.hasCapability(Status.DORMANT)) {

@@ -2,15 +2,14 @@ package game.actors.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actors.enemies.Enemy;
+import game.actions.AttackAction;
 import game.behaviours.*;
 import game.utilities.Probability;
-import game.actions.AttackAction;
 import game.utilities.Status;
 
 /**
@@ -26,6 +25,7 @@ public class Goomba extends Enemy {
 	public Goomba() {
 		super("Goomba", 'g', 50);
 		getBehaviours().put(2, new SuicideBehaviour());
+		getBehaviours().put(1, new WanderBehaviour());
 	}
 
 	/**
@@ -41,7 +41,6 @@ public class Goomba extends Enemy {
 	@Override
 	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 		ActionList actions = new ActionList();
-		getBehaviours().put(1, new WanderBehaviour());
 
 		// it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
@@ -54,7 +53,7 @@ public class Goomba extends Enemy {
 	}
 
 	/**
-	 * playturn is used after the player performs its action
+	 * play-turn is used after the player performs its action
 	 * @see Actor#playTurn(ActionList, Action, GameMap, Display)
 	 */
 	@Override

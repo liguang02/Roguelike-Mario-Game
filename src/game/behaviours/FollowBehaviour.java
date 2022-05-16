@@ -37,33 +37,6 @@ public class FollowBehaviour implements Behaviour {
 	 *
 	 * Asgn3: Added FLYING- if the actor is able to fly, it will follow the target above any item
 	 */
-//	@Override
-//	public Action getAction(Actor actor, GameMap map) {
-//		if(!map.contains(target) || !map.contains(actor))
-//			return null;
-//
-//		Location here = map.locationOf(actor);
-//		Location there = map.locationOf(target);
-//
-//		int currentDistance = distance(here, there);
-//		for (Exit exit : here.getExits()) {
-//			Location destination = exit.getDestination();
-////			if(!actor.hasCapability(Status.FLYING)){
-//			if (destination.canActorEnter(actor)) {
-//				int newDistance = distance(destination, there);
-//				if (newDistance < currentDistance) {
-//					return new MoveActorAction(destination, exit.getName());
-//					}
-////			} else {
-////					int newDistance = distance(destination, there);
-////					if (newDistance < currentDistance) {
-////						return new MoveActorAction(destination, exit.getName());
-////			}
-////			}
-//			}
-//		}
-//		return null;
-//	}
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		if(!map.contains(target) || !map.contains(actor))
@@ -82,7 +55,6 @@ public class FollowBehaviour implements Behaviour {
 				}
 			}
 		}
-
 		return null;
 	}
 
