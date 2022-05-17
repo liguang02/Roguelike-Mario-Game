@@ -166,6 +166,7 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.INVINCIBLE)){
 			formatted += "\n" + this + " is INVINCIBLE!";
 		}
+		display.println(this.getInventory().toString());
 		display.println(formatted);
 	}
 }

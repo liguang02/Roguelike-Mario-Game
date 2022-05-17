@@ -6,8 +6,8 @@ import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.consumption.ConsumeShroomAction;
-import game.actions.pickups.PickUpShroomAction;
+import game.actions.consumption.ConsumeAction;
+import game.actions.pickups.PickUpConsumeAction;
 import game.items.Purchasable;
 import game.utilities.Status;
 
@@ -16,15 +16,15 @@ import game.utilities.Status;
  * @author sthi0011, lcha0068, esea0003
  * SuperMushroom class implementing the Super Mushroom item from Req. 4
  */
-public class SuperMushroom extends Item implements Purchasable {
+public class SuperMushroom extends Item implements Purchasable, Consumable {
     /**
      * To store the price of the super mushroom
      */
     private final int price;
     /**
-     *
+     * The action used to give player option to consume the mushroom, when item is consumed remove this action from allowable actions.
      */
-    private final Action consumeAction = new ConsumeShroomAction(this);
+    private final Action consumeAction = new ConsumeAction(this);
     /**
      * Constructor for the SuperMushroom class
      */
@@ -41,7 +41,7 @@ public class SuperMushroom extends Item implements Purchasable {
      */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
-        return new PickUpShroomAction(this);
+        return new PickUpConsumeAction(this);
     }
 
     /**
@@ -82,9 +82,23 @@ public class SuperMushroom extends Item implements Purchasable {
     }
 
     /**
-     * When mushroom consumed, removing consumeAction from action list.
+     * Method that provides buff to the actor and also removes actions/the item from actors inventory
+     * @param actor The actor consuming the item
      */
-    public void consumeShroom(){
+    @Override
+    public void consume(Actor actor) {
+        actor.increaseMaxHp(50);
+        actor.addCapability(Status.TALL);
         this.removeAction(consumeAction);
+        actor.removeItemFromInventory(this);
+    }
+
+    /**
+     * Returns itself as an item type (to avoid type casting)
+     * @return Item type of itself
+     */
+    @Override
+    public Item returnSelf() {
+        return this;
     }
 }

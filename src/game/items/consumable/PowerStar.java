@@ -6,8 +6,8 @@ import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.consumption.ConsumeStarAction;
-import game.actions.pickups.PickUpStarAction;
+import game.actions.consumption.ConsumeAction;
+import game.actions.pickups.PickUpConsumeAction;
 import game.items.Purchasable;
 import game.utilities.Status;
 import game.reset.Resettable;
@@ -17,7 +17,7 @@ import game.reset.Resettable;
  * @author sthi0011, lcha0068, esea0003
  * PowerStar class implementing the Power Star item from Req. 4
  */
-public class PowerStar extends Item implements Purchasable, Resettable {
+public class PowerStar extends Item implements Purchasable, Resettable, Consumable {
     /**
      * The life span of the item on the ground/ time remaining of the players buff from this item
      */
@@ -34,7 +34,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
     /**
      * The action used to give player option to consume the star, when item is consumed remove this action from allowable actions.
      */
-    private final Action consumeAction = new ConsumeStarAction(this);
+    private final Action consumeAction = new ConsumeAction(this);
     /**
      * Constructor for the PowerStar class
      * Setting the timeSpan to 10 (life span of item if left on ground)
@@ -111,7 +111,7 @@ public class PowerStar extends Item implements Purchasable, Resettable {
      */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
-        return new PickUpStarAction(this);
+        return new PickUpConsumeAction(this);
     }
 
     /**
@@ -160,5 +160,37 @@ public class PowerStar extends Item implements Purchasable, Resettable {
         if(consumed) {
             timeSpan = -1;
         }
+    }
+
+    /**
+     * Method that provides buff to the actor and also removes actions/the item from actors inventory
+     * @param actor The actor consuming the item
+     */
+    @Override
+    public void consume(Actor actor) {
+        actor.heal(200);
+        actor.addCapability(Status.INVINCIBLE);
+        timeSpan = 10;
+        consumed = true;
+        this.addCapability(Status.REMOVED);
+        this.removeAction(consumeAction);
+    }
+
+    /**
+     * Returns remaining life span of power star in inventory
+     * @return String of the life span
+     */
+    @Override
+    public String getLifeSpanString() {
+        return !consumed ? Integer.toString(getTimeSpan()) : null;
+    }
+
+    /**
+     * Returns itself as an item type (to avoid type casting)
+     * @return Item type of itself
+     */
+    @Override
+    public Item returnSelf() {
+        return this;
     }
 }
