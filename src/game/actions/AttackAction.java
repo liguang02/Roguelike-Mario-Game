@@ -100,6 +100,6 @@ public class AttackAction extends Action {
 	 */
 	@Override
 	public String menuDescription(Actor actor) {
-		return actor + " attacks " + target + " at " + direction;
+		return actor + " attacks " + target + " at " + direction + " with " + actor.getWeapon();
 	}
 }
