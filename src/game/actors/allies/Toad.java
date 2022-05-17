@@ -11,6 +11,7 @@ import game.actions.PurchaseAction;
 import game.actors.allies.Ally;
 import game.items.consumable.PowerStar;
 import game.items.consumable.SuperMushroom;
+import game.items.permanent.Hammer;
 import game.items.permanent.Wrench;
 import game.actions.speech.SpeakAction;
 import game.utilities.Status;
@@ -55,6 +56,7 @@ public class Toad extends Ally {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         actions.add(new PurchaseAction(new Wrench()));
+        actions.add(new PurchaseAction(new Hammer()));
         actions.add(new PurchaseAction(new SuperMushroom()));
         actions.add(new PurchaseAction(new PowerStar()));
         actions.add(new SpeakAction(monologues, this));
