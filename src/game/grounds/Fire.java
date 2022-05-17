@@ -39,11 +39,13 @@ public class Fire extends Ground {
     public void tick(Location location) {
         super.tick(location);
         Actor actor = location.getActor();
-        if (actor != null){
+        if (actor != null && !actor.hasCapability(Status.FIRE_IMMUNE)){
             actor.hurt(damage);
             if(!actor.isConscious()){
                 actor.addCapability(Status.DEAD);
             }
+        }if (actor != null && actor.hasCapability(Status.FIRE_IMMUNE)){
+            actor.removeCapability(Status.FIRE_IMMUNE);
         }
         tickCounter++;
         if (tickCounter == 3){

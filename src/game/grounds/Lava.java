@@ -45,12 +45,15 @@ public class Lava extends Ground {
     public void tick(Location location) {
         super.tick(location);
         Actor actor = location.getActor();
-        if (actor != null && !actor.hasCapability(Status.ENEMY)){
+        if (actor != null && !actor.hasCapability(Status.ENEMY) && !actor.hasCapability(Status.FIRE_IMMUNE)){
             actor.hurt(damage);
             if(!actor.isConscious()){
                 actor.addCapability(Status.DEAD);
             }
+        }if (actor != null && actor.hasCapability(Status.FIRE_IMMUNE)){
+            actor.removeCapability(Status.FIRE_IMMUNE);
         }
+
     }
 
     @Override
@@ -59,6 +62,9 @@ public class Lava extends Ground {
         if (!actor.hasCapability(Status.ENEMY)&& location.getActor() != actor) {
             actionList.add(new MoveToTrapAction(damage, location, direction));
         }
+//        if(location.getActor() != null && !actor.hasCapability(Status.ENEMY)){
+//            actionList.add(new MoveToTrapAction(Status.FIRE, damage));
+//        }
         return actionList;
     }
 }

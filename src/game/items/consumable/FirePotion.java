@@ -14,7 +14,7 @@ public class FirePotion extends Item implements Purchasable, Consumable{
 
     public FirePotion(){
         super("Fire Potion", '6', false);
-        this.price = 100;
+        this.price = 60;
         this.addToPurchasableManager();
     }
 
