@@ -114,6 +114,7 @@ public class Player extends Actor implements Resettable {
 	public void addCapabilities(){
 		this.addCapability(Status.CONSUMER_STAR);
 		this.addCapability(Status.CONSUMER_SHROOM);
+		this.addCapability(Status.CONSUMER_FIREPOT);
 	}
 
 	/**

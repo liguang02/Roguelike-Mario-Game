@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.speech.Monologue;
 import game.actions.PurchaseAction;
 import game.actors.allies.Ally;
+import game.items.consumable.FirePotion;
 import game.items.consumable.PowerStar;
 import game.items.consumable.SuperMushroom;
 import game.items.permanent.Hammer;
@@ -59,6 +60,7 @@ public class Toad extends Ally {
         actions.add(new PurchaseAction(new Hammer()));
         actions.add(new PurchaseAction(new SuperMushroom()));
         actions.add(new PurchaseAction(new PowerStar()));
+        actions.add(new PurchaseAction(new FirePotion()));
         actions.add(new SpeakAction(monologues, this));
         return actions;
     }
