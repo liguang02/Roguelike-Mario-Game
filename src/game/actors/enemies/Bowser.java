@@ -16,16 +16,35 @@ import game.items.permanent.Key;
 import game.items.permanent.Wrench;
 import game.utilities.Status;
 
+/**
+ * Bowser enemy that is spawned on the BossMap.
+ * @version 1.1.1
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class Bowser extends Enemy {
 
     private Location defaultLocation;
 
+    /**
+     * Bowser constructor which contains the BOWSER capability (which
+     * enables bowser to drop fire grounds in the AttackAction class) and
+     * the FIRST_TURN capability which stores the location of Bowser for it
+     * to be reset back to the original location during the first turn.
+     */
     public Bowser() {
         super("Bowser", 'B', 500);
         this.addCapability(Status.BOWSER);
         this.addCapability(Status.FIRST_TURN);
     }
 
+    /**
+     * To check for any actions that can be performed by Bowser when it encounters another actor which
+     * has HOSTILE_TO_ENEMY.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return actions, a list of actions that can be performed by Bowser
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
@@ -40,19 +59,32 @@ public class Bowser extends Enemy {
         }
         return actions;
     }
+
+    /**
+     * Register instance of the Bowser to be reset if mario resets the game (and move
+     * to the default location stored from the first turn) and also
+     * maximises hp once reset.
+     */
     @Override
     public void resetInstance() {
         this.heal(getMaxHp());
         new MoveActorAction(defaultLocation, "").execute(this,defaultLocation.map());
     }
 
+    /**
+     * playturn is used after the player performs its action
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if(this.hasCapability(Status.FIRST_TURN)){
             this.defaultLocation = map.locationOf(this);
             this.removeCapability(Status.FIRST_TURN);
         }
-
 
         Action deathAction = super.onDeath();
         if(deathAction != null){
@@ -68,7 +100,7 @@ public class Bowser extends Enemy {
 
     /**
      * Enemy's default Attack action which returns the damage and verb of the attack
-     * @return
+     * @return default IntristicWeapon
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {

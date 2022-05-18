@@ -9,14 +9,16 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
+import game.actors.allies.PrincessPeach;
 import game.actors.allies.Toad;
+import game.actors.enemies.Bowser;
 import game.grounds.*;
 import game.grounds.fountains.HealthFountain;
 import game.grounds.fountains.PowerFountain;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
-
+import game.items.permanent.Key;
 
 
 /**
@@ -90,15 +92,19 @@ public class Application {
 //			WarpPipe secondMapPipe = new WarpPipe();
 //			WarpPipe firstMapPipe = new WarpPipe(secondMapPipe);
 			gameMap.at(45,10).addActor(new Toad());
+//			gameMap.at(12, 10).addActor(new PrincessPeach());
+//			gameMap.at(12, 11).addItem(new Key());
 //			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-		gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0)));
-		gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0)));
-		gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0)));
-		gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0)));
 			bossMap.at(0,0).setGround(new WarpPipe());
+//			gameMap.at(63,7).addActor(new Bowser());
+//			gameMap.at(64,7).addActor(new PrincessPeach());
 
 
 

@@ -38,7 +38,7 @@ public class Koopa extends KoopaTroop{
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return an ActionList of actions that can be performed by Koopa
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -65,7 +65,7 @@ public class Koopa extends KoopaTroop{
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor
      * @param display    the I/O object to which messages may be written
-     * @return
+     * @return the action that occurs after the player performed the action.
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -91,7 +91,7 @@ public class Koopa extends KoopaTroop{
 
     /**
      * Enemy's default Attack action which returns the damage and verb of the attack
-     * @return
+     * @return default attack mode
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {

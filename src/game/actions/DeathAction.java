@@ -18,6 +18,7 @@ public class DeathAction extends Action {
 
     /**
      * Drops all actors inventory items ond death and removes it from the map
+     * Assignment 3 creative mode: if the actor is a big slime and if it died, then it will spawn another SmallSlime.
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
      * @return String to show the actor is dead
@@ -30,7 +31,6 @@ public class DeathAction extends Action {
         for (Action drop : dropActions)
             drop.execute(actor, map);
         if (actor.hasCapability(Status.BIG_SLIME)){
-            // if the actor is a big slime and if it died, then it will spawn another SmallSlime
             Location place = map.locationOf(actor);
             map.removeActor(actor);
             map.addActor(new SmallSlime(), place);

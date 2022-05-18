@@ -13,9 +13,7 @@ public class Fire extends Ground {
     private int damage;
     private int tickCounter;
     /**
-     * Constructor.
-     *
-     *
+     * Constructor for Fire Class.
      */
     public Fire() {
         super('₳');

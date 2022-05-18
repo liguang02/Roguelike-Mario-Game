@@ -15,9 +15,20 @@ import game.items.consumable.FirePotion;
 import game.items.permanent.Hammer;
 import game.utilities.Probability;
 import game.utilities.Status;
-
+/**
+ * The SmallSlime enemy.
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class SmallSlime extends Enemy {
 
+    /**
+     * Constructor for the SmallSlime enemy that adds the capability status
+     * with FIRE_IMMUNE (to make the enemy immune to lava and fire grounds)
+     * It has a FirePotion which will be dropped once the player defeats the
+     * enemy. This has a 50% chance of forming upon instantiation.
+     * Also like other enemies, it will wander around the map.
+     */
     public SmallSlime() {
         super("SmallSlime", 's', 80);
         this.addCapability(Status.FIRE_IMMUNE);
@@ -28,6 +39,14 @@ public class SmallSlime extends Enemy {
         getBehaviours().put(10, new WanderBehaviour());
     }
 
+    /**
+     * To check for any actions that can be performed by the SmallSlime when it encounters another actor which
+     * has HOSTILE_TO_ENEMY.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return actions, a list of actions that can be performed by SmallSlime
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
@@ -39,7 +58,14 @@ public class SmallSlime extends Enemy {
         return actions;
     }
 
-
+    /**
+     *  playturn is used after the player performs its action
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the action that occurs after the player performed the action.
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
@@ -56,7 +82,9 @@ public class SmallSlime extends Enemy {
         return new DoNothingAction();
     }
 
-
+    /**
+     * Register instance of the SmallSlime to be reset if mario resets the game.
+     */
     @Override
     public void registerInstance() {
         super.registerInstance();

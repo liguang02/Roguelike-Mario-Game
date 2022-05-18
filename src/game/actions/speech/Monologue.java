@@ -79,6 +79,13 @@ public class Monologue {
 
         return returnArray;
     }
+
+    /**
+     * Returns the princess' monologues based on the capabilities owned by the player
+     * if the player owns a key: princess prints only a specific line.
+     * @param player The player actor who can speak to princess
+     * @return List of possible strings that princess can say
+     */
     public ArrayList<String> getPrincessMonologues(Actor player) {
 
         ArrayList<String> tempArray = new ArrayList<>();

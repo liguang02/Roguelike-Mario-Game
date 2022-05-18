@@ -14,8 +14,20 @@ import game.behaviours.WanderBehaviour;
 import game.items.permanent.Hammer;
 import game.utilities.Status;
 
+/**
+ * BigSlime enemy, created for creative mode (REQ 4, Assignment 3).
+ * @version 1.1.1
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class BigSlime extends Enemy {
 
+    /**
+     * Constructor for the BigSlime enemy that adds the capability status
+     * with FIRE_IMMUNE (to make the enemy immune to lava and fire grounds)
+     * and BIG_SLIME (to ensure that it is not a SmallSlime enemy and will spawn
+     * a SmallSlime enemy upon death.
+     * Also like other enemies, it will wander around the map.
+     */
     public BigSlime() {
         super("BigSlime", 'S', 160);
         this.addCapability(Status.FIRE_IMMUNE);
@@ -23,6 +35,14 @@ public class BigSlime extends Enemy {
         getBehaviours().put(10, new WanderBehaviour());
     }
 
+    /**
+     * To check for any actions that can be performed by the BigSlime when it encounters another actor which
+     * has HOSTILE_TO_ENEMY.
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return actions, a list of actions that can be performed by BigSlime
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
@@ -35,6 +55,14 @@ public class BigSlime extends Enemy {
     }
 
 
+    /**
+     *  playturn is used after the player performs its action
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return the action that occurs after the player performed the action.
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
@@ -52,6 +80,9 @@ public class BigSlime extends Enemy {
     }
 
 
+    /**
+     * Register instance of the BigSlime to be reset if mario resets the game.
+     */
     @Override
     public void registerInstance() {
         super.registerInstance();

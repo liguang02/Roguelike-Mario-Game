@@ -59,7 +59,6 @@ public class SpeakAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        // changing later
         return actor + " speaks to " + speaker + ".";
     }
 }

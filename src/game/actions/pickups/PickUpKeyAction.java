@@ -8,24 +8,41 @@ import game.items.permanent.Key;
 import static game.utilities.Status.KEY;
 
 public class PickUpKeyAction extends PickUpItemAction {
+
     /**
-     * PowerStar type object that the entire action will work off.
+     * PickUpKeyAction to pick up the key dropped by Bowser.
+     * @version 1.0.0
+     * @author esea0003
      */
     private final Key key;
 
     /**
+     * Action used to pick up the key to unlock the handcuffs for princess
+     * @param key the key object
      */
     public PickUpKeyAction(Key key) {
         super(key);
         this.key = key;
     }
 
+    /**
+     * adds KEY capability to the player when the key is picked up
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return menuDescription method
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         super.execute(actor, map);
         actor.addCapability(KEY);
         return menuDescription(actor);
     }
+
+    /**
+     * Prints menu description to enable user to pick up the key
+     * @param actor The actor performing the action.
+     * @return menuOutput the menu description
+     */
     @Override
     public String menuDescription(Actor actor) {
         String menuOutput = actor + " picks up " + key;
