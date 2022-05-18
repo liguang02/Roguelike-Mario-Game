@@ -89,12 +89,10 @@ public class Monologue {
             tempArray.add(allMonologues.get(i));
 
             if (player.hasCapability(Status.KEY)) {
-                System.out.println("hi");
                 if (keyMonologues.get(i) == Status.GENERIC) {
                     tempArray.set(i, "Removed");
                 }
             }else{
-                System.out.println("hi2");
                 if (keyMonologues.get(i) == Status.KEY) {
                     tempArray.set(i, "Removed");
                 }

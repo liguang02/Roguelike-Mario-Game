@@ -19,9 +19,6 @@ public class PrincessPeach extends Ally {
     public PrincessPeach() {
         super("Princess Peach", 'P',50);
         monologues.addMonologues(Status.KEY, "Thank you for saving me!");
-        monologues.addMonologues(Status.GENERIC, "Dear Mario, I'll be waiting for you...");
-        monologues.addMonologues(Status.GENERIC, "Never gonna give you up!");
-        monologues.addMonologues(Status.GENERIC, "Release me, or I will kick you!");
     }
 
     @Override
@@ -31,7 +28,9 @@ public class PrincessPeach extends Ally {
 
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        actions.add(new SpeakAction(monologues, this));
+        if (otherActor.hasCapability(Status.KEY)){
+            actions.add(new SpeakAction(monologues, this));
+        }
         return actions;
     }
 }
