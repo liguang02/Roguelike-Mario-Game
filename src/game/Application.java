@@ -35,13 +35,13 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature(), new WarpPipe(), new PowerFountain(), new HealthFountain());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature(), new Lava(), new PowerFountain(), new HealthFountain());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
-				"............+............+..................#.......................C...........",
+				"............+............+..................#...................................",
 				"............................................#...................................",
-				".......................C.....................##......................+..........",
+				".............................................##......................+..........",
 				"...............................................#................................",
 				"................................................#...............................",
 				".................+................................#.............................",
@@ -53,19 +53,19 @@ public class Application {
 				"........................................+#_____###..............................",
 				"........................+........................##.............+...............",
 				"...................................................#............................",
-				".......C............................................#...........................",
-				"...................+.................................#..............C...........",
+				"....................................................#...........................",
+				"...................+.................................#..........................",
 				"......................................................#.........................",
 				".......................................................##.......................");
 			List<String> lavaZone = Arrays.asList(
-				"C..................LL.......................................................",
+				"...................LL.......................................................",
 				".............................................##...........L..........+......",
 				"..+.............................LL.............#............................",
 				"................................LL..............#.................L.........",
 				".................+................................L.........................",
 				".................................................LL.........................",
 				"................LLL..........LLL................##..........................",
-				".........+......LLL..........L.L.....+........LL##.................B........",
+				".........+......LLL..........L.L.....+........LL##..........................",
 				"................LLL..........LLL..............###...........................",
 				"..............................................L.L...........................",
 				"...............................................###..........................",
@@ -80,15 +80,29 @@ public class Application {
 			world.addGameMap(gameMap);
 
 //			second game map
-//			GameMap bossMap = new GameMap(groundFactory, lavaZone);
-//			world.addGameMap(bossMap);
+			GameMap bossMap = new GameMap(groundFactory, lavaZone);
+			world.addGameMap(bossMap);
 
 			Actor mario = new Player("Mario", 'm', 100);
 //need to do the addPlayer for the new lava zone map but only do it with some condition (player jumps into the warp pipe)
-			world.addPlayer(mario, gameMap.at(42, 10));
-			gameMap.at(45,10).addActor(new Toad());
+			world.addPlayer(mario, gameMap.at(11, 10));
 
-			world.run();
+//			WarpPipe secondMapPipe = new WarpPipe();
+//			WarpPipe firstMapPipe = new WarpPipe(secondMapPipe);
+			gameMap.at(45,10).addActor(new Toad());
+//			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
+//			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
+//			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
+//			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
+		gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0)));
+		gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0)));
+		gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0)));
+		gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0)));
+			bossMap.at(0,0).setGround(new WarpPipe());
+
+
+
+		world.run();
 
 	}
 }
