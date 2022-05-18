@@ -33,7 +33,7 @@ public class Lava extends Ground {
      */
     @Override
     public boolean canActorEnter(Actor actor) {
-        return false;
+        return (actor.hasCapability(Status.FIRE_IMMUNE));
     }
 
     /**
@@ -47,8 +47,8 @@ public class Lava extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        int slimeSpawnChance = 10;
-        if (Probability.success(slimeSpawnChance) && !(location.getActor().hasCapability(Status.FIRE_IMMUNE))) {
+        int slimeSpawnChance = 5;
+        if (Probability.success(slimeSpawnChance)) {
             location.addActor(new BigSlime());
         }
         Actor actor = location.getActor();
