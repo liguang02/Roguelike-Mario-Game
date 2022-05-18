@@ -1,6 +1,9 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.enemies.BombOmb;
+import game.actors.enemies.FlyingKoopa;
+import game.actors.enemies.Koopa;
 import game.utilities.Probability;
 import game.actors.enemies.Goomba;
 /**
@@ -31,9 +34,11 @@ public class Sprout extends Tree{
     @Override
     public void tick(Location location) {
         super.tick(location);
-        int goombaSpawnChance = 10;
-        if (Probability.success(goombaSpawnChance) && !location.containsAnActor()) {
+        int spawnChance = 10;
+        if (Probability.success(spawnChance) && !location.containsAnActor()) {
             location.addActor(new Goomba());
+        } else {
+            location.addActor(new BombOmb());
         }
         tickCounter++;
         if (tickCounter % this.getTreeAge() == 0) {
