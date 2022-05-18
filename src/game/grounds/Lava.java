@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.MoveToTrapAction;
+import game.actors.enemies.BigSlime;
+import game.actors.enemies.Goomba;
+import game.utilities.Probability;
 import game.utilities.Status;
 
 public class Lava extends Ground {
@@ -44,6 +47,10 @@ public class Lava extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
+        int slimeSpawnChance = 10;
+        if (Probability.success(slimeSpawnChance) && !(location.getActor().hasCapability(Status.FIRE_IMMUNE))) {
+            location.addActor(new BigSlime());
+        }
         Actor actor = location.getActor();
         if (actor != null && !actor.hasCapability(Status.ENEMY) && !actor.hasCapability(Status.FIRE_IMMUNE)){
             actor.hurt(damage);

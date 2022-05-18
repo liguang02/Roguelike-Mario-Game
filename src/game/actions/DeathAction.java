@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actors.enemies.SmallSlime;
+import game.utilities.Status;
 
 /**
  * DeathAction class to drop items and remove a dead actor from the map
@@ -26,7 +29,14 @@ public class DeathAction extends Action {
             dropActions.add(item.getDropAction(actor));
         for (Action drop : dropActions)
             drop.execute(actor, map);
-        map.removeActor(actor);
+        if (actor.hasCapability(Status.BIG_SLIME)){
+            // if the actor is a big slime and if it died, then it will spawn another SmallSlime
+            Location place = map.locationOf(actor);
+            map.removeActor(actor);
+            map.addActor(new SmallSlime(), place);
+        } else{
+            map.removeActor(actor);
+        }
         return menuDescription(actor);
     }
 

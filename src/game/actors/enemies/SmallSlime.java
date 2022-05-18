@@ -11,16 +11,20 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.items.consumable.FirePotion;
 import game.items.permanent.Hammer;
-import game.items.permanent.Wrench;
+import game.utilities.Probability;
 import game.utilities.Status;
 
-public class BombOmb extends Enemy {
+public class SmallSlime extends Enemy {
 
-    public BombOmb() {
-        super("BombOmb", 'O', 160);
+    public SmallSlime() {
+        super("SmallSlime", 's', 80);
         this.addCapability(Status.FIRE_IMMUNE);
-        this.addItemToInventory(new Hammer());
+        int chance = 50;
+        if(Probability.success(chance)){
+            this.addItemToInventory(new FirePotion());
+        }
         getBehaviours().put(10, new WanderBehaviour());
     }
 
@@ -60,10 +64,9 @@ public class BombOmb extends Enemy {
 
     /**
      * Enemy's default Attack action which returns the damage and verb of the attack
-     * @return
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(30, "punch");
+        return new IntrinsicWeapon(30, "slimes");
     }
 }
