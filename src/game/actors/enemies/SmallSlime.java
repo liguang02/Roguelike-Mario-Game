@@ -32,7 +32,7 @@ public class SmallSlime extends Enemy {
     public SmallSlime() {
         super("SmallSlime", 's', 80);
         this.addCapability(Status.FIRE_IMMUNE);
-        int chance = 50;
+        int chance = 5;
         if(Probability.success(chance)){
             this.addItemToInventory(new FirePotion());
         }
