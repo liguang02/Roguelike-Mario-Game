@@ -18,6 +18,8 @@ public class WarpPipe extends HighGround {
 
     private Location target;
 
+    private String mapName;
+
 
 
     /**
@@ -28,14 +30,24 @@ public class WarpPipe extends HighGround {
         this.name = "Warp Pipe";
         tickCounter = 0;
         target = null;
+        mapName = null;
     }
+
     public WarpPipe(Location target){
         super('C',100,0);
         name = "Warp Pipe";
         tickCounter = 0;
         this.target = target;
-
     }
+
+    //    public WarpPipe(Location target, String mapName){
+//        super('C',100,0);
+//        name = "Warp Pipe";
+//        tickCounter = 0;
+//        this.target = target;
+//        this.mapName = mapName;
+//
+//    }
 
 
 
@@ -54,7 +66,7 @@ public class WarpPipe extends HighGround {
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actionList = new ActionList();
         if (location.containsAnActor()){
-            actionList.add(new TeleportAction(location, target));
+            actionList.add(new TeleportAction(location, target, mapName));
         }
         actionList.add(super.allowableActions(actor, location, direction));
 

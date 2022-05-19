@@ -12,7 +12,6 @@ import game.utilities.Status;
  * @author esea0003
  */
 public class UnlockHandcuffsAction extends Action {
-    private final Monologue monologues = new Monologue();
 
     /**
      * The player unlocks the handcuffs and the princess' monologue gets printed and returned.
@@ -24,9 +23,7 @@ public class UnlockHandcuffsAction extends Action {
     public String execute(Actor actor, GameMap map) {
         map.removeActor(actor);
         menuDescription(actor);
-        monologues.addMonologues(Status.KEY, "Thank you for saving me!");
-        String returnMonologue = monologues.getPrincessMonologues(actor).get(0);
-        return returnMonologue;
+        return "Thank you for saving me!";
     }
 
     /**

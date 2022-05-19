@@ -18,7 +18,6 @@ import game.utilities.Status;
  * @author esea0003
  */
 public class PrincessPeach extends Ally {
-    private final Monologue monologues = new Monologue();
 
     /**
      * constructor for Princess Peach.

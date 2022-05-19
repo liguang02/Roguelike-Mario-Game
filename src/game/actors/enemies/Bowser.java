@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
@@ -23,7 +24,7 @@ import game.utilities.Status;
  */
 public class Bowser extends Enemy {
 
-    private Location defaultLocation;
+    private final Location defaultLocation;
 
     /**
      * Bowser constructor which contains the BOWSER capability (which
@@ -31,10 +32,10 @@ public class Bowser extends Enemy {
      * the FIRST_TURN capability which stores the location of Bowser for it
      * to be reset back to the original location during the first turn.
      */
-    public Bowser() {
+    public Bowser(Location defaultLocation) {
         super("Bowser", 'B', 500);
         this.addCapability(Status.BOWSER);
-        this.addCapability(Status.FIRST_TURN);
+        this.defaultLocation = defaultLocation;
     }
 
     /**
@@ -68,6 +69,17 @@ public class Bowser extends Enemy {
     @Override
     public void resetInstance() {
         this.heal(getMaxHp());
+
+        if(defaultLocation.containsAnActor()){
+            Location newDestination = defaultLocation;
+            for (Exit exit : defaultLocation.getExits()) {
+                Location destination = exit.getDestination();
+                if(!destination.containsAnActor()){
+                    newDestination = destination;
+                }
+            }
+            new MoveActorAction(newDestination, "").execute(defaultLocation.getActor(), newDestination.map());
+        }
         new MoveActorAction(defaultLocation, "").execute(this,defaultLocation.map());
     }
 
@@ -81,11 +93,6 @@ public class Bowser extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if(this.hasCapability(Status.FIRST_TURN)){
-            this.defaultLocation = map.locationOf(this);
-            this.removeCapability(Status.FIRST_TURN);
-        }
-
         Action deathAction = super.onDeath();
         if(deathAction != null){
             return deathAction;

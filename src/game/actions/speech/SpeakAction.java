@@ -43,10 +43,6 @@ public class SpeakAction extends Action {
             int randomNum = ThreadLocalRandom.current().nextInt(0, monologues.getToadMonologues(actor).size());
             return monologues.getToadMonologues(actor).get(randomNum);
         }
-        if(speaker.toString().equals("Princess Peach")){
-            int randomNum = ThreadLocalRandom.current().nextInt(0, monologues.getPrincessMonologues(actor).size());
-            return monologues.getPrincessMonologues(actor).get(randomNum);
-        }
 
         int randomNum = ThreadLocalRandom.current().nextInt(0, monologues.getAllMonologues().size());
         return monologues.getAllMonologues().get(randomNum);

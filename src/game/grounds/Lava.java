@@ -1,13 +1,9 @@
 package game.grounds;
 
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.MoveToTrapAction;
 import game.actors.enemies.BigSlime;
-import game.actors.enemies.Goomba;
 import game.utilities.Probability;
 import game.utilities.Status;
 
@@ -66,15 +62,5 @@ public class Lava extends Ground {
 
     }
 
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction) {
-        ActionList actionList = new ActionList();
-        if (!actor.hasCapability(Status.ENEMY)&& location.getActor() != actor) {
-            actionList.add(new MoveToTrapAction(damage, location, direction));
-        }
-//        if(location.getActor() != null && !actor.hasCapability(Status.ENEMY)){
-//            actionList.add(new MoveToTrapAction(Status.FIRE, damage));
-//        }
-        return actionList;
-    }
+
 }

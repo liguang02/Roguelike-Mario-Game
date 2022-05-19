@@ -1,11 +1,8 @@
 package game.grounds;
 
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.MoveToTrapAction;
-import game.grounds.trees.Mature;
 import game.utilities.Status;
 
 public class Fire extends Ground {
@@ -46,17 +43,8 @@ public class Fire extends Ground {
             actor.removeCapability(Status.FIRE_IMMUNE);
         }
         tickCounter++;
-        if (tickCounter == 3){
+        if (tickCounter == 4){
             location.setGround(new Dirt());
         }
-    }
-
-    @Override
-    public ActionList allowableActions(Actor actor, Location location, String direction) {
-        ActionList actionList = new ActionList();
-        if (location.getActor() != actor) {
-            actionList.add(new MoveToTrapAction(damage, location, direction));
-        }
-        return actionList;
     }
 }
