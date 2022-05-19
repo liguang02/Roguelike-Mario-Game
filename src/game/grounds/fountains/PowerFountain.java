@@ -12,7 +12,6 @@ public class PowerFountain extends Fountain {
      * Constructor for the PowerFountain, sets it to have PowerWater water in it.
      */
     public PowerFountain() {
-        super('A', "Power Fountain");
-        this.fillFountain(new PowerWater());
+        super('A', "Power Fountain", new PowerWater());
     }
 }

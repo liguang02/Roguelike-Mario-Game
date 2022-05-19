@@ -4,15 +4,14 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.DeathAction;
 import game.actions.ResetAction;
-import game.items.consumable.PowerStar;
-import game.items.permanent.Bottle;
 import game.items.BottleManager;
 import game.items.WalletManager;
+import game.items.permanent.Bottle;
 import game.reset.Resettable;
 import game.utilities.Status;
 /**
@@ -47,7 +46,6 @@ public class Player extends Actor implements Resettable {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.intrinsicAttackValue = super.getIntrinsicWeapon().damage();
 		this.intrinsicAttackVerb = super.getIntrinsicWeapon().verb();
-		this.addItemToInventory(new PowerStar());
 	}
 
 	/**
@@ -143,11 +141,10 @@ public class Player extends Actor implements Resettable {
 	}
 
 	/**
-	 * Adds a bottle for this actor
+	 * Adds a bottle to the inventory for this actor
 	 */
 	public void addBottle(){
 		Bottle bottle = new Bottle();
-		this.addItemToInventory(bottle);
 		BottleManager.getInstance().addBottle(this, bottle);
 	}
 

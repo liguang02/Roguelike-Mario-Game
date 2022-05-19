@@ -20,15 +20,15 @@ public class JumpAction extends Action {
     /**
      * The damage taken if jump fails
      */
-    private int damage;
+    private final int damage;
     /**
      * The direction of the jump
      */
-    private String direction;
+    private final String direction;
     /**
      * The location of the jump destination
      */
-    private Location moveToLocation;
+    private final Location moveToLocation;
 
     /**
      * Constructor for the JumpAction
@@ -70,7 +70,7 @@ public class JumpAction extends Action {
     /**
      *
      * @param actor The actor performing the action.
-     * @return The menu desciprtion of this jump action.
+     * @return The menu description of this jump action.
      */
     @Override
     public String menuDescription(Actor actor) {

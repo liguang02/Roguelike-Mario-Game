@@ -87,7 +87,8 @@ public class Application {
 
 			Actor mario = new Player("Mario", 'm', 100);
 //need to do the addPlayer for the new lava zone map but only do it with some condition (player jumps into the warp pipe)
-			world.addPlayer(mario, gameMap.at(11, 10));
+			world.addPlayer(mario, gameMap.at(42, 10));
+			mario.hurt(99);
 
 //			WarpPipe secondMapPipe = new WarpPipe();
 //			WarpPipe firstMapPipe = new WarpPipe(secondMapPipe);

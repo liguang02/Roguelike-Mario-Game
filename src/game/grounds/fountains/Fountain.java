@@ -5,10 +5,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.pickups.FillAction;
-import game.items.permanent.Bottle;
 import game.items.BottleManager;
 import game.items.consumable.Water;
-import java.util.Stack;
+import game.items.permanent.Bottle;
 
 /**
  * @version 1.0.0
@@ -20,21 +19,21 @@ public abstract class Fountain extends Ground {
      *Name of the fountain
      */
     private final String name;
-
     /**
-     * All the water in the fountain
+     * The water in this fountain
      */
-    private final Stack<Water> fountain;
+    private final Water water;
 
     /**
      * Constructor.
-     *
      * @param displayChar character to display for this type of terrain
+     * @param name name of fountain
+     * @param water water type available in fountain
      */
-    public Fountain(char displayChar, String name) {
+    public Fountain(char displayChar, String name, Water water) {
         super(displayChar);
         this.name = name;
-        this.fountain = new Stack<>();
+        this.water = water;
     }
 
     /**
@@ -46,11 +45,11 @@ public abstract class Fountain extends Ground {
     }
 
     /**
-     * Method to check what water the fountain is holding
-     * @return String, name of the water
+     * Method to return the water in the fountain
+     * @return Water type, water in fountain
      */
-    public String fountainLiquid(){
-        return fountain.peek().toString();
+    public Water contents(){
+        return water;
     }
 
     /**
@@ -65,28 +64,10 @@ public abstract class Fountain extends Ground {
         ActionList actionList = super.allowableActions(actor, location, direction);
         if(location.getActor() == actor) {
             Bottle actorsBottle = BottleManager.getInstance().getBottle(actor);
-            if (actorsBottle != null && !fountain.isEmpty()) {
+            if (actorsBottle != null) {
                 actionList.add(new FillAction(actorsBottle, this));
             }
         }
         return actionList;
-    }
-
-    /**
-     * Pops a water object from the stack
-     * @return the water object popped
-     */
-    public Water removeWater(){
-        return fountain.size() > 0 ? fountain.pop() : null;
-    }
-
-    /**
-     * Refilling the fountain to have 10 water objects.
-     * @param water The type of water we want to fill the fountain with
-     */
-    public void fillFountain(Water water){
-        while (fountain.size() < 10){
-            fountain.push(water);
-        }
     }
 }

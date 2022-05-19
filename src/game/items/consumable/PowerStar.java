@@ -107,7 +107,7 @@ public class PowerStar extends Item implements Purchasable, Resettable, Consumab
     /**
      * The specialized pickup item action for this item, PowerStar.
      * @param actor The actor performing the action.
-     * @return new PickUpStarAction that does pick up and consumption of the star when executed.
+     * @return new PickUpConsumeAction that does pick up and consumption of the star when executed.
      */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {

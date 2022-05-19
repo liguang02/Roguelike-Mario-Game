@@ -9,6 +9,7 @@ import java.util.Map;
  * @version 1.1.2
  * @author sthi0011
  * BottleManager class to store and keep track of the bottles in actors inventory.
+ * Allows us to access an actors bottle without looping through their inventory.
  */
 public class BottleManager {
     /**
@@ -44,6 +45,7 @@ public class BottleManager {
      */
     public void addBottle(Actor actor, Bottle bottle){
         bottleActorHashMap.put(actor,bottle);
+        actor.addItemToInventory(bottle);
     }
 
     /**

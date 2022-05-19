@@ -12,7 +12,6 @@ public class HealthFountain extends Fountain {
      * Constructor for the HealthFountain, sets it to have HealingWater water in it.
      */
     public HealthFountain() {
-        super('H', "Health Fountain");
-        this.fillFountain(new HealingWater());
+        super('H', "Health Fountain", new HealingWater());
     }
 }

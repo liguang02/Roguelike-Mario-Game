@@ -5,11 +5,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.actions.DeathAction;
 import game.behaviours.Behaviour;
 import game.behaviours.SuicideBehaviour;
-import game.behaviours.WanderBehaviour;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 import game.utilities.Status;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,10 +17,12 @@ import java.util.Map;
  * @author sthi0011, lcha0068, esea0003
  */
 public abstract class Enemy extends Actor implements Resettable {
-    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+    /**
+     * HashMap of behaviours
+     */
+    private final Map<Integer, Behaviour> behaviours = new HashMap<>();
     /**
      * Constructor.
-     *
      * @param name        the name of the Actor
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
@@ -63,6 +63,10 @@ public abstract class Enemy extends Actor implements Resettable {
         return null;
     }
 
+    /**
+     * Getting the behaviour list.
+     * @return HashMap of behaviours
+     */
     public Map<Integer, Behaviour> getBehaviours() {
         return behaviours;
     }

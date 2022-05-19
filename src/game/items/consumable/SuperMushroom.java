@@ -37,7 +37,7 @@ public class SuperMushroom extends Item implements Purchasable, Consumable {
     /**
      * The specialized pickup item action for this item, SuperMushroom.
      * @param actor The actor performing the action.
-     * @return new PickUpShroomAction that does pick up and consumption of the shroom when executed.
+     * @return new PickUpConsumeAction that does pick up and consumption of the mushroom when executed.
      */
     @Override
     public PickUpItemAction getPickUpAction(Actor actor) {
