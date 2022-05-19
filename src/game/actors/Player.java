@@ -63,6 +63,13 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.DEAD)){
 			return new DeathAction();
 		}
+
+		//If player drank Power Water, buff intrinsic attack
+		if(this.hasCapability(Status.INTRINSIC_BUFF)){
+			intrinsicAttackValue += 15;
+			this.removeCapability(Status.INTRINSIC_BUFF);
+		}
+
 		addCapabilities();
 		addResetAction(actions);
 		displayDetails(display, map);
@@ -98,10 +105,6 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon() {
-		if(this.hasCapability(Status.INTRINSIC_BUFF)){
-			intrinsicAttackValue += 15;
-			this.removeCapability(Status.INTRINSIC_BUFF);
-		}
 		return new IntrinsicWeapon(intrinsicAttackValue, intrinsicAttackVerb);
 	}
 
