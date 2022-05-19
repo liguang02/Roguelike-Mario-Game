@@ -18,9 +18,7 @@ public class WarpPipe extends HighGround {
 
     private Location target;
 
-    private WarpPipe targetPipe;
 
-    private Location currentLoc;
 
     /**
      * Constructor for WarpPipe class
@@ -36,7 +34,6 @@ public class WarpPipe extends HighGround {
         name = "Warp Pipe";
         tickCounter = 0;
         this.target = target;
-        this.targetPipe = targetPipe;
 
     }
 
@@ -52,16 +49,12 @@ public class WarpPipe extends HighGround {
 
     }
 
-//    public Location getCurrentLoc() {
-//        return currentLoc;
-//    }
 
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actionList = new ActionList();
-        currentLoc = location;
         if (location.containsAnActor()){
-            actionList.add(new TeleportAction(location, target, targetPipe));
+            actionList.add(new TeleportAction(location, target));
         }
         actionList.add(super.allowableActions(actor, location, direction));
 
@@ -72,9 +65,6 @@ public class WarpPipe extends HighGround {
         this.target = target;
     }
 
-    public void setCurrentLoc(Location currentLoc) {
-        this.currentLoc = currentLoc;
-    }
 
     @Override
     public boolean canActorEnter(Actor actor){

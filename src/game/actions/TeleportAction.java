@@ -10,13 +10,10 @@ public class TeleportAction extends Action {
 //    private Actor actor;
     private Location location;
     private Location target;
-    private WarpPipe targetPipe;
 
-    public TeleportAction(Location location, Location target, WarpPipe targetPipe){
-//        this.actor = actor;
+    public TeleportAction(Location location, Location target){
         this.location = location;
         this.target = target;
-//        this.targetPipe = targetPipe;
 
 
     }
@@ -31,8 +28,7 @@ public class TeleportAction extends Action {
             map.moveActor(actor, target);
         }
         target.setGround(new WarpPipe(location));
-//        targetPipe.setTarget(location);
-//        targetPipe.setCurrentLoc(target);
+
         return actor + " teleports to " ;
     }
 
