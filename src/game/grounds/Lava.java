@@ -14,6 +14,7 @@ import game.utilities.Status;
 public class Lava extends Ground {
     private String name;
     private int damage;
+    private int tickCounter;
     /**
      * Constructor for Lava ground class
      *
@@ -23,6 +24,7 @@ public class Lava extends Ground {
         this.addCapability(Status.LAVA);
         name =  "Lava";
         damage = 15;
+        tickCounter = 0;
     }
 
     /**
@@ -47,8 +49,9 @@ public class Lava extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
+        tickCounter++;
         int slimeSpawnChance = 5;
-        if (Probability.success(slimeSpawnChance)) {
+        if (!location.containsAnActor() && Probability.success(slimeSpawnChance) && (tickCounter%5)==0){
             location.addActor(new BigSlime());
         }
         Actor actor = location.getActor();
