@@ -19,6 +19,7 @@ import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
 import game.items.permanent.Key;
+import game.utilities.Status;
 
 
 /**
@@ -87,7 +88,7 @@ public class Application {
 
 			Actor mario = new Player("Mario", 'm', 100);
 //need to do the addPlayer for the new lava zone map but only do it with some condition (player jumps into the warp pipe)
-			world.addPlayer(mario, gameMap.at(42, 10));
+			world.addPlayer(mario, gameMap.at(11, 10));
 			mario.hurt(99);
 
 //			WarpPipe secondMapPipe = new WarpPipe();
@@ -99,10 +100,10 @@ public class Application {
 //			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0)));
-			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0)));
-			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0)));
-			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0)));
+		gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0),Status.MAIN_ISLAND ));
+			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), Status.MAIN_ISLAND));
+			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), Status.MAIN_ISLAND));
+			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), Status.MAIN_ISLAND));
 			bossMap.at(0,0).setGround(new WarpPipe());
 //			gameMap.at(63,7).addActor(new Bowser());
 //			gameMap.at(64,7).addActor(new PrincessPeach());

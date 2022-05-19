@@ -29,5 +29,7 @@ public enum Status {
     FIRST_TURN,
     CONSUMER_FIREPOT, //To denote if the actor can consume fire potions
     FIRE_IMMUNE, // To indicate that the actor is immune to any fire damage.
-    BIG_SLIME // To denote if the enemy is a big slime
+    BIG_SLIME, // To denote if the enemy is a big slime
+    LAVA_ZONE,
+    MAIN_ISLAND
 }

@@ -18,7 +18,7 @@ public class WarpPipe extends HighGround {
 
     private Location target;
 
-    private String mapName;
+    private Enum<Status> mapName;
 
 
 
@@ -30,24 +30,25 @@ public class WarpPipe extends HighGround {
         this.name = "Warp Pipe";
         tickCounter = 0;
         target = null;
-        mapName = null;
+        mapName = Status.LAVA_ZONE;
+        this.addCapability(Status.LAVA_ZONE);
     }
 
-    public WarpPipe(Location target){
-        super('C',100,0);
-        name = "Warp Pipe";
-        tickCounter = 0;
-        this.target = target;
-    }
-
-    //    public WarpPipe(Location target, String mapName){
+//    public WarpPipe(Location target){
 //        super('C',100,0);
 //        name = "Warp Pipe";
 //        tickCounter = 0;
 //        this.target = target;
-//        this.mapName = mapName;
-//
 //    }
+
+        public WarpPipe(Location target, Enum<Status> mapName){
+        super('C',100,0);
+        name = "Warp Pipe";
+        tickCounter = 0;
+        this.target = target;
+        this.mapName = mapName;
+        this.addCapability(mapName);
+    }
 
 
 
