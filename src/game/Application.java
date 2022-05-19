@@ -100,10 +100,10 @@ public class Application {
 //			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
 //			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-		gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0),Status.MAIN_ISLAND ));
-			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), Status.MAIN_ISLAND));
-			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), Status.MAIN_ISLAND));
-			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), Status.MAIN_ISLAND));
+		gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(1,0)));
+			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0)));
 			bossMap.at(0,0).setGround(new WarpPipe());
 //			gameMap.at(63,7).addActor(new Bowser());
 //			gameMap.at(64,7).addActor(new PrincessPeach());
