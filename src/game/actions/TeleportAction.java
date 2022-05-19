@@ -11,13 +11,15 @@ public class TeleportAction extends Action {
 
     private final Location location;
     private final Location target;
-    private String newMapName;
+    private final String newMap;
+    private final String currentMap;
 
 
-    public TeleportAction(Location location, Location target){
+    public TeleportAction(Location location, Location target, String currentMap, String newMap){
         this.location = location;
         this.target = target;
-        this.newMapName = "";
+        this.currentMap = currentMap;
+        this.newMap = newMap;
     }
 
     @Override
@@ -30,23 +32,13 @@ public class TeleportAction extends Action {
         if (map.contains(actor) && !target.containsAnActor()){
             map.moveActor(actor, target);
         }
-        target.setGround(new WarpPipe(location));
+        target.setGround(new WarpPipe(location, currentMap, newMap));
 
         return menuDescription(actor);
     }
 
-//    public void setMapName(){
-//        if (target.getGround().hasCapability(Status.MAIN_ISLAND)){
-//            target.setGround(new WarpPipe(location, Status.LAVA_ZONE));
-//            this.newMapName = "Main Island";
-//        }else if (target.getGround().hasCapability(Status.LAVA_ZONE)){
-//            target.setGround(new WarpPipe(location, Status.MAIN_ISLAND));
-//            this.newMapName = "Lava Zone";
-//        }
-//    }
-
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " teleports to " + newMapName + "!";
+        return actor + " teleports to " + newMap + "!";
     }
 }

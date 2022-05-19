@@ -4,11 +4,14 @@ import game.utilities.Status;
 
 import java.util.ArrayList;
 
+/**
+ * Monologue class to store the actors monologues
+ * @version 1.1.2
+ * @author sthi0011, lcha0068, esea0003
+ */
 public class Monologue {
     /**
      * List of all monologues
-     * @version 1.1.2
-     * @author sthi0011, lcha0068, esea0003
      */
     private final ArrayList<String> allMonologues;
     /**
@@ -79,36 +82,4 @@ public class Monologue {
 
         return returnArray;
     }
-
-    /**
-     * Returns the princess' monologues based on the capabilities owned by the player
-     * if the player owns a key: princess prints only a specific line.
-     * @param player The player actor who can speak to princess
-     * @return List of possible strings that princess can say
-     */
-    public ArrayList<String> getPrincessMonologues(Actor player) {
-
-        ArrayList<String> tempArray = new ArrayList<>();
-        ArrayList<String> returnArray = new ArrayList<>();
-
-        for (int i = 0; i < keyMonologues.size(); i++) {
-
-            tempArray.add(allMonologues.get(i));
-
-            if (player.hasCapability(Status.KEY)) {
-                if (keyMonologues.get(i) == Status.GENERIC) {
-                    tempArray.set(i, "Removed");
-                }
-            }else{
-                if (keyMonologues.get(i) == Status.KEY) {
-                    tempArray.set(i, "Removed");
-                }
-            }
-        }
-        tempArray.forEach(x -> {
-            if(!x.equals("Removed")){
-                returnArray.add(x);
-            }
-        });
-        return returnArray;
-    }}
+}

@@ -20,7 +20,7 @@ public class Key extends Item implements Resettable {
 
 
     public Key() {
-        super("Key", '✩', true);
+        super("Key", 'k', true);
         this.registerInstance();
     }
 

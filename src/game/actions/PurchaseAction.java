@@ -22,7 +22,7 @@ public class PurchaseAction extends Action {
     /**
      * Constructor for PurchaseAction class
      *
-     * @param item a purchasableitem
+     * @param item a Purchasable item
      */
     public PurchaseAction(Item item) {
         this.item = item;
@@ -31,7 +31,7 @@ public class PurchaseAction extends Action {
     /**
      * a method that will create an instance of PurchasableManager to get the list of purchasableItems, and
      * used it to search for the inputted item object so that it can access to the price() which was only for
-     * the item classes that implement the Purchasable interface. Then it perform the trading process, add item
+     * the item classes that implement the Purchasable interface. Then it performs the trading process, add item
      * into inventory and minus balance off the actor's wallet balance.
      *
      * @param actor The actor performing the action.

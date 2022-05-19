@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
  * This Mature class is a subclass of Tree, which has its own spawning ability (spawns enemy Koopa) and in every 5 turns,
- * it will spawns a sprout in a random fertile ground around it.
+ * it will spawn a sprout in a random fertile ground around it.
  */
 public class Mature extends Tree {
     /**
@@ -35,7 +35,7 @@ public class Mature extends Tree {
      * such as spawning koopas, wither at a specific chance and grows a sprout at a random surrounding fertile ground.
      * @param location The location of the Mature object
      *
-     * Asgn3: 50% chance of spawning Koopa and 50% chance of spawning Flying Koopa.
+     * A3: 50% chance of spawning Koopa and 50% chance of spawning Flying Koopa.
      */
     @Override
     public void tick(Location location) {

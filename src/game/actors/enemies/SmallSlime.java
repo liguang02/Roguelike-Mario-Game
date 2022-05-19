@@ -12,7 +12,6 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.items.consumable.FirePotion;
-import game.items.permanent.Hammer;
 import game.utilities.Probability;
 import game.utilities.Status;
 /**
@@ -30,7 +29,7 @@ public class SmallSlime extends Enemy {
      * Also like other enemies, it will wander around the map.
      */
     public SmallSlime() {
-        super("SmallSlime", 's', 80);
+        super("Small Slime", 's', 80);
         this.addCapability(Status.FIRE_IMMUNE);
         int chance = 5;
         if(Probability.success(chance)){
@@ -59,7 +58,7 @@ public class SmallSlime extends Enemy {
     }
 
     /**
-     *  playturn is used after the player performs its action
+     * PlayTurn is used after the player performs its action
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor

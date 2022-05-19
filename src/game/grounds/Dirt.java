@@ -9,7 +9,7 @@ import game.utilities.Status;
  * A class that represents bare dirt.
  */
 public class Dirt extends Ground {
-	private String name;
+	private final String name;
 
 	/**
 	 * A constructor for dirt class

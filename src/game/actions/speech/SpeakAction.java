@@ -22,7 +22,7 @@ public class SpeakAction extends Action {
     private final Actor speaker;
 
     /**
-     * Constructor for SpeakaAction Class.
+     * Constructor for SpeakAction Class.
      * @param monologues the monologue class related to that speaker
      * @param speaker the actor for the speaker
      */

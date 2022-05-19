@@ -6,15 +6,14 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actions.speech.Monologue;
 import game.actions.PurchaseAction;
-import game.actors.allies.Ally;
+import game.actions.speech.Monologue;
+import game.actions.speech.SpeakAction;
 import game.items.consumable.FirePotion;
 import game.items.consumable.PowerStar;
 import game.items.consumable.SuperMushroom;
 import game.items.permanent.Hammer;
 import game.items.permanent.Wrench;
-import game.actions.speech.SpeakAction;
 import game.utilities.Status;
 
 /**
@@ -47,7 +46,7 @@ public class Toad extends Ally {
     }
 
     /**
-     * This method will add all the necessary actions that toad are responsible of, such as PurchaseAction
+     * This method will add all the necessary actions that toad are responsible for, such as PurchaseAction
      * and SpeakAction.
      * @param otherActor the Actor that might be performing speak or buy action
      * @param direction  String representing the direction of the other Actor

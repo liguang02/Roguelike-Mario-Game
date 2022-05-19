@@ -11,7 +11,6 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
-import game.items.permanent.Hammer;
 import game.utilities.Status;
 
 /**
@@ -24,12 +23,12 @@ public class BigSlime extends Enemy {
     /**
      * Constructor for the BigSlime enemy that adds the capability status
      * with FIRE_IMMUNE (to make the enemy immune to lava and fire grounds)
-     * and BIG_SLIME (to ensure that it is not a SmallSlime enemy and will spawn
+     * and BIG_SLIME (to ensure that it is not a SmallSlime enemy and will spawn)
      * a SmallSlime enemy upon death.
      * Also like other enemies, it will wander around the map.
      */
     public BigSlime() {
-        super("BigSlime", 'S', 160);
+        super("Big Slime", 'S', 160);
         this.addCapability(Status.FIRE_IMMUNE);
         this.addCapability(Status.BIG_SLIME);
         getBehaviours().put(10, new WanderBehaviour());
@@ -56,7 +55,7 @@ public class BigSlime extends Enemy {
 
 
     /**
-     *  playturn is used after the player performs its action
+     *  PlayTurn is used after the player performs its action
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor

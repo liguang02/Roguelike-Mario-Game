@@ -14,7 +14,6 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.items.permanent.Key;
-import game.items.permanent.Wrench;
 import game.utilities.Status;
 
 /**
@@ -84,12 +83,12 @@ public class Bowser extends Enemy {
     }
 
     /**
-     * playturn is used after the player performs its action
+     * playTurn is used after the player performs its action
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor
      * @param display    the I/O object to which messages may be written
-     * @return
+     * @return Possible action for Bowser to carry out
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -107,7 +106,7 @@ public class Bowser extends Enemy {
 
     /**
      * Enemy's default Attack action which returns the damage and verb of the attack
-     * @return default IntristicWeapon
+     * @return default IntrinsicWeapon
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -21,13 +22,13 @@ public class WanderBehaviour extends Action implements Behaviour {
 
 	/**
 	 * Returns a MoveAction to wander to a random location, if possible.  
-	 * If no movement is possible, returns null.
+	 * When no movement is possible, returns null.
 	 * 
 	 * @param actor the Actor enacting the behaviours
 	 * @param map the map that actor is currently on
 	 * @return an Action, or null if no MoveAction is possible
 	 *
-	 * Asgn3: Added FLYING- if the actor is able to fly, it will wander above any item
+	 * A3: Added FLYING- if the actor is able to fly, it will wander above any item
 	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
@@ -35,13 +36,16 @@ public class WanderBehaviour extends Action implements Behaviour {
 
 		for (Exit exit : map.locationOf(actor).getExits()) {
 			Location destination = exit.getDestination();
-			if(!(actor.hasCapability(Status.FLYING))){
-			if (destination.canActorEnter(actor)) {
-				actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
-			}
 
-		} else{
-				actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
+			if(!(actor.hasCapability(Status.FLYING))){
+				if (destination.canActorEnter(actor)) {
+					actions.add(destination.getMoveAction(actor, "around", exit.getHotKey()));
+				}
+			}
+			else{
+				if(!destination.containsAnActor()){
+					actions.add(new MoveActorAction(destination,""));
+				}
 			}
 		}
 

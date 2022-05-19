@@ -11,13 +11,17 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.actors.allies.PrincessPeach;
 import game.actors.allies.Toad;
+import game.actors.enemies.BigSlime;
 import game.actors.enemies.Bowser;
+import game.actors.enemies.FlyingKoopa;
+import game.actors.enemies.Koopa;
 import game.grounds.*;
 import game.grounds.fountains.HealthFountain;
 import game.grounds.fountains.PowerFountain;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
+import game.items.consumable.PowerStar;
 import game.items.permanent.Key;
 import game.utilities.Status;
 
@@ -41,9 +45,9 @@ public class Application {
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout(), new Sapling(), new Mature(), new Lava(), new PowerFountain(), new HealthFountain());
 
 			List<String> map = Arrays.asList(
-				"..........................................##..........+.........................",
-				"............+............+..................#...................................",
-				"............................................#...................................",
+				".#........................................##..........+.........................",
+				".#..........+............+..................#...................................",
+				"##..........................................#...................................",
 				".............................................##......................+..........",
 				"...............................................#................................",
 				"................................................#...............................",
@@ -81,36 +85,30 @@ public class Application {
 
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
+			String gameMapName = "Main Island";
 
-//			second game map
 			GameMap bossMap = new GameMap(groundFactory, lavaZone);
 			world.addGameMap(bossMap);
+			String bossMapName = "Lava Zone";
 
-			Actor mario = new Player("Mario", 'm', 100);
-//need to do the addPlayer for the new lava zone map but only do it with some condition (player jumps into the warp pipe)
-			world.addPlayer(mario, gameMap.at(11, 10));
-			mario.hurt(99);
+			Actor mario = new Player("Mario", 'm', 1000000);
+			mario.hurt(10000);
 
-//			WarpPipe secondMapPipe = new WarpPipe();
-//			WarpPipe firstMapPipe = new WarpPipe(secondMapPipe);
+			world.addPlayer(mario, gameMap.at(43, 10));
+			gameMap.at(1,9).addActor(new BigSlime());
+			gameMap.at(10,10).addActor(new BigSlime());
+			gameMap.at(1,3).addActor(new Bowser(gameMap.at(1,3)));
+			mario.addItemToInventory(new PowerStar());
+			gameMap.at(0,0).addActor(new FlyingKoopa());
+			gameMap.at(0,1).addActor(new Koopa());
+
 			gameMap.at(45,10).addActor(new Toad());
-//			gameMap.at(12, 10).addActor(new PrincessPeach());
-//			gameMap.at(12, 11).addItem(new Key());
-//			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-//			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-//			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-//			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), new WarpPipe()));
-		gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0)));
-			gameMap.at(57,3).setGround(new WarpPipe(bossMap.at(1,0)));
-			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0)));
-			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0)));
+			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(14,10).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
 			bossMap.at(0,0).setGround(new WarpPipe());
-//			gameMap.at(63,7).addActor(new Bowser());
-//			gameMap.at(64,7).addActor(new PrincessPeach());
 
-
-
-		world.run();
-
+			world.run();
 	}
 }

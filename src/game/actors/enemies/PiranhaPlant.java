@@ -3,17 +3,15 @@ package game.actors.enemies;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
-import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
-import game.actors.enemies.Enemy;
 import game.behaviours.AttackBehaviour;
 import game.utilities.Status;
 /**
- * The PirahnaPlant enemy.
+ * The PiranhaPlant enemy.
  * @version 1.1.2
  * @author sthi0011, lcha0068, esea0003
  */
@@ -22,7 +20,7 @@ public class PiranhaPlant extends Enemy {
      * Constructor for Piranha Plant.
      */
     public PiranhaPlant(){
-        super("Piranha Plant", 'P', 150);
+        super("Piranha Plant", 'Y', 150);
     }
 
     /**
@@ -47,7 +45,7 @@ public class PiranhaPlant extends Enemy {
     }
 
     /**
-     * playturn is used after the player performs its action
+     * PlayTurn is used after the player performs its action
      * @param actions    collection of possible Actions for this Actor
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor

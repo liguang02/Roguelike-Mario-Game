@@ -7,12 +7,14 @@ import game.items.permanent.Key;
 
 import static game.utilities.Status.KEY;
 
+/**
+ * PickUpKeyAction to pick up the key dropped by Bowser.
+ * @version 1.0.0
+ * @author esea0003
+ */
 public class PickUpKeyAction extends PickUpItemAction {
-
     /**
-     * PickUpKeyAction to pick up the key dropped by Bowser.
-     * @version 1.0.0
-     * @author esea0003
+     * The key object used for this action
      */
     private final Key key;
 
@@ -45,7 +47,6 @@ public class PickUpKeyAction extends PickUpItemAction {
      */
     @Override
     public String menuDescription(Actor actor) {
-        String menuOutput = actor + " picks up " + key;
-        return menuOutput;
+        return actor + " picks up " + key;
     }
 }

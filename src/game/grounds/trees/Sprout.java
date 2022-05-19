@@ -25,7 +25,7 @@ public class Sprout extends Tree{
 
     /**
      * This method will be called in every turn, it handles all the necessary operations for this class,
-     * such as spawning a goomba on its locatino at a specific chance and grows into Sapling every 10 turns.
+     * such as spawning a goomba on its location at a specific chance and grows into Sapling every 10 turns.
      * @param location The location of the Sprout object
      */
     @Override

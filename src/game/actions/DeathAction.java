@@ -33,14 +33,18 @@ public class DeathAction extends Action {
             drop.execute(actor, map);
 
         if (actor.hasCapability(Status.BIG_SLIME)){
-            Location place = map.locationOf(actor);
-            map.removeActor(actor);
-            map.addActor(new SmallSlime(), place);
-            for (Exit exit : place.getExits()) {
-                Location surrounding = exit.getDestination();
-                if(!surrounding.containsAnActor()){
-                    surrounding.addActor(new SmallSlime());
+            if(!actor.hasCapability(Status.REMOVED)) {
+                Location place = map.locationOf(actor);
+                map.removeActor(actor);
+                map.addActor(new SmallSlime(), place);
+                for (Exit exit : place.getExits()) {
+                    Location surrounding = exit.getDestination();
+                    if (!surrounding.containsAnActor()) {
+                        surrounding.addActor(new SmallSlime());
+                    }
                 }
+            }else{
+                map.removeActor(actor);
             }
         } else{
             map.removeActor(actor);

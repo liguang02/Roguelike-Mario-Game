@@ -7,9 +7,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.UnlockHandcuffsAction;
-import game.actions.speech.Monologue;
-import game.actions.speech.SpeakAction;
-import game.actors.allies.Ally;
 import game.utilities.Status;
 
 /**
@@ -33,7 +30,7 @@ public class PrincessPeach extends Ally {
      * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
      * @param map        the map containing the Actor
      * @param display    the I/O object to which messages may be written
-     * @return
+     * @return A nothing action.
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -45,7 +42,7 @@ public class PrincessPeach extends Ally {
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return A list of allowable actions for otherActor
      */
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
