@@ -31,5 +31,6 @@ public enum Status {
     FIRE_IMMUNE, // To indicate that the actor is immune to any fire damage.
     BIG_SLIME, // To denote if the enemy is a big slime
     LAVA_ZONE,
-    MAIN_ISLAND
+    MAIN_ISLAND,
+    BROKEN //To denote a broken weapon
 }

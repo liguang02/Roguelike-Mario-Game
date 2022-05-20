@@ -21,7 +21,10 @@ import game.grounds.fountains.PowerFountain;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
+import game.items.consumable.FirePotion;
 import game.items.consumable.PowerStar;
+import game.items.consumable.SuperMushroom;
+import game.items.permanent.DragonScaleBlade;
 import game.items.permanent.Key;
 import game.utilities.Status;
 
@@ -91,14 +94,18 @@ public class Application {
 			world.addGameMap(bossMap);
 			String bossMapName = "Lava Zone";
 
-			Actor mario = new Player("Mario", 'm', 1000000);
-			mario.hurt(10000);
+			Actor mario = new Player("Mario", 'm', 500);
+			mario.hurt(0);
+			mario.addItemToInventory(new PowerStar());
+			mario.addItemToInventory(new SuperMushroom());
+			mario.addItemToInventory(new FirePotion());
+			mario.addItemToInventory(new DragonScaleBlade());
 
-			world.addPlayer(mario, gameMap.at(43, 10));
+			world.addPlayer(mario, gameMap.at(1, 8));
+			gameMap.at(42,10).addActor(new Toad());
 			gameMap.at(1,9).addActor(new BigSlime());
 			gameMap.at(10,10).addActor(new BigSlime());
 			gameMap.at(1,3).addActor(new Bowser(gameMap.at(1,3)));
-			mario.addItemToInventory(new PowerStar());
 			gameMap.at(0,0).addActor(new FlyingKoopa());
 			gameMap.at(0,1).addActor(new Koopa());
 
