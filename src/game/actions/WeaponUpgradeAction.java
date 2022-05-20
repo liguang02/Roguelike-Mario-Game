@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.permanent.UpgradeableWeapon;
+import game.items.permanent.UpgradeableItem;
 
 /**
  * WeaponUpgradeAction to upgrade weapons.
@@ -14,13 +14,13 @@ public class WeaponUpgradeAction extends Action {
     /**
      * The weapon to be upgraded.
      */
-    private final UpgradeableWeapon weapon;
+    private final UpgradeableItem weapon;
 
     /**
      * Constructor for WeaponUpgradeAction
      * @param weapon The weapon to be upgraded.
      */
-    public WeaponUpgradeAction(UpgradeableWeapon weapon){
+    public WeaponUpgradeAction(UpgradeableItem weapon){
         this.weapon = weapon;
     }
 

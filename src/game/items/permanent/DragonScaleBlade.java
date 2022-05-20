@@ -13,7 +13,7 @@ import game.utilities.Status;
  * @version 1.0.0
  * @author sthi0011
  */
-public class DragonScaleBlade extends WeaponItem implements Purchasable, UpgradeableWeapon {
+public class DragonScaleBlade extends WeaponItem implements Purchasable, UpgradeableItem {
     /**
      * An instance variable that stores the price value for Dragon Scale Blade
      */
