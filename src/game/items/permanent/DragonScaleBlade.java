@@ -69,12 +69,15 @@ public class DragonScaleBlade extends WeaponItem implements Purchasable, Upgrade
 
     /**
      * If item in inventory, upgrade action allowed (action added)
+     * If item is BROKEN, no more upgrading.
      * @param currentLocation The location of the actor carrying this Item.
      * @param actor The actor carrying this Item.
      */
     @Override
     public void tick(Location currentLocation, Actor actor) {
-        if(!actionAdded){
+        this.removeAction(upgradeAction);
+        actionAdded = false;
+        if(!this.hasCapability(Status.BROKEN)){
             this.addAction(upgradeAction);
             actionAdded = true;
         }
@@ -105,7 +108,7 @@ public class DragonScaleBlade extends WeaponItem implements Purchasable, Upgrade
              this.addCapability(Status.BROKEN);
              actor.heal(damageBuff);
              damageIncrease = 0;
-             return actor + " failed to upgrade " + this + ", all damage buffs for " + this + " lost!";
+             return actor + " failed to upgrade " + this + " is now BROKEN!";
          }
          return actor + " sacrifices " + this.upgradeCost() + " buffing " + this;
     }
