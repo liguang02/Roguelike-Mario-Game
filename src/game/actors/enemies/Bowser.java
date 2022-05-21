@@ -35,6 +35,7 @@ public class Bowser extends Enemy {
         super("Bowser", 'B', 500);
         this.addCapability(Status.BOWSER);
         this.defaultLocation = defaultLocation;
+        this.addItemToInventory(new Key());
     }
 
     /**
@@ -48,7 +49,6 @@ public class Bowser extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        this.addItemToInventory(new Key());
 
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
@@ -80,6 +80,8 @@ public class Bowser extends Enemy {
             new MoveActorAction(newDestination, "").execute(defaultLocation.getActor(), newDestination.map());
         }
         new MoveActorAction(defaultLocation, "").execute(this,defaultLocation.map());
+        getBehaviours().remove(2);
+        getBehaviours().remove(3);
     }
 
     /**

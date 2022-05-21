@@ -26,12 +26,9 @@ public enum Status {
     FLYING, // If the Koopa is a flying Koopa
     INTRINSIC_BUFF, //Status for permanent buff (fountain)
     BOWSER, // For Bowser enemy
-    FIRST_TURN,
     CONSUMER_FIREPOT, //To denote if the actor can consume fire potions
     FIRE_IMMUNE, // To indicate that the actor is immune to any fire damage.
     BIG_SLIME, // To denote if the enemy is a big slime
-    LAVA_ZONE,
-    MAIN_ISLAND,
     BROKEN, //To denote a broken weapon
     DESTROY //Capability of weapon to destroy chariots.
 }

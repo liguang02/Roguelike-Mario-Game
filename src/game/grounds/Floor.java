@@ -10,7 +10,7 @@ import game.utilities.Status;
  * A class that represents the floor inside a building.
  */
 public class Floor extends Ground {
-	private String name;
+	private final String name;
 	/**
 	 * A constructor for floor class
 	 */
@@ -29,6 +29,10 @@ public class Floor extends Ground {
 		return !actor.hasCapability(Status.ENEMY);
 	}
 
+	/**
+	 * Name of ground
+	 * @return name of ground
+	 */
 	@Override
 	public String toString() {
 		return name;

@@ -16,7 +16,7 @@ public class SmallSlime extends SlimeTroop {
      * enemy. This has a 5% chance of forming upon instantiation.
      */
     public SmallSlime() {
-        super("Small Slime", 's', 80);
+        super("Small Slime", 's', 5);
         int chance = 5;
         if(Probability.success(chance)){
             this.addItemToInventory(new FirePotion());

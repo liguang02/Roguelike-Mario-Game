@@ -72,7 +72,7 @@ public class AttackAction extends Action {
 
 		if(actor.hasCapability(Status.BOWSER)){
 			map.locationOf(target).setGround(new Fire());
-			return actor + " dropped a fire on the ground where Mario is standing.";
+			result =  actor + " " + weapon.verb() + " " + target + " dealing " + damage + " and dropped a fire on the ground where " + target + " is standing.";
 		}
 
 		target.hurt(damage);

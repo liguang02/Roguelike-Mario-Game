@@ -20,6 +20,10 @@ public class Dirt extends Ground {
 		name = "Dirt";
 	}
 
+	/**
+	 * Return name of ground
+	 * @return name
+	 */
 	@Override
 	public String toString() {
 		return name;

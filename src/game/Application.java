@@ -1,8 +1,5 @@
 package game;
 
-import java.util.Arrays;
-import java.util.List;
-
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
@@ -11,17 +8,18 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.actors.allies.PrincessPeach;
 import game.actors.allies.Toad;
-import game.actors.enemies.*;
+import game.actors.enemies.Bowser;
+import game.actors.enemies.FlameWard;
 import game.grounds.*;
 import game.grounds.fountains.HealthFountain;
 import game.grounds.fountains.PowerFountain;
 import game.grounds.trees.Mature;
 import game.grounds.trees.Sapling;
 import game.grounds.trees.Sprout;
-import game.items.consumable.FirePotion;
-import game.items.consumable.PowerStar;
-import game.items.consumable.SuperMushroom;
-import game.items.permanent.DragonScaleBlade;
+import game.items.permanent.Coin;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -32,7 +30,7 @@ import game.items.permanent.DragonScaleBlade;
 public class Application {
 	/**
 	 * The driver class of the game. It will create game map and add it into the world.
-	 * Where player can be added into the world and other npcs such as toad can be added into the game map.
+	 * Where player can be added into the world and other NPCs such as toad can be added into the game map.
 	 * It will run the game by calling world.run()
 	 * @param args main arguments, no need to fill just run.
 	 */
@@ -90,27 +88,24 @@ public class Application {
 			String bossMapName = "Lava Zone";
 
 			Actor mario = new Player("Mario", 'm', 100000);
-			mario.hurt(0);
-			mario.addItemToInventory(new PowerStar());
-			mario.addItemToInventory(new SuperMushroom());
-			mario.addItemToInventory(new FirePotion());
-			mario.addItemToInventory(new DragonScaleBlade());
+			world.addPlayer(mario, gameMap.at(43, 10));
 
-			world.addPlayer(mario, gameMap.at(1, 8));
-			gameMap.at(42,10).addActor(new Toad());
-			gameMap.at(1,10).addActor(new BigSlime());
-			gameMap.at(10,10).addActor(new BigSlime());
-			gameMap.at(3,3).addActor(new PrincessPeach());
-			gameMap.at(1,3).addActor(new Bowser(gameMap.at(1,3)));
-			gameMap.at(0,0).addActor(new FlyingKoopa());
-			gameMap.at(0,1).addActor(new Koopa());
-			gameMap.at(1,9).addActor(new FlameWard());
+			gameMap.at(43,10).addItem(new Coin(100000000));
+			gameMap.at(44,10).addActor(new Toad());
 
-			gameMap.at(45,10).addActor(new Toad());
-			gameMap.at(12,10).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
-			gameMap.at(14,10).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
-			gameMap.at(60,12).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
-			gameMap.at(20,10).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			bossMap.at(63,7).addActor(new Bowser(bossMap.at(63,7)));
+			bossMap.at(64,7).addActor(new PrincessPeach());
+
+			bossMap.at(1,9).addActor(new FlameWard());
+			bossMap.at(2,5).addActor(new FlameWard());
+			bossMap.at(3,2).addActor(new FlameWard());
+			bossMap.at(4,10).addActor(new FlameWard());
+
+			gameMap.at(10,2).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(67,5).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(15,15).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(43,17).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(42,11).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
 			bossMap.at(0,0).setGround(new WarpPipe());
 
 			world.run();

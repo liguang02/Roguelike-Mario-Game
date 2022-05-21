@@ -14,6 +14,7 @@ import game.items.WalletManager;
 import game.items.permanent.Bottle;
 import game.reset.Resettable;
 import game.utilities.Status;
+
 /**
  * Class representing the Player.
  * @version 1.1.2
@@ -137,7 +138,11 @@ public class Player extends Actor implements Resettable {
 	 */
 	@Override
 	public void resetInstance() {
-		this.capabilitiesList().forEach(this::removeCapability);
+		for(Enum<?> capabilities : capabilitiesList()){
+			if(capabilities != Status.HOSTILE_TO_ENEMY){
+				this.removeCapability(capabilities);
+			}
+		}
 		this.heal(getMaxHp());
 		this.addCapability(Status.RESET);
 		this.intrinsicAttackValue = super.getIntrinsicWeapon().damage();
@@ -167,7 +172,6 @@ public class Player extends Actor implements Resettable {
 		if(this.hasCapability(Status.INVINCIBLE)){
 			formatted += "\n" + this + " is INVINCIBLE!";
 		}
-		display.println(this.getInventory().toString());
 		display.println(formatted);
 	}
 }

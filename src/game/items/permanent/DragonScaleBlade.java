@@ -39,7 +39,7 @@ public class DragonScaleBlade extends WeaponItem implements Purchasable, Upgrade
      * Constructor for the Dragon Scale Blade
      */
     public DragonScaleBlade(){
-        super("Dragon Scale Blade", '⚔', 5, "slashes",100);
+        super("Dragon Scale Blade", 'x', 5, "slashes",100);
         price = 1000;
         this.addToPurchasableManager();
         upgradeAction = new WeaponUpgradeAction(this);

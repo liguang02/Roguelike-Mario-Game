@@ -15,8 +15,7 @@ public class BigSlime extends SlimeTroop {
      * a SmallSlime enemy upon death.)
      */
     public BigSlime() {
-        super("Big Slime", 'S', 160);
+        super("Big Slime", 'S', 100);
         this.addCapability(Status.BIG_SLIME);
-
     }
 }

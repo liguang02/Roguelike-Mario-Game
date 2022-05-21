@@ -23,7 +23,7 @@ public class FlameWard extends Enemy{
      * Constructor for the flame ward.
      */
     public FlameWard() {
-        super("Flame Ward", 'Ö', 500);
+        super("Flame Ward", 'n', 500);
         getBehaviours().put(2, new GroundDestroyBehaviour(new Fire()));
         this.addItemToInventory(new FirePotion());
     }
@@ -85,7 +85,7 @@ public class FlameWard extends Enemy{
         }
 
         if (this.hasCapability(Status.DEAD)) {
-            this.setDisplayChar('Ø');
+            this.setDisplayChar('u');
             this.getBehaviours().clear();
             this.heal(Integer.MAX_VALUE);
             this.removeCapability(Status.DEAD);
