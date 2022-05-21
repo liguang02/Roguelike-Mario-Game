@@ -6,21 +6,22 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.utilities.Status;
 
 /**
+ *
  * @version 1.0.0
  * @author sthi0011, lcha0068, esea0003
  * A class that represents Fire ground
  */
 public class Fire extends Ground {
     /**
-     *
+     * Stores the name of the Fire Class
      */
     private final String name;
     /**
-     *
+     * Stores the damage of the Fire Class
      */
     private final int damage;
     /**
-     *
+     *Stores the tickCounter of the Fire Class
      */
     private int tickCounter;
 
@@ -36,6 +37,7 @@ public class Fire extends Ground {
     }
 
     /**
+     * To check if the actor can enter the ground
      * @param actor the Actor to check
      * @return boolean of if actor can enter
      */
@@ -44,12 +46,17 @@ public class Fire extends Ground {
         return true;
     }
 
+    /**
+     * To return the name of the ground as a string
+     * @return a String which represents the name of the Ground
+     */
     public String toString(){
         return name;
     }
 
     /**
-     *
+     * Tracks the number of turns that has occurred.
+     * The Fire Ground is replaced with Dirt Ground after 3 turns.
      * @param location The location of the Ground
      */
     @Override

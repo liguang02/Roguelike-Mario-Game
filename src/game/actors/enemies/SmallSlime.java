@@ -12,10 +12,8 @@ public class SmallSlime extends SlimeTroop {
 
     /**
      * Constructor for the SmallSlime enemy that adds the capability status
-     * with FIRE_IMMUNE (to make the enemy immune to lava and fire grounds)
      * It has a FirePotion which will be dropped once the player defeats the
-     * enemy. This has a 50% chance of forming upon instantiation.
-     * Also like other enemies, it will wander around the map.
+     * enemy. This has a 5% chance of forming upon instantiation.
      */
     public SmallSlime() {
         super("Small Slime", 's', 80);
