@@ -8,7 +8,7 @@ import game.utilities.Status;
 /**
  * @version 1.0.0
  * @author sthi0011, lcha0068, esea0003
- * A class that represents the floor inside a building.
+ * A class that represents Fire ground
  */
 public class Fire extends Ground {
     /**
