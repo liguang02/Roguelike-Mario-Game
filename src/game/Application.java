@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
+import game.actors.allies.PrincessPeach;
 import game.actors.allies.Toad;
 import game.actors.enemies.*;
 import game.grounds.*;
@@ -99,6 +100,7 @@ public class Application {
 			gameMap.at(42,10).addActor(new Toad());
 			gameMap.at(1,10).addActor(new BigSlime());
 			gameMap.at(10,10).addActor(new BigSlime());
+			gameMap.at(3,3).addActor(new PrincessPeach());
 			gameMap.at(1,3).addActor(new Bowser(gameMap.at(1,3)));
 			gameMap.at(0,0).addActor(new FlyingKoopa());
 			gameMap.at(0,1).addActor(new Koopa());
