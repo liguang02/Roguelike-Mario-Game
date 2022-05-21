@@ -87,10 +87,10 @@ public class Application {
 			world.addGameMap(bossMap);
 			String bossMapName = "Lava Zone";
 
-			Actor mario = new Player("Mario", 'm', 100000);
+			Actor mario = new Player("Mario", 'm', 500);
 			world.addPlayer(mario, gameMap.at(43, 10));
 
-			gameMap.at(43,10).addItem(new Coin(100000000));
+			gameMap.at(43,10).addItem(new Coin(1000));
 			gameMap.at(44,10).addActor(new Toad());
 
 			bossMap.at(63,7).addActor(new Bowser(bossMap.at(63,7)));
