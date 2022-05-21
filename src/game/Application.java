@@ -105,7 +105,7 @@ public class Application {
 			gameMap.at(67,5).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
 			gameMap.at(15,15).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
 			gameMap.at(43,17).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
-			gameMap.at(42,11).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
+			gameMap.at(42,8).setGround(new WarpPipe(bossMap.at(0,0), bossMapName,gameMapName));
 			bossMap.at(0,0).setGround(new WarpPipe());
 
 			world.run();
