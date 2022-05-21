@@ -32,5 +32,6 @@ public enum Status {
     BIG_SLIME, // To denote if the enemy is a big slime
     LAVA_ZONE,
     MAIN_ISLAND,
-    BROKEN //To denote a broken weapon
+    BROKEN, //To denote a broken weapon
+    DESTROY //Capability of weapon to destroy chariots.
 }

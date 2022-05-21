@@ -8,8 +8,8 @@ import game.utilities.Probability;
 import game.utilities.Status;
 
 public class Lava extends Ground {
-    private String name;
-    private int damage;
+    private final String name;
+    private final int damage;
     private int tickCounter;
     /**
      * Constructor for Lava ground class
@@ -24,7 +24,7 @@ public class Lava extends Ground {
     }
 
     /**
-     * A method to check if the actor is able to enter the ground or not, this overriden canActorEnter() will return false as we will only perform the moving action
+     * A method to check if the actor is able to enter the ground or not, this overrides canActorEnter() will return false as we will only perform the moving action
      * for the player(no enemies can walk through this ground) by calling MoveToTrapAction class.
      * @param actor the Actor to check
      * @return a boolean value that returns False if the actor has the ENEMY status
@@ -51,7 +51,7 @@ public class Lava extends Ground {
             location.addActor(new BigSlime());
         }
         Actor actor = location.getActor();
-        if (actor != null && !actor.hasCapability(Status.ENEMY) && !actor.hasCapability(Status.FIRE_IMMUNE)){
+        if (actor != null && !actor.hasCapability(Status.ENEMY) && !actor.hasCapability(Status.FIRE_IMMUNE) && !actor.hasCapability(Status.INVINCIBLE)){
             actor.hurt(damage);
             if(!actor.isConscious()){
                 actor.addCapability(Status.DEAD);

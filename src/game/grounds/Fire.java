@@ -36,9 +36,8 @@ public class Fire extends Ground {
     }
 
     /**
-     *
      * @param actor the Actor to check
-     * @return
+     * @return boolean of if actor can enter
      */
     @Override
     public boolean canActorEnter(Actor actor) {
@@ -57,7 +56,7 @@ public class Fire extends Ground {
     public void tick(Location location) {
         super.tick(location);
         Actor actor = location.getActor();
-        if (actor != null && !actor.hasCapability(Status.FIRE_IMMUNE)){
+        if (actor != null && !actor.hasCapability(Status.FIRE_IMMUNE) && !actor.hasCapability(Status.INVINCIBLE)){
             actor.hurt(damage);
             if(!actor.isConscious()){
                 actor.addCapability(Status.DEAD);
@@ -65,9 +64,9 @@ public class Fire extends Ground {
         }if (actor != null && actor.hasCapability(Status.FIRE_IMMUNE)){
             actor.removeCapability(Status.FIRE_IMMUNE);
         }
-        tickCounter++;
-        if (tickCounter == 4){
+        if (tickCounter >= 3){
             location.setGround(new Dirt());
         }
+        tickCounter++;
     }
 }

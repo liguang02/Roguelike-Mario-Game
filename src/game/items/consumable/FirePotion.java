@@ -13,7 +13,7 @@ public class FirePotion extends Item implements Purchasable, Consumable{
     private final Action consumeAction = new ConsumeAction(this);
 
     public FirePotion(){
-        super("Fire Potion", '6', false);
+        super("Fire Potion", '6', true);
         this.price = 60;
         this.addToPurchasableManager();
     }
